@@ -8,3 +8,36 @@ header{
 img{
     width: 100%;
 }
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 300px; /* Adjust width as needed */
+    border: 1px solid #ccc; /* Add border for visual clarity */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    padding: 8px;
+  }
+  
+  .search-icon {
+    margin-right: 5px; /* Add some space between the icon and the input */
+  }
+  
+  .search-input {
+    flex: 1; /* Allow the input to grow to fill the remaining space */
+    border: none; /* Remove border from input */
+    outline: none; /* Remove default outline */
+  }
+
+  .header-links span{
+    margin: 0 10px;
+  }
+  
+.header-aside{
+    display: flex;
+    align-items: center;
+}
+  .profile-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+  }

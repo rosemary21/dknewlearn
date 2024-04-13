@@ -1,0 +1,38 @@
+.container {
+    position: relative;
+  }
+  
+  .background-image {
+    width: 100%; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+    display: block;
+    min-height: 500px;
+  }
+  
+  .text-overlay {
+    position: absolute;
+    top: 50%; /* Adjust vertical position */
+    left: 20px; /* Adjust horizontal position */
+    transform: translateY(-50%);
+    color: black;
+    border-color: white;
+    box-shadow: 0 0 10px gray;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 400px;
+  }
+  
+  .text-overlay h1 {
+    font-size: 36px; /* Adjust font size */
+    margin-bottom: 10px;
+  }
+  
+  .text-overlay p {
+    font-size: 18px; /* Adjust font size */
+  }
+  
+
+  .header-icons{
+    margin: 0 10px;
+    font-size: 20px;
+  }

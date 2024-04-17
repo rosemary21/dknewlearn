@@ -153,7 +153,7 @@ const HomePage = () => {
     </section>
 
     {/* Goals Section */}
-    <section class="goals">
+    {/* <section class="goals">
       <h2>How learners like you are achieving their goals</h2>
       <div class="container">
         <div class="box">
@@ -205,7 +205,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section> */}
 
     {/*  Viewing Section */}
     <section class="viewing">

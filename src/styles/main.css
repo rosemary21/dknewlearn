@@ -9,11 +9,6 @@
     min-height: 250px;
   }
 
-  @media screen and (min-width: 900px) {
-    .background-image {
-      min-height: 500px;
-    }
-  }
   
   .text-overlay {
     position: absolute;
@@ -25,7 +20,19 @@
     box-shadow: 0 0 10px gray;
     padding: 30px;
     border-radius: 5px;
-    max-width: 400px;
+
+    width: 90%;
+  }
+
+  
+  @media screen and (min-width: 900px) {
+    .background-image {
+      min-height: 500px;
+    }
+
+    .text-overlay {
+      max-width: 400px;
+    }
   }
   
   .text-overlay h1 {

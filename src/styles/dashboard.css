@@ -1,0 +1,41 @@
+:root{
+    --color1: #2d2f31;
+}
+
+.dashboard .top-banner{
+    background: var(--color1);
+    font-size: 50px;
+    color: white;
+}
+
+.dashboard .primary-btn{
+    background-color: rgb(49, 43, 43);
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+
+  }
+
+  .dashboard .search-input{
+    border: 1px solid gray;
+    padding: 10px;
+    float: right;
+
+  }
+.main-section{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section1{
+    border: 2px solid gray;
+    padding: 30px;
+    margin: 30px 0;
+}
+
+@media screen and (min-width: 700px) {
+    .dashboard .top-banner{
+        padding: 40px 100px;
+    }
+}

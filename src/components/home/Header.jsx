@@ -3,11 +3,19 @@ import { FaBell, FaHeart, FaHome } from 'react-icons/fa'
 import { FaCartShopping } from 'react-icons/fa6'
 import { FiSearch } from 'react-icons/fi'
 import profile from "../../assets/profile1.webp";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
+    <div>
+      {/* <section class="upper-nav">
+        <p>
+          Streamline your career success
+          <span>| Start learning toward your next big milestone today.</span>
+        </p>
+      </section> */}
     <header>
-        <h1>Learning</h1>
+        <Link to={'/'} className='header-logo'><h1>DK Learning</h1></Link>
 
 
         <div className="search-bar">
@@ -26,16 +34,19 @@ const Header = () => {
       <span>My learning</span>
     </div>
         <div className='header-aside'>
-            <FaBell className='header-icons' />
+            {/* <FaBell className='header-icons' />
             <FaCartShopping className='header-icons' />
             <FaHeart className='header-icons' />
             <img
             src={profile}
             alt="profile Image"
             className="profile-image"
-          />
+          /> */}
+
+          <Link to={'/login'}><button>Login</button></Link>
         </div>
     </header>
+    </div>
   )
 }
 

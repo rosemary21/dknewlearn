@@ -32,6 +32,7 @@ import netapp from "../assets/netapp-dark.svg.png";
 import eventbrite from "../assets/eventbrite-dark.svg.png";
 import tcs from "../assets/tcs-dark.svg.png"
 import instructorImg from "../assets/instructor-1x-v3.jpg.png"
+import { FaStar } from "react-icons/fa";
 
 // import tcs from "../assets/tcs-dark.svg.png";
 // import img from "../assets/background.jpg";
@@ -215,9 +216,7 @@ const HomePage = () => {
           <h3>The Complete 2023 Web Development Bootcamp</h3>
           <h4>Dr. Angela Yu</h4>
           <p>
-            4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star-half-o"></i> <span>(247,955)</span>
+            4.3 <FaStar/><FaStar/><FaStar/><FaStar/>  <span>(247,955)</span>
           </p>
           <h3>$119.99</h3>
           <button>Bestseller</button>
@@ -228,9 +227,7 @@ const HomePage = () => {
           <h3>100 Days of Code: The Complete Python Pro Bootcamp for 2023</h3>
           <h4>Dr. Angela Yu</h4>
           <p>
-            4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star-half-o"></i> <span>(162,432)</span>
+            4.3 <FaStar/><FaStar/><FaStar/><FaStar/> <span>(162,432)</span>
           </p>
           <h3>$84.99</h3>
           <button>Bestseller</button>
@@ -241,9 +238,7 @@ const HomePage = () => {
           <h3>The Complete JavaScript Course 2023: From Zero to Expert!</h3>
           <h4>Jonas Schmedtmann</h4>
           <p>
-            4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star-half-o"></i> <span>(161,454)</span>
+            4.3 <FaStar/><FaStar/><FaStar/><FaStar/> <span>(161,454)</span>
           </p>
           <h3>$149.99</h3>
           <button>Bestseller</button>
@@ -254,9 +249,7 @@ const HomePage = () => {
           <h3>React - The Complete Guide (incl Hooks, React Router, Redux)</h3>
           <h4>Academind by Maximilian Schwarzmüller,</h4>
           <p>
-            4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star-half-o"></i> <span>(171,292)</span>
+            4.3 <FaStar/><FaStar/><FaStar/><FaStar/> <span>(171,292)</span>
           </p>
           <h3>$129.99</h3>
           <button>Bestseller</button>
@@ -267,9 +260,7 @@ const HomePage = () => {
           <h3>Ultimate AWS Certified Solutions Architect Associate</h3>
           <h4>Stephane Maarek | AWS Certified Cloud</h4>
           <p>
-            4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star"></i><i class="fa fa-star"></i
-            ><i class="fa fa-star-half-o"></i> <span>(160,038)</span>
+            4.3 <FaStar/><FaStar/><FaStar/><FaStar/><span>(160,038)</span>
           </p>
           <h3>$84.99</h3>
           <button>Bestseller</button>

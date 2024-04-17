@@ -1,5 +1,6 @@
 :root{
     --color1: #2d2f31;
+    --color2: rgb(232 14 15)
 }
 
 .dashboard .top-banner{
@@ -8,13 +9,13 @@
     color: white;
 }
 
-.dashboard .primary-btn{
-    background-color: rgb(49, 43, 43);
+.primary-btn{
+    background-color: var(--color2);
     color: white;
     font-weight: bold;
     padding: 10px 20px;
     border: none;
-
+   
   }
 
   .dashboard .search-input{
@@ -28,14 +29,35 @@
     margin: auto;
 }
 
-.section1{
-    border: 2px solid gray;
+.dashboard .section1{
+    border: 1px solid rgb(202, 199, 199);
     padding: 30px;
     margin: 30px 0;
+}
+
+/* cart */
+
+/* .cart-page{
+margin-top: 50px;
+} */
+
+.cart-page .section1{
+    border: 1px solid rgb(202, 199, 199);
+    padding: 30px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 @media screen and (min-width: 700px) {
     .dashboard .top-banner{
         padding: 40px 100px;
+    }
+
+    .cart-page{
+        width: 90%;
+        margin: auto;
     }
 }

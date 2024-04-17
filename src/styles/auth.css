@@ -37,7 +37,7 @@ justify-content: center;
 }
 
 .submit-btn{
-    background-color: red;
+    background-color: rgb(232 14 15);
     color: white;
     padding: 15px 20px;
     width: 100%;
@@ -55,6 +55,6 @@ justify-content: center;
 
 .link{
     text-decoration: none;
-    color: blue;
+    color: rgb(232 14 15);
     font-weight: bold;
 }

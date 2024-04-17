@@ -28,7 +28,7 @@ header img{
 
 header h1{
 
-  color: red;
+  color: rgb(232 14 15);
 }
 
 .header-logo{
@@ -70,11 +70,12 @@ header h1{
 
 
   header button{
-    background-color: rgb(49, 43, 43);
+    background-color: var(--color2);
     color: white;
     font-weight: bold;
     padding: 10px 20px;
     border: none;
+    cursor: pointer;
   }
 
   @media screen and (max-width: 700px) {

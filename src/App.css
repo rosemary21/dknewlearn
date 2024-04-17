@@ -4,3 +4,11 @@
   font-family: sans-serif;
   box-sizing: border-box;
 }
+
+button{
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+}

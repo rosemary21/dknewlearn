@@ -30,7 +30,7 @@ const Header = () => {
 
     <div className='header-links'>
       <span>Categories</span>
-      <span>Become a Teacher</span>
+      <span>Become a Instructor</span>
       <span>My learning</span>
     </div>
         <div className='header-aside'>

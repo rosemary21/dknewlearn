@@ -8,7 +8,6 @@ const Footer = () => {
     <div class="footer-up">
       <div class="footer-nav">
         <div>
-          <p><a href="#">Udemy Business</a></p>
           <p><a href="#">Teach on Udemy</a></p>
           <p><a href="#">Get the app</a></p>
           <p><a href="#">About us</a></p>
@@ -19,12 +18,10 @@ const Footer = () => {
           <p><a href="#">Blog</a></p>
           <p><a href="#">Help and Support</a></p>
           <p><a href="#">Affiliate</a></p>
-          <p><a href="#">Investors</a></p>
         </div>
         <div>
           <p><a href="#">Terms</a></p>
           <p><a href="#">Privacy policy</a></p>
-          <p><a href="#">Do not sell or share my personal information</a></p>
           <p><a href="#">Sitemap</a></p>
           <p><a href="#">Accessibility statement</a></p>
         </div>
@@ -37,7 +34,7 @@ const Footer = () => {
 
     <div class="footer-down">
       <div>
-        <img src="img/logo-udemy-inverted.svg.png" alt="" />
+        <h1 style={{ color: 'var(--color2)'}}>DK Learning</h1>
       </div>
       <div>
         <p>© 2024 DK Learning.</p>

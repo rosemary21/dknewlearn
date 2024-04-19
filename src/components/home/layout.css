@@ -19,7 +19,12 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    box-shadow: 0 0 20px rgb(211, 210, 210);
+    box-shadow: 0 0 10px rgb(211, 210, 210);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+background-color: white;
 }
 
 header img{
@@ -78,6 +83,12 @@ header h1{
     cursor: pointer;
   }
 
+  button.btn2{
+    border: 2px solid var(--color2);
+    background-color: white;
+    color: var(--color2);
+  }
+
   .header-icons{
     font-size: 20px;
     cursor: pointer;
@@ -89,6 +100,46 @@ header h1{
 
   .header-icons2{
     display: none;
+  }
+
+  .mobile-nav{
+    position: fixed;
+    top: 61px;
+    backdrop-filter: blur(10px);
+    height: 100%;
+
+    width: 100%;
+    z-index: 9;
+  }
+
+  .sub-mobile-nav{
+    background-color: white;
+    width: 60%;
+    height: 100%;
+    padding: 20px;
+  }
+ 
+
+  .mobile-nav button{
+    background-color: var(--color2);
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .mobile-nav  button.btn2{
+    border: 2px solid var(--color2);
+    background-color: white;
+    color: var(--color2);
+  }
+
+  .mobile-nav .nav-link{
+    border-bottom: 1px solid gray;
+    padding: 10px 0;
   }
 
 
@@ -154,4 +205,8 @@ header h1{
 
   .search-icon2{
     margin-right: 10px;
+  }
+
+  main{
+    margin-top: 50px;
   }

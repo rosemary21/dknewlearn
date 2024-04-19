@@ -5,7 +5,7 @@ import { FiSearch } from 'react-icons/fi'
 import profile from "../../assets/profile1.webp";
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ onToggleAside }) => {
   return (
     <div>
       {/* <section class="upper-nav">
@@ -16,7 +16,7 @@ const Header = () => {
       </section> */}
     <header>
         <div className='toogle-nav'>
-          <FaBars className='header-icons' />
+          <FaBars className='header-icons' onClick={onToggleAside} />
         </div>
 
         <Link to={'/'} className='header-logo'><h1>DK Learning</h1></Link>

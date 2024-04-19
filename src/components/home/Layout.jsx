@@ -47,8 +47,9 @@ const Layout = ({ children }) => {
       {isAsideVisible && (
         <div className="mobile-nav">
           <div className="sub-mobile-nav">
+            <Link to={"/categories"}>
             <p className="nav-link">Categories</p>
-
+            </Link>
             <p className="nav-link">Become a teacher</p>
             <br />
             <p>

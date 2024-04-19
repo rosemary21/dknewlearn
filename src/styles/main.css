@@ -837,3 +837,12 @@ footer {
     margin: 0;
   }
 }
+
+
+/* categories page */
+
+.categories-list p{
+  padding: 20px;
+  box-shadow: 0 0 10px rgb(212, 211, 211);
+  margin-bottom: 20px;
+}

@@ -9,7 +9,7 @@ const Categories = () => {
           <h1>Categories</h1>
         </div><br />
 
-        <div>
+        <div className='categories-list'>
           <p>Web Development</p>
           <p>Product Design</p>
           <p>Cybersecurity</p>

@@ -9,19 +9,13 @@ const ForgotPassword = () => {
     <Layout>
       <div className="auth-container">
         <div>
-          <h3>Log in to your DK Learning account</h3>
-          <div className="img">
-            {" "}
-            <img src={profileImage} alt="" />
-          </div>
-          <p>Welcome Back</p><br />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button className="submit-btn">Login</button>
+          <h3>Forgot Password</h3>
+    <br />
+          <input type="email" placeholder="Email" /><br />
+          <button className="submit-btn">Reset Password</button>
 
-          <p>or <Link to={'/forgot-password'} className="link">Forgot Password</Link></p><br />
           <hr /><br />
-          <p>Don't have an account?<Link to={'/signup'} className="link"> Sign up</Link></p>
+          <p>Or<Link to={'/login'} className="link"> Login</Link></p>
         </div> 
       </div>
     </Layout>

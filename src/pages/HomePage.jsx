@@ -33,6 +33,7 @@ import eventbrite from "../assets/eventbrite-dark.svg.png";
 import tcs from "../assets/tcs-dark.svg.png"
 import instructorImg from "../assets/instructor-1x-v3.jpg.png"
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 // import tcs from "../assets/tcs-dark.svg.png";
 // import img from "../assets/background.jpg";
@@ -87,7 +88,9 @@ const HomePage = () => {
         </div>
 
         <div class="explore-python">
-          <div>
+         
+         <div>
+         <Link to={'/course/python-course'}>
             <img src={courseImg1} alt="" />
             <h3>Learn Python: The Complete Python Programming Course</h3>
             <h4>Avinash Jain, The Codex</h4>
@@ -97,7 +100,9 @@ const HomePage = () => {
               ><i class="fa fa-star-half-o"></i> <span>(4,253)</span>
             </p>
             <h3>$94.99</h3>
+            </Link>
           </div>
+  
 
           <div>
             <img src={courseImg2} alt="" />

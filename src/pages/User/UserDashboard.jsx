@@ -9,13 +9,22 @@ import courseImg3 from "../../assets/course-img3.png";
 import courseImg4 from "../../assets/course-img4.png";
 import courseImg5 from "../../assets/course-img5.png";
 
+import profileImg from "../../assets/profile1.webp";
+
 
 const UserDashboard = () => {
   return (
     <Layout>
       <div className="dashboard">
         <div className="top-banner">
-        My learning
+
+         <div className="profile">
+         <img src={profileImg} alt="" style={{ width: '100px', height: '100px', borderRadius: '100%'}} />
+         <p>Welcome, David Mark</p>
+
+
+         </div>
+        {/* My learning */}
         </div>
         <div className="main-section">
           <div className="section1">

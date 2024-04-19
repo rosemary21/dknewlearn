@@ -1,52 +1,47 @@
 .container {
-    position: relative;
-  }
-  
+  position: relative;
+}
+
+.background-image {
+  width: 100%; /* Adjust as needed */
+  height: auto; /* Adjust as needed */
+  display: block;
+  min-height: 250px;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%; /* Adjust vertical position */
+  left: 20px; /* Adjust horizontal position */
+  transform: translateY(-50%);
+  color: black;
+  border-color: white;
+  box-shadow: 0 0 10px gray;
+  padding: 30px;
+  border-radius: 5px;
+  width: 90%;
+}
+
+@media screen and (min-width: 900px) {
   .background-image {
-    width: 100%; /* Adjust as needed */
-    height: auto; /* Adjust as needed */
-    display: block;
-    min-height: 250px;
+    min-height: 500px;
   }
 
-  
   .text-overlay {
-    position: absolute;
-    top: 50%; /* Adjust vertical position */
-    left: 20px; /* Adjust horizontal position */
-    transform: translateY(-50%);
-    color: black;
-    border-color: white;
-    box-shadow: 0 0 10px gray;
-    padding: 30px;
-    border-radius: 5px;
-    width: 90%;
+    max-width: 400px;
   }
+}
 
-  
-  @media screen and (min-width: 900px) {
-    .background-image {
-      min-height: 500px;
-    }
+.text-overlay h1 {
+  font-size: 36px; /* Adjust font size */
+  margin-bottom: 10px;
+}
 
-    .text-overlay {
-      max-width: 400px;
-    }
-  }
-  
-  .text-overlay h1 {
-    font-size: 36px; /* Adjust font size */
-    margin-bottom: 10px;
-  }
-  
-  .text-overlay p {
-    font-size: 18px; /* Adjust font size */
-  }
-  
+.text-overlay p {
+  font-size: 18px; /* Adjust font size */
+}
 
-
-
-  /* courses section styling */
+/* courses section styling */
 .courses-sec {
   margin: 3.125rem 1.875rem;
 }
@@ -755,43 +750,90 @@ footer {
   }
 }
 
-.quoteImg{
+.quoteImg {
   width: 20px;
 }
 
 /* course page */
-.course-page .section1{
+
+.course-page .sub-section1 {
   border: 1px solid rgb(202, 199, 199);
   padding: 30px;
 }
 
-.course-page .section1 .sub-points p{
+.course-page .sub-section2 {
+  box-shadow: 0 0 10px rgb(224, 222, 222);
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.course-page .sub-section2 button{
+  background-color: var(--color2);
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.course-page .sub-section2 button.btn2{
+  border: 2px solid var(--color2);
+  background-color: white;
+  color: var(--color2);
+}
+
+.course-page .section1 .sub-points p {
   font-size: 13px;
   margin-bottom: 10px;
 }
 
-.course-banner{
+.course-banner {
   background: var(--color1);
   padding: 50px;
   color: white;
 }
 
-@media screen and (min-width: 900px) {
-  .course-page{
-   
-  }
-  .course-page .sections{
-    width: 90%;
-    margin: auto;
-  }
-  .course-page .section1{
-    width: 70%;
-  }
-  .course-page .section1 .sub-points{
- 
+.course-image img {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  display: block;
+}
+
+.course-page .sections {
+  margin: auto;
+  width: 90%;
+}
+
+@media screen and (min-width: 700px) {
+  .course-page .top-section {
     display: grid;
-    grid-template-columns: 48% 48%;
+    grid-template-columns: 50% 47%;
+    gap: 3%;
   }
 }
 
+@media screen and (min-width: 900px) {
+  .course-page .sections {
+    width: 90%;
+    margin: auto;
+  }
 
+  .course-page .section1 .sub-points {
+    display: grid;
+    grid-template-columns: 48% 48%;
+  }
+
+  .course-page .section1 {
+    display: grid;
+    grid-template-columns: 70% 27%;
+    gap: 3%;
+  }
+
+  .course-page .sub-section2 {
+    margin: 0;
+  }
+}

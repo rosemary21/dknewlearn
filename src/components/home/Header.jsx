@@ -5,7 +5,7 @@ import { FiSearch } from 'react-icons/fi'
 import profile from "../../assets/profile1.webp";
 import { Link } from 'react-router-dom';
 
-const Header = ({ onToggleAside }) => {
+const Header = ({ onToggleAside, toggleCart }) => {
   return (
     <div>
       {/* <section class="upper-nav">
@@ -41,20 +41,20 @@ const Header = ({ onToggleAside }) => {
  
 
 <FiSearch className='header-icons search-icon2' />
-          <FaCartShopping className='header-icons' />
-          {/* <span className='header-btn'>
+          <FaCartShopping className='header-icons' onClick={toggleCart}  />
+          <span className='header-btn'>
           <Link to={'/login'} ><button>Login</button></Link>&emsp;
           <Link to={'/signup'} ><button className='btn2'>Signup</button></Link>
-          </span> */}
+          </span>
 
-
+{/* 
                      <span className='header-icons2'><FaBell className='header-icons' />
                        <FaHeart className='header-icons' /></span>
             <img
             src={profile}
             alt="profile Image"
             className="profile-image"
-          />
+          /> */}
     
         </div>
     </header>

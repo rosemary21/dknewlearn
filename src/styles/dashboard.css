@@ -51,6 +51,47 @@ margin-top: 50px;
     text-align: center;
 }
 
+.edit-profile{
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.edit-profile .profile-picture{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.edit-profile>div{
+    box-shadow: 0 0 10px rgb(226, 224, 224);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.edit-profile .panel1{
+text-align: center;
+}
+
+.edit-profile input {
+    border: 2px solid gray;
+    background: none;
+    padding: 15px 20px;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.edit-profile input::placeholder {
+    color: black;
+}
+
+.edit-profile label{
+    margin-bottom: 10px;
+    display: block;
+}
+
+
 @media screen and (min-width: 700px) {
     .dashboard .top-banner{
         padding: 40px 100px;
@@ -60,4 +101,32 @@ margin-top: 50px;
         width: 90%;
         margin: auto;
     }
+
+    .edit-profile{
+        display: grid;
+        grid-template-columns: 30% 65%;
+        gap: 3%;
+        
+    }
+
+    .edit-profile>div{
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .edit-profile{
+        /* grid-template-columns: 20% 45%; */
+        max-width: 1000px;
+        margin: auto;
+    }
+}
+
+.link-btn{
+    background-color: var(--color1);
+    display: block;
+    margin: 20px 0;
+    padding: 10px;
+    color: white;
 }

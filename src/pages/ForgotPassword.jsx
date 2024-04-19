@@ -4,7 +4,7 @@ import profileImage from "../assets/img/default-profile.png";
 import "../styles/auth.css";
 import { Link } from "react-router-dom";
 
-const LoginPage = () => {
+const ForgotPassword = () => {
   return (
     <Layout>
       <div className="auth-container">
@@ -28,4 +28,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPassword;

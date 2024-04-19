@@ -11,4 +11,5 @@ button{
 
 a{
   text-decoration: none;
+  color: var(--color2);
 }

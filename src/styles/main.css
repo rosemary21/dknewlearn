@@ -4,14 +4,14 @@
 
 .background-image {
   width: 100%; /* Adjust as needed */
-  height: 100vh; /* Adjust as needed */
+  height: 70vh; /* Adjust as needed */
   display: block;
   min-height: 250px;
 }
 
 .text-overlay {
   position: absolute;
-  top: 50%; /* Adjust vertical position */
+  top: 20%; /* Adjust vertical position */
   left: 20px; /* Adjust horizontal position */
   transform: translateY(-50%);
   color: white;
@@ -29,8 +29,10 @@
 
   .text-overlay {
     max-width: 700px;
-
+    top: 50%;
   }
+
+  
 }
 
 .text-overlay h1 {

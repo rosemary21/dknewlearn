@@ -4,7 +4,7 @@
 
 .background-image {
   width: 100%; /* Adjust as needed */
-  height: auto; /* Adjust as needed */
+  height: 100vh; /* Adjust as needed */
   display: block;
   min-height: 250px;
 }
@@ -14,12 +14,12 @@
   top: 50%; /* Adjust vertical position */
   left: 20px; /* Adjust horizontal position */
   transform: translateY(-50%);
-  color: black;
-  border-color: white;
-  box-shadow: 0 0 10px gray;
+  color: white;
+
   padding: 30px;
   border-radius: 5px;
   width: 90%;
+  font-size: 30px;
 }
 
 @media screen and (min-width: 900px) {
@@ -28,18 +28,19 @@
   }
 
   .text-overlay {
-    max-width: 400px;
+    max-width: 700px;
+
   }
 }
 
 .text-overlay h1 {
-  font-size: 36px; /* Adjust font size */
+
   margin-bottom: 10px;
 }
 
-.text-overlay p {
-  font-size: 18px; /* Adjust font size */
-}
+/* .text-overlay p {
+  font-size: 18px; 
+} */
 
 /* courses section styling */
 .courses-sec {

@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/home/Layout";
-import background from "../assets/background.jpg";
+import background from "../assets/background1.jpg";
 // import background from "../assets/hero-bg.png";
 
 import '../styles/main.css'

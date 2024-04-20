@@ -12,14 +12,14 @@
 .text-overlay {
   position: absolute;
   top: 50%; /* Adjust vertical position */
-  left: 20px; /* Adjust horizontal position */
+  left: 10px; /* Adjust horizontal position */
   transform: translateY(-50%);
   color: white;
 
   padding: 30px;
   border-radius: 5px;
   width: 90%;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 @media screen and (min-width: 900px) {
@@ -30,19 +30,12 @@
   .text-overlay {
     max-width: 700px;
     top: 50%;
+    left: 20px;
   }
 
   
 }
 
-.text-overlay h1 {
-
-  margin-bottom: 10px;
-}
-
-/* .text-overlay p {
-  font-size: 18px; 
-} */
 
 /* courses section styling */
 .courses-sec {

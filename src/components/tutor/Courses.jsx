@@ -72,7 +72,7 @@ function Courses() {
       <div className={activeSlide === 3 ? "slide active" : "slide"}>
         {currentSection && (
           <div>
-            <h2>Course Title: {currentSection.title}</h2>
+            <h2>Section Title: {currentSection.title}</h2>
             <SeriesForm onAddSeries={handleAddSeries} /><br /><br />
             <h3>All Series</h3><br />
             <table className="table table-hover table-striped">

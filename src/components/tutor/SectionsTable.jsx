@@ -5,7 +5,7 @@ const SectionsTable = ({ sections, onSelectSection }) => {
   return (
     <div>
       <h2>Sections</h2>
-        <div><h3>Title</h3></div>
+
         <div>
         <table className="table table-hover table-striped">
   <thead>

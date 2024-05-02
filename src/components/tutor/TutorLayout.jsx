@@ -29,31 +29,23 @@ const TutorLayout = ({ children }) => {
       {isAsideVisible && (
         <div className="mobile-nav">
           <div className="sub-mobile-nav">
-            <Link to={"/categories"}>
-            <p className="nav-link">Dashboard</p>
+          <Link to={"/tutor"}>
+            <p className="nav-link"><MdDashboard/> Dashboard</p>
             </Link>
-             <Link to={"/categories"}>
-            <p className="nav-link">Dashboard</p>
-            </Link>
-
-            <Link to={"/categories"}>
-            <p className="nav-link">Dashboard</p>
+            <Link to={"/tutor/courses"}>
+            <p className="nav-link"><BiBook /> Courses</p>
             </Link>
 
-            <Link to={"/categories"}>
-            <p className="nav-link">Dashboard</p>
+            <Link to={"/tutor/settings"}>
+            <p className="nav-link"><FaCog/> Settings</p>
             </Link>
 
-            <Link to={"/categories"}>
-            <p className="nav-link">Dashboard</p>
+            <Link to={"/tutor/earnings"}>
+            <p className="nav-link"><FaMoneyBill/> Earnings</p>
             </Link>
 
-            <Link to={"/categories"}>
-            <p className="nav-link">Dashboard</p>
-            </Link>
-
-            <p className="nav-link">
-                <button className="btn2"><FaSignOutAlt /> Logout</button>
+            <p className="nav-link" onClick={logout}>
+                <FaSignOutAlt /> Logout
             </p>
           </div>
         </div>

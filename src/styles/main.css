@@ -36,6 +36,15 @@
   
 }
 
+.primary-btn{
+  background-color: var(--color2);
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
 
 /* courses section styling */
 .courses-sec {
@@ -113,7 +122,7 @@
 
 .explore-python {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   overflow: hidden;
 }
 
@@ -132,6 +141,7 @@
 .explore-python div {
   width: 100%;
   margin-right: 1.25rem;
+  max-width: 240px;
 }
 .explore-python h4 {
   font-style: normal;
@@ -841,4 +851,33 @@ footer {
   padding: 20px;
   box-shadow: 0 0 10px rgb(212, 211, 211);
   margin-bottom: 20px;
+}
+
+/* teaching */
+
+.teaching .background-image1{
+  display: none;
+}
+
+
+.teaching .container .text-overlay{
+  color: var(--color2);
+  max-width: 430px;
+}
+
+.teaching .reasons{
+  display: flex;
+  align-items: center;
+}
+
+
+@media screen and (min-width: 900px) {
+  .teaching .background-image1{
+    display: block;
+  }
+
+  .teaching .background-image2{
+    display: none;
+  }
+
 }

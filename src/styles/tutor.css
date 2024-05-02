@@ -1,0 +1,144 @@
+.tutor-courses .top-banner{
+    padding: 50px 30px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 90%;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.tutor .panel{
+    padding: 20px;
+    box-shadow: 0 0 20px rgb(189, 188, 188);
+}
+
+.tutor-courses .top-banner{
+
+}
+
+
+
+  @media screen and (min-width: 700px) {
+    .tutor-courses .top-banner{
+        margin-top: 30px;
+        padding: 70px 50px !important;
+        width: 95%;
+    }
+
+  }
+
+.form_container h2{
+    margin-bottom: 20px;
+}
+.form_container label{
+    display: block;
+    margin: 10px 0;
+}
+
+.form_container .form-container {
+    width: 100%;
+}
+
+.form_container.auth-container{
+  text-align: left;
+}
+
+.form_container .form-container button{
+  background-color: rgb(232 14 15);
+  color: white;
+  padding: 15px 20px;
+  width: 45%;
+  font-weight: bold;
+  border: 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.form_container .form-container button:disabled{
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+@media only screen and (min-width: 800px) {
+
+    .form_container .form-container {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+
+    .signup_container .form-container {
+        width: 40%;
+    }
+}
+
+
+.progress-bar-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Updated progress bar */
+.progress-bar {
+  background-color: var(--color1);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out;
+}
+
+
+table tr{
+  padding-bottom: 20px !important;
+}
+
+.view-btn{
+  margin-left: 30px !important;
+  background-color: green;
+  color: white;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+}
+
+/* series page */
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(0, 0, 0, 0.1);
+}

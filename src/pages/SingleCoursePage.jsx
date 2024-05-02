@@ -27,7 +27,8 @@ const SingleCoursePage = () => {
 }
 
 const addCart = () => {
-  addToCart({ id: 1, name: 'Product A', price: 10 })
+  addToCart({ id: 1, name: 'python course', price: '7000 naira' })
+  location.reload()
 }
 
   return (

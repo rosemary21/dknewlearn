@@ -73,7 +73,7 @@ const Layout = ({ children }) => {
             <div>
               {cart.map((item, index) => (
                 <p key={index}>
-                  {item.name} - ${item.price}
+                  {index +1 }{')'} {item.name} - {item.price}
                 </p>
               ))}
             </div>

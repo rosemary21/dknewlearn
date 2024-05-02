@@ -34,7 +34,7 @@ const Header = ({ onToggleAside, toggleCart }) => {
 
     <div className='header-links'>
       <Link to={'/categories'}><span>Categories</span></Link>
-      <span>Become a Instructor</span>
+      <Link to={'/teaching'}><span>Become a Instructor</span></Link>
       {/* <span>My learning</span> */}
     </div>
         <div className='header-aside'>

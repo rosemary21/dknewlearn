@@ -16,6 +16,15 @@ import Categories from "./pages/Categories.jsx";
 import EditProfile from "./pages/User/EditProfile.jsx";
 import ChangePassword from "./pages/User/ChangePassword.jsx";
 import Subscriptions from "./pages/User/Subscriptions.jsx";
+import TutorDashboard from "./pages/Tutor/TutorDashboard.jsx";
+import TutorSettings from "./pages/Tutor/TutorSettings.jsx";
+import TutorCourses from "./pages/Tutor/TutorCourses.jsx";
+import SignupTutor from "./pages/SignupTutor.jsx";
+import LoginTutor from "./pages/LoginTutor.jsx";
+import TutorChangePassword from "./pages/Tutor/TutorChangePassword.jsx";
+import Teaching from "./pages/Teaching.jsx";
+import TermsAndPolicy from "./pages/TermsAndPolicy.jsx";
+import TutorCreateCourses from "./pages/Tutor/TutorCreateCourse.jsx";
 
 function App() {
 
@@ -25,12 +34,17 @@ function App() {
           <Route path="/" exact element={<HomePage />} />
           <Route path="/course/:id" element={<SingleCoursePage />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/teaching" element={<Teaching />} />
+          <Route path="/terms-and-policy" element={<TermsAndPolicy />} />
 
           {/* auth pages */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          
+          <Route path="/tutor-login" element={<LoginTutor />} />
+          <Route path="/tutor-signup" element={<SignupTutor />} />
 
           {/* authenticated user */}
           <Route path="/home/my-courses" element={<UserDashboard />} />
@@ -40,6 +54,13 @@ function App() {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/wishlist" element={<WishListPage />} />
           <Route path="/subscriptions" element={<Subscriptions />} />
+
+           {/* tutor  */}
+           <Route path="/tutor" element={<TutorDashboard />} />
+           <Route path="/tutor/courses" element={<TutorCourses />} />
+           <Route path="/tutor/create-courses" element={<TutorCreateCourses />} />
+           <Route path="/tutor/settings" element={<TutorSettings />} />
+           <Route path="/tutor/change-password" element={<TutorChangePassword />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

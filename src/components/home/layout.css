@@ -117,6 +117,7 @@ header h1{
     width: 60%;
     height: 100%;
     padding: 20px;
+    box-shadow: 0 0 10px gray;
   }
  
 
@@ -157,6 +158,22 @@ header h1{
     right: 15px;
   }
 
+  main{
+    margin-top: 65px;
+  }
+
+
+  /* tutor dashboard layout */
+
+  .tutor .main{
+ 
+    min-height: 550px;
+  }
+  .tutor .nav{
+   display: none;
+  }
+
+
 
 
   @media screen and (max-width: 700px) {
@@ -177,11 +194,6 @@ header h1{
     }
   }
 
-  main{
-    margin-top: 65px;
-  }
-
-
   @media screen and (min-width: 700px) {
 
     header{
@@ -200,6 +212,8 @@ header h1{
       display: none;
     }
 
+    
+
     .toogle-nav{
       display: none;
     }
@@ -213,7 +227,29 @@ header h1{
       top: 75px;
     }
 
+    .tutor .main{
+      display: grid;
+      grid-template-columns: 20% 78%;
+      gap: 2%;
+      min-height: 550px;
+    }
+    .tutor .nav{
+      box-shadow: 0 0 10px gray;
+      padding: 50px 20px;
+      display: block;
+      background-color: var(--color2);
+    }
+
+    .tutor .nav .nav-link{
+      background-color: white;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      color: var(--color2);
+      font-weight: bold;
+    }
+
   }
+
 
   @media screen and (max-width: 1100px) {
 
@@ -233,5 +269,4 @@ header h1{
   .search-icon2{
     margin-right: 10px;
   }
-
 

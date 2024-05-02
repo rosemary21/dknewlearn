@@ -24,7 +24,7 @@ justify-content: center;
     }
     
 
-.auth-container input {
+.auth-container input, select{
     border: 2px solid gray;
     background: none;
     padding: 15px 20px;

@@ -881,3 +881,106 @@ footer {
   }
 
 }
+
+
+/* course deatils */
+
+.course-content {
+  display: flex;
+  border: 1px solid #ddd; /* Add border for accordion container */
+  border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+.sections {
+  flex: 1;
+}
+
+.section {
+  margin-bottom: 10px;
+  background-color: #f9f9f9; /* Background color for accordion sections */
+  border-bottom: 1px solid #ddd; /* Add border between sections */
+}
+
+.section h3 {
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+.series {
+  display: none;
+}
+
+.series.active {
+  display: block;
+}
+
+.series-title {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd; /* Add border between series titles */
+}
+
+.series-title:hover {
+  background-color: #f5f5f5; /* Change background color on hover */
+}
+
+.video-display {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5; /* Background color for video display area */
+  border-left: 1px solid #ddd; /* Add border to separate video display area */
+}
+
+.video-display video {
+  width: 100%;
+  height: auto;
+}
+
+
+/* pagination */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+  border-radius: 4px;
+}
+
+.pagination li.active a {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.pagination li a:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  cursor: pointer;
+}
+
+.pagination li.disabled a {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+
+
+

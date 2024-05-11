@@ -6,6 +6,7 @@ const CourseDetails = ({ onNext }) => {
     group: '',
     category: '',
     title: '',
+    price: ''
   });
 
   const handleChange = (e) => {
@@ -32,6 +33,10 @@ const CourseDetails = ({ onNext }) => {
         <label>
           Course Title:
           <input type="text" name="title" value={course.title} onChange={handleChange} />
+        </label>
+        <label>
+          Course Price:
+          <input type="text" name="price" value={course.price} onChange={handleChange} />
         </label>
         <button type="submit">Next</button>
       </form>

@@ -25,6 +25,11 @@ import TutorChangePassword from "./pages/Tutor/TutorChangePassword.jsx";
 import Teaching from "./pages/Teaching.jsx";
 import TermsAndPolicy from "./pages/TermsAndPolicy.jsx";
 import TutorCreateCourses from "./pages/Tutor/TutorCreateCourse.jsx";
+import CourseContent from "./pages/CourseDetail.jsx";
+import EditCourse from "./components/tutor/EditCourse.jsx";
+import TutorEditCourse from "./pages/Tutor/TutorEditCourse.jsx";
+import TutorCourseReview from "./pages/Tutor/TutorCourseReview.jsx";
+import TutorEarnings from "./pages/Tutor/TutorEarnings.jsx";
 
 function App() {
 
@@ -33,6 +38,8 @@ function App() {
         <Routes>
           <Route path="/" exact element={<HomePage />} />
           <Route path="/course/:id" element={<SingleCoursePage />} />
+          <Route path="/view-course/:id" element={<CourseContent />} />
+
           <Route path="/categories" element={<Categories />} />
           <Route path="/teaching" element={<Teaching />} />
           <Route path="/terms-and-policy" element={<TermsAndPolicy />} />
@@ -59,6 +66,9 @@ function App() {
            <Route path="/tutor" element={<TutorDashboard />} />
            <Route path="/tutor/courses" element={<TutorCourses />} />
            <Route path="/tutor/create-courses" element={<TutorCreateCourses />} />
+           <Route path="/tutor/edit-course" element={<TutorEditCourse />} />
+           <Route path="/tutor/courses-review" element={<TutorCourseReview />} />
+           <Route path="/tutor/earnings" element={<TutorEarnings />} />
            <Route path="/tutor/settings" element={<TutorSettings />} />
            <Route path="/tutor/change-password" element={<TutorChangePassword />} />
 

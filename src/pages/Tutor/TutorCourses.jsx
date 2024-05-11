@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TutorLayout from '../../components/tutor/TutorLayout'
-
+import ReactPaginate from 'react-paginate';
 
 import courseImg1 from "../../assets/course-img1.png";
 import courseImg2 from "../../assets/course-img2.png";
@@ -8,8 +8,129 @@ import courseImg3 from "../../assets/course-img3.png";
 import courseImg4 from "../../assets/course-img4.png";
 import courseImg5 from "../../assets/course-img5.png";
 import { Link } from 'react-router-dom';
+import Course from '../../components/tutor/Course';
 
 const TutorCourses = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const coursesPerPage = 4;
+  const courses = [
+    {
+      id: 1,
+      imgSrc: courseImg1,
+      title: 'Learn Python: The Complete Python Programming Course',
+      instructor: 'Avinash Jain, The Codex',
+      rating: 4.3,
+      numReviews: 4253,
+      price: 94.99,
+      bestseller: false,
+    },
+    {
+      id: 2,
+      imgSrc: courseImg2,
+      title: 'Learning Python for Data Analysis and Visualization Ver 1',
+      instructor: 'Jose Portilla',
+      rating: 4.3,
+      numReviews: 18586,
+      price: 119.99,
+      bestseller: true,
+    },
+    {
+      id: 3,
+      imgSrc: courseImg1,
+      title: 'Learn Python: The Complete Python Programming Course',
+      instructor: 'Avinash Jain, The Codex',
+      rating: 4.3,
+      numReviews: 4253,
+      price: 94.99,
+      bestseller: false,
+    },
+    {
+      id: 4,
+      imgSrc: courseImg2,
+      title: 'Learning Python for Data Analysis and Visualization Ver 1',
+      instructor: 'Jose Portilla',
+      rating: 4.3,
+      numReviews: 18586,
+      price: 119.99,
+      bestseller: true,
+    },
+    {
+      id: 5,
+      imgSrc: courseImg1,
+      title: 'Learn Python: The Complete Python Programming Course',
+      instructor: 'Avinash Jain, The Codex',
+      rating: 4.3,
+      numReviews: 4253,
+      price: 94.99,
+      bestseller: false,
+    },
+    {
+      id: 6,
+      imgSrc: courseImg2,
+      title: 'Learning Python for Data Analysis and Visualization Ver 1',
+      instructor: 'Jose Portilla',
+      rating: 4.3,
+      numReviews: 18586,
+      price: 119.99,
+      bestseller: true,
+    },
+    {
+      id: 7,
+      imgSrc: courseImg1,
+      title: 'Learn Python: The Complete Python Programming Course',
+      instructor: 'Avinash Jain, The Codex',
+      rating: 4.3,
+      numReviews: 4253,
+      price: 94.99,
+      bestseller: false,
+    },
+    {
+      id: 8,
+      imgSrc: courseImg2,
+      title: 'Learning Python for Data Analysis and Visualization Ver 1',
+      instructor: 'Jose Portilla',
+      rating: 4.3,
+      numReviews: 18586,
+      price: 119.99,
+      bestseller: true,
+    },
+    {
+      id: 9,
+      imgSrc: courseImg1,
+      title: 'Learn Python: The Complete Python Programming Course',
+      instructor: 'Avinash Jain, The Codex',
+      rating: 4.3,
+      numReviews: 4253,
+      price: 94.99,
+      bestseller: false,
+    },
+    {
+      id: 10,
+      imgSrc: courseImg2,
+      title: 'Learning Python for Data Analysis and Visualization Ver 1',
+      instructor: 'Jose Portilla',
+      rating: 4.3,
+      numReviews: 18586,
+      price: 119.99,
+      bestseller: true,
+    },
+    // Add more courses as needed
+  ];
+
+
+  const offset = currentPage * coursesPerPage;
+  const paginatedCourses = courses.slice(offset, offset + coursesPerPage);
+
+
+
+
+  
+  
   return (
     <TutorLayout>
     <div className='tutor-courses'>
@@ -35,33 +156,26 @@ const TutorCourses = () => {
 
       <div class="career-opportunities">
         <div class="explore-python">
-          <div>
-            <img src={courseImg1} alt="" />
-            <h3>Learn Python: The Complete Python Programming Course</h3>
-            <h4>Avinash Jain, The Codex</h4>
-            <p>
-              4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-              ><i class="fa fa-star"></i><i class="fa fa-star"></i
-              ><i class="fa fa-star-half-o"></i> <span>(4,253)</span>
-            </p>
-            <h3>$94.99</h3>
-          </div>
+        
 
-          <div>
-            <img src={courseImg2} alt="" />
-            <h3>Learning Python for Data Analysis and Visualization Ver 1</h3>
-            <h4>Jose Portilla</h4>
-            <p>
-              4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-              ><i class="fa fa-star"></i><i class="fa fa-star"></i
-              ><i class="fa fa-star-half-o"></i> <span>(18,586)</span>
-            </p>
-            <h3>$119.99</h3>
-            <button>Bestseller</button>
-          </div>
+          {paginatedCourses.map(course => (
+        <Course key={course.id} course={course} />
+      ))}
+
 
        
         </div>
+        <ReactPaginate
+        previousLabel={'← Previous'}
+        nextLabel={'Next →'}
+        breakLabel={'...'}
+        pageCount={Math.ceil(courses.length / coursesPerPage)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageChange}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+      />
       </div>
     </section>
 

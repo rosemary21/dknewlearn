@@ -982,5 +982,28 @@ footer {
 }
 
 
+.marginned, .all-marginned{
+  margin: auto;
+  width: 90%;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 50px;
+}
+
+@media screen and (min-width: 700px) {
+  .marginned{
+    width: 100%;
+  }
+
+  .all-marginned{
+    width: 90%;
+  }
+}
 
 
+.reasons-section{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

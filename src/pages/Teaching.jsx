@@ -35,7 +35,7 @@ const Teaching = () => {
           </div>
         </div>
 
-        <section>
+        <section className='reasons-section all-marginned'>
             <h1>So many reasons to start</h1>
 
             <div className="reasons">

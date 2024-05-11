@@ -11,9 +11,12 @@ const TutorEarnings = () => {
         { name: 'Introduction to python', purchasedBy: 'Jake martin', amount: 'N10,000', date: '10th of may'},
     ]
   return (
-    <TutorLayout><br />
+    <TutorLayout>
+      <div className="marginned"> 
+      <br />
       <h2>Tutor Earnings</h2><br />
 
+      <div className="table-container">
       <table className="custom-table">
         <thead>
           <tr>
@@ -36,6 +39,8 @@ const TutorEarnings = () => {
           ))}
         </tbody>
       </table>
+      </div>
+      </div>
     </TutorLayout>
   );
 };

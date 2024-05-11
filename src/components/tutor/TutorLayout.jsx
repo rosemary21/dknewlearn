@@ -36,6 +36,10 @@ const TutorLayout = ({ children }) => {
             <p className="nav-link"><BiBook /> Courses</p>
             </Link>
 
+            <Link to={"/tutor/courses-review"}>
+            <p className="nav-link"><BiBook /> Courses Review</p>
+            </Link>
+
             <Link to={"/tutor/settings"}>
             <p className="nav-link"><FaCog/> Settings</p>
             </Link>

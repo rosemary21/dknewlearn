@@ -40,6 +40,11 @@ const TutorCourseReview = () => {
         <br />
         <h2>Course Review</h2>
         <br />
+
+        <div className="detail-card">
+          <h3>Total Courses</h3><br />
+          <p>10</p>
+        </div>
         <div className="table-container">
           <table className="custom-table">
             <thead>

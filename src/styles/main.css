@@ -1007,3 +1007,11 @@ footer {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+.detail-card{
+  background-color: rgb(206, 205, 205);
+  padding: 30px;
+  border-radius: 10px;
+  width: 200px;
+  margin-bottom: 20px;
+}

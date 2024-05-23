@@ -847,11 +847,39 @@ footer {
 
 /* categories page */
 
-.categories-list p{
+.categories-page{
   padding: 20px;
-  box-shadow: 0 0 10px rgb(212, 211, 211);
-  margin-bottom: 20px;
+  min-height: 70vh;
 }
+
+.categories-list p{
+  padding: 50px;
+  box-shadow: 0 0 10px rgb(212, 211, 211);
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+
+@media screen and (min-width: 700px) {
+  .categories-list {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    gap: 4%;
+  }
+}
+
+
+@media screen and (min-width: 900px) {
+  .categories-list {
+    display: grid;
+    grid-template-columns: 22% 22% 22% 22%;
+    gap: 3%;
+  }
+
+  .categories-list p{
+    padding: 50px 30px;
+  }
+}
+
 
 /* teaching */
 

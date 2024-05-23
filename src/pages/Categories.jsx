@@ -4,7 +4,7 @@ import Layout from '../components/home/Layout'
 const Categories = () => {
   return (
     <Layout>
-      <div>
+      <div className='categories-page'>
         <div>
           <h1>Categories</h1>
         </div><br />

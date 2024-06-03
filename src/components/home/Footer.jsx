@@ -1,38 +1,39 @@
-import React from 'react'
+import { Link } from "react-router-dom"
 
-import globe from '../../assets/globe.png'
 
 const Footer = () => {
   return (
     <footer>
-    <div class="footer-up">
-      <div class="footer-nav">
-        <div>
-          <p><a href="#">Teach on DK Learning</a></p>
-          <p><a href="#">About us</a></p>
-          <p><a href="#">Contact us</a></p>
+      <div className="footer-up">
+        <div className="footer-nav">
+          <div>
+            <div>
+              <h1 style={{ color: 'var(--color2)' }}>DK Learning</h1><br />
+              <p style={{ fontSize: '20px', color: "white"}}>The best online learning platform</p>
+            </div>
+          </div>
+          <div>
+            <p><Link to={'/teaching'}>Teach on DK Learning</Link></p>
+            <p><a href="#">About us</a></p>
+            <p><a href="#">Contact us</a></p>
+          </div>
+          <div>
+            <p><a href="#">Terms</a></p>
+            <p><a href="#">Privacy policy</a></p>
+            <p><a href="#">Accessibility statement</a></p>
+          </div>
         </div>
-        <div>
-          <p><a href="#">Terms</a></p>
-          <p><a href="#">Privacy policy</a></p>
-          <p><a href="#">Accessibility statement</a></p>
-        </div>
+
+
       </div>
 
-      <div class="globe">
-        <a href="#"><img src={globe} alt="" />English</a>
-      </div>
-    </div>
+      <div className="footer-down">
 
-    <div class="footer-down">
-      <div>
-        <h1 style={{ color: 'var(--color2)'}}>DK Learning</h1>
+        <div>
+          <p>All right reserved © 2024 DK Learning.</p>
+        </div>
       </div>
-      <div>
-        <p>© 2024 DK Learning.</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
   )
 }
 

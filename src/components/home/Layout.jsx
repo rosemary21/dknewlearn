@@ -72,10 +72,20 @@ const Layout = ({ children }) => {
           {cart !== null && cart.length > 0 ? (
             <div>
               {cart.map((item, index) => (
-                <p key={index}>
-                  {index +1 }{')'} {item.name} - {item.price}
-                </p>
+                <div key={index}>
+                  {index +1 }{')'} {item.name} - {item.price} 
+
+
+                  <br /><br />
+                </div>
               ))}
+
+
+              <br />
+              
+              <div>
+                <button className="btn3">Check out</button>
+              </div>
             </div>
           ) : (
             <div>

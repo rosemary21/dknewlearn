@@ -157,65 +157,11 @@ const HomePage = () => {
       </div>
     </section>
 
-    {/* Goals Section */}
-    {/* <section class="goals">
-      <h2>How learners like you are achieving their goals</h2>
-      <div class="container">
-        <div class="box">
-          <img src={quote} alt="" className="quoteImg" />
-          <p>
-            I am proud to say that after a few months of taking this course...I
-            passed my exam and am now an AWS Certified Cloud Practitioner! This
-            content was exactly what the CCP exam covered.
-          </p>
-          <div class="learners"><img src={WA} alt="user" style={{ width: '30px'}} />Will A</div>
-          <hr />
-          <div class="play">
-            <img src={play} alt="#" style={{ width: '30px'}} /><a href="#"
-              >[NEW] Ultimate AWS Certified Cloud Practitioner - 2022</a
-            >
-          </div>
-        </div>
-
-        <div class="box">
-          <img src={quote} alt="" className="quoteImg" />
-          <p>
-            This course helped me freshen up on my product manager skills and
-            land a job at Facebook! Thanks guys :)
-          </p>
-          <br />
-          <br />
-          <div class="learners"><img src={RF} alt="#" style={{ width: '30px'}} />Ron F</div>
-          <hr />
-          <div class="play">
-            <img src={play} alt="#" style={{ width: '30px'}} /><a href="#"
-              >Become a Product Manager | Learn the Skills & Get the Job</a
-            >
-          </div>
-        </div>
-
-        <div class="box">
-          <img src={quote} alt="" className="quoteImg" />
-          <p>
-            One of the best courses on management and leadership I have come
-            across so far. The advice is practical, and examples highly
-            relatable. Would help anyone become a better manager.
-          </p>
-          <div class="learners"><img src={PW} alt="#" style={{ width: '30px'}} />Phillip W</div>
-          <hr />
-          <div class="play">
-            <img src={play} alt="#" style={{ width: '30px'}} /><a href="#"
-              >Leadership: Practical Leadership Skills</a
-            >
-          </div>
-        </div>
-      </div>
-    </section> */}
-
+   
     {/*  Viewing Section */}
-    <section class="viewing">
+    <section className="viewing">
       <h2>Students are viewing</h2>
-      <div class="explore-python views">
+      <div className="explore-python views">
         <div>
           <img src={courseImg6} alt="" />
           <h3>The Complete 2023 Web Development Bootcamp</h3>
@@ -275,73 +221,27 @@ const HomePage = () => {
 
     {/* Featured Section */}
     <section class="featured">
-      <h2>Featured topics by category</h2>
-      <div class="featured-container">
+      <div className='categories-page'>
         <div>
-          <h3>Development</h3>
-          <a href="#">Python</a>
-          <p>36,354,994 students</p>
-          <a href="#">Web Development</a>
-          <p>11,415,615 students</p>
-          <a href="#">Machine Learning</a>
-          <p>7,070,015 students</p>
-          <button>Explore more topics</button>
+          <h1>Featured Categories</h1>
+        </div><br />
+
+        <div className='categories-list'>
+          <p style={{background: "white"}}>Web Development</p>
+          <p style={{background: "white"}}>Product Design</p>
+          <p style={{background: "white"}}>Cybersecurity</p>
+          <p style={{background: "white"}}>Web Development</p>
+
         </div>
 
-        <div>
-          <h3>Business</h3>
-          <a href="#">Financial Analysis</a>
-          <p>1,195,282 students</p>
-          <a href="#">SQL</a>
-          <p>5,977,561 students</p>
-          <a href="#">PMP</a>
-          <p>1,733,398 students</p>
-        </div>
-
-        <div>
-          <h3>IT and Software</h3>
-          <a href="#">AWS Certification</a>
-          <p>6,078,244 students</p>
-          <a href="#">Ethical Hacking</a>
-          <p>10,931,066 students</p>
-          <a href="#">Cyber Security</a>
-          <p>3,998,037 students</p>
-        </div>
-
-        <div>
-          <h3>Design</h3>
-          <a href="#">Photoshop</a>
-          <p>10,909,736 students</p>
-          <a href="#">Graphic Design</a>
-          <p>3,381,052 students</p>
-          <a href="#">Drawing</a>
-          <p>2,410,849 students</p>
-        </div>
+        {/* <Link to={"/categories"}><button className="btn3">Explore more categories</button></Link> */}
       </div>
     </section>
 
-    {/* Trust Section*/}
-    <section class="trust">
-      <div class="trust-up">
-        <h2>Trusted by over 13,400 great teams</h2>
-        <p>
-          Leading companies use the same courses to help employees keep their
-          skills fresh.
-        </p>
-      </div>
-      <div class="trust-company">
-        <img src={nasdaq} alt="" />
-        <img src={volkswagen} alt="" />
-        <img src={boxDark} alt="" />
-        <img src={netapp} alt="" />
-        <img src={eventbrite} alt="" />
-        <img src={tcs} alt="" />
-      </div>
-    </section>
 
     {/* Instructor Section */}
-    <section class="instructor">
-      <div class="instructor-img">
+    <section className="instructor">
+      <div className="instructor-img">
         <img src={instructorImg} alt="" />
       </div>
 
@@ -351,7 +251,7 @@ const HomePage = () => {
           Instructors from around the world teach millions of students on DK Learning.
           We provide the tools and skills to teach what you love.
         </p>
-        <button class="black-btn">Start teaching today</button>
+      <Link to={'/teaching'}>  <button className="black-btn">Start teaching today</button></Link>
       </div>
     </section>
 

@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 const Layout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
+  
 
   const [cart, setCart] = useState(null);
 
@@ -17,6 +19,13 @@ const Layout = ({ children }) => {
   const toggleCart = () => {
     setIsCartVisible(!isCartVisible);
   };
+
+  const onToggleProfileNav = () => {
+    setIsProfileNavVisible(!isProfileNavVisible);
+  };
+
+
+  
 
   function displayCart() {
     // Get the cart data from localStorage
@@ -42,7 +51,7 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-      <Header onToggleAside={toggleAside} toggleCart={toggleCart} />
+      <Header onToggleAside={toggleAside} toggleCart={toggleCart} onToggleProfileNav={onToggleProfileNav} />
 
       {isAsideVisible && (
         <div className="mobile-nav">
@@ -61,6 +70,35 @@ const Layout = ({ children }) => {
               {" "}
               <Link to={"/signup"}>
                 <button className="btn2">Signup</button>
+              </Link>
+            </p>
+          </div>
+        </div>
+      )}
+
+
+{isProfileNavVisible && (
+        <div className="profile-nav">
+          <div className="">
+            <Link to={"/home/my-courses"}>
+            <p className="nav-link">My Learning</p>
+            </Link>
+            <Link to={"/home/cart"}>
+            <p className="nav-link">Cart</p>
+            </Link>
+            <Link to={"/home/notifications"}>
+            <p className="nav-link">Notifications</p>
+            </Link>
+            <Link to={"/subscriptions"}>
+            <p className="nav-link">My Subscriptions</p>
+            </Link>
+            <Link to={"/edit-profile"}>
+            <p className="nav-link">Profile</p>
+            </Link>
+
+            <p>
+              <Link to={"/login"}>
+                <button className="btn2 btn3">Logout</button>
               </Link>
             </p>
           </div>

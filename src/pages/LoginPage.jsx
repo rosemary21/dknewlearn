@@ -17,7 +17,7 @@ const LoginPage = () => {
           <p>Welcome Back</p><br />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button className="submit-btn">Login</button>
+          <Link to={'/home/my-courses'}><button className="submit-btn">Login</button></Link>
 
           <p>or <Link to={'/forgot-password'} className="link">Forgot Password</Link></p><br />
           <hr /><br />

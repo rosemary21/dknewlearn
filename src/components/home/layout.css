@@ -71,6 +71,8 @@ header h1{
     width: 40px;
     height: 40px;
     border-radius: 30px;
+    cursor: pointer;
+    border: 1px solid gray;
   }
 
 
@@ -296,3 +298,28 @@ header h1{
     margin-right: 10px;
   }
 
+/* Profile Nav */
+.profile-nav{
+  position: fixed;
+    top: 65px;
+    backdrop-filter: blur(10px);
+    min-height: 100px;
+    padding: 20px;
+
+    width: 300px;
+    z-index: 90;
+    background-color: white;
+    right: 15px;
+    border-top: 1px solid gray;
+}
+
+.profile-nav .nav-link{
+  margin: 15px 0;
+  background-color: rgb(235, 232, 232);
+  padding: 10px;
+  font-weight: bold;
+}
+
+.profile-nav .nav-link:hover{
+  background-color: rgb(204, 200, 200);
+}

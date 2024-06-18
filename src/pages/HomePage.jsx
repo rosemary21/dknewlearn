@@ -31,7 +31,7 @@ import boxDark from "../assets/box-dark.svg.png";
 import netapp from "../assets/netapp-dark.svg.png";
 import eventbrite from "../assets/eventbrite-dark.svg.png";
 import tcs from "../assets/tcs-dark.svg.png"
-import instructorImg from "../assets/instructor-1x-v3.jpg.png"
+import instructorImg from "../assets/images/img (8).jpg"
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -242,7 +242,7 @@ const HomePage = () => {
     {/* Instructor Section */}
     <section className="instructor">
       <div className="instructor-img">
-        <img src={instructorImg} alt="" />
+        <img src={instructorImg} alt="" style={{ maxWidth: "400px"}}/>
       </div>
 
       <div>

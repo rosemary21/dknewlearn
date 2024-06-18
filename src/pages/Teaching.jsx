@@ -1,8 +1,8 @@
 import React from 'react'
 import Layout from '../components/home/Layout'
 
-import background from "../assets/background3.jpg";
-import background2 from "../assets/background2.jpg";
+import background from "../assets/images/img (4).jpg";
+import background2 from "../assets/images/img (4).jpg";
 
 import teaching1 from "../assets/teaching.jpg";
 import teaching2 from "../assets/teaching2.jpg";

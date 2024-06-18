@@ -256,7 +256,7 @@
 
 /* featured section styling */
 .featured {
-  padding: 3.125rem 9.375rem 3.125rem 1.875rem;
+  padding: 3.125rem 1.875rem 3.125rem 1.875rem;
   background: #f7f9fa;
 }
 .featured h2 {
@@ -852,6 +852,10 @@ footer {
   min-height: 70vh;
 }
 
+.categories-list{
+  width: 100%;
+}
+
 .categories-list p{
   padding: 50px;
   box-shadow: 0 0 10px rgb(212, 211, 211);
@@ -871,8 +875,8 @@ footer {
 @media screen and (min-width: 900px) {
   .categories-list {
     display: grid;
-    grid-template-columns: 22% 22% 22% 22%;
-    gap: 3%;
+    grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
+    gap: 2%;
   }
 
   .categories-list p{

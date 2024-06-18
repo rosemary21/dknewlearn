@@ -852,6 +852,11 @@ footer {
   min-height: 70vh;
 }
 
+.featured .categories-page{
+  padding: 20px;
+  min-height: auto;
+}
+
 .categories-list{
   width: 100%;
 }

@@ -64,13 +64,13 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
 
 <FiSearch className='header-icons search-icon2' />
           <FaCartShopping className='header-icons' onClick={toggleCart}  /> <span className="red">{ cart ? cart.length : '0'}</span>
-          {/* <span className='header-btn'>
+          <span className='header-btn'>
           <Link to={'/login'} ><button>Login</button></Link>&emsp;
           <Link to={'/signup'} ><button className='btn2'>Signup</button></Link>
-          </span> */}
+          </span>
 
 
-                     <span className='header-icons2'><Link to={"/home/notifications"}><FaBell className='header-icons' /></Link>
+                     {/* <span className='header-icons2'><Link to={"/home/notifications"}><FaBell className='header-icons' /></Link>
                        </span>
             <img
             src={profile}
@@ -78,7 +78,7 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
             className="profile-image"
 
             onClick={onToggleProfileNav}
-          />
+          /> */}
     
         </div>
     </header>

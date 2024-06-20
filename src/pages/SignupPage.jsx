@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../components/home/Layout";
-import profileImage from "../assets/img/default-profile.png";
+import sideImage from "../assets/images/img (6).jpg";
+
 import "../styles/auth.css";
 import { Link } from "react-router-dom";
 
@@ -8,7 +9,10 @@ const SignupPage = () => {
   return (
     <Layout>
       <div className="auth-container">
-        <div>
+      <div className="div1">
+          <img src={sideImage} alt="" />
+        </div>
+        <div className="div2">
           <h3>Sign up and start learning</h3>
 <br /><input type="text" placeholder="Full name" />
           <input type="email" placeholder="Email" />

@@ -1,6 +1,8 @@
 import React from "react";
 import Layout from "../components/home/Layout";
 import profileImage from "../assets/img/default-profile.png";
+import sideImage from "../assets/images/img (6).jpg";
+
 import "../styles/auth.css";
 import { Link } from "react-router-dom";
 
@@ -8,7 +10,10 @@ const LoginPage = () => {
   return (
     <Layout>
       <div className="auth-container">
-        <div>
+        <div className="div1">
+          <img src={sideImage} alt="" />
+        </div>
+        <div className="div2">
           <h3>Log in to your DK Learning account</h3>
           <div className="img">
             {" "}

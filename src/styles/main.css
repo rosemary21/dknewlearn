@@ -617,8 +617,8 @@ footer {
     top: 6.375rem;
     transform: translate(1.25rem, -50%);
   }
-  /* hero section styling */
-
+  /* hero section styling
+/* 
   .hero-section {
     background-image: url(img/hero-bg-mobile.png);
     background-repeat: none;
@@ -640,7 +640,42 @@ footer {
   .hero-section p {
     font-size: 0.875rem;
     line-height: 1rem;
+  } */
+
+
+  .hero{
+    margin-top: 130px;
+    color: black;
+    max-width: 1000px;
   }
+
+  .slick-prev, .slick-next {
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    background:none !important; 
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    font-size: 30px !important;
+    color: blue !important;
+  }
+  
+  
+  .slick-next {
+    right: 75px !important;
+  }
+  .slick-prev {
+    left: 0 !important;
+    
+  }
+
+  .slide1{
+    background-image: url('../assets/background1.jpg') !important;
+    height: 100vh !important;
+  }
+  
+ 
 
   /* courses section styling */
   .courses-sec {

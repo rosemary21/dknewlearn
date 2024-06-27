@@ -79,7 +79,7 @@ const LoginPage = () => {
           <hr /><br />
           <p>Don't have an account?<Link to={'/signup'} className="link"> Sign up</Link></p>
         </div>
-      </div>
+      </div> 
     </Layout>
   );
 };

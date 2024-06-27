@@ -4,6 +4,11 @@ import Footer from "./Footer";
 import "./layout.css";
 import { Link } from "react-router-dom";
 
+
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const Layout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
@@ -139,6 +144,8 @@ const Layout = ({ children }) => {
         {children}
 
         <Footer />
+
+        <ToastContainer />
       </main>
     </div>
   );

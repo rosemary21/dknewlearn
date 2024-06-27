@@ -32,11 +32,9 @@
     top: 50%;
     left: 20px;
   }
-
-  
 }
 
-.primary-btn{
+.primary-btn {
   background-color: var(--color2);
   color: white;
   font-weight: bold;
@@ -44,7 +42,6 @@
   border: none;
   cursor: pointer;
 }
-
 
 /* courses section styling */
 .courses-sec {
@@ -642,40 +639,51 @@ footer {
     line-height: 1rem;
   } */
 
-
-  .hero{
+  .hero {
     margin-top: 130px;
     color: black;
     max-width: 1000px;
   }
 
-  .slick-prev, .slick-next {
+  .slick-prev,
+  .slick-next {
     width: 40px;
     height: 40px;
     z-index: 1;
-    background:none !important; 
+    background: none !important;
   }
-  
-  .slick-prev:before, .slick-next:before {
+
+  .slick-prev:before,
+  .slick-next:before {
     font-size: 30px !important;
     color: blue !important;
   }
-  
-  
+
   .slick-next {
     right: 75px !important;
   }
   .slick-prev {
     left: 0 !important;
-    
   }
 
-  .slide1{
-    background-image: url('../assets/background1.jpg') !important;
+  .slide1 {
+    background-image: url("../assets/background1.jpg") !important;
     height: 100vh !important;
   }
-  
- 
+
+  .relative {
+    position: relative;
+  }
+
+  .z-10 {
+    z-index: 10;
+  }
+
+  .z-0 {
+    z-index: -10;
+  }
+
+
 
   /* courses section styling */
   .courses-sec {
@@ -809,7 +817,7 @@ footer {
   margin-top: 20px;
 }
 
-.course-page .sub-section2 button{
+.course-page .sub-section2 button {
   background-color: var(--color2);
   color: white;
   font-weight: bold;
@@ -820,7 +828,7 @@ footer {
   margin: 10px 0;
 }
 
-.course-page .sub-section2 button.btn2{
+.course-page .sub-section2 button.btn2 {
   border: 2px solid var(--color2);
   background-color: white;
   color: var(--color2);
@@ -879,24 +887,23 @@ footer {
   }
 }
 
-
 /* categories page */
 
-.categories-page{
+.categories-page {
   padding: 20px;
   min-height: 70vh;
 }
 
-.featured .categories-page{
+.featured .categories-page {
   padding: 20px;
   min-height: auto;
 }
 
-.categories-list{
+.categories-list {
   width: 100%;
 }
 
-.categories-list p{
+.categories-list p {
   padding: 50px;
   box-shadow: 0 0 10px rgb(212, 211, 211);
   margin-bottom: 30px;
@@ -911,7 +918,6 @@ footer {
   }
 }
 
-
 @media screen and (min-width: 900px) {
   .categories-list {
     display: grid;
@@ -919,41 +925,36 @@ footer {
     gap: 2%;
   }
 
-  .categories-list p{
+  .categories-list p {
     padding: 50px 30px;
   }
 }
 
-
 /* teaching */
 
-.teaching .background-image1{
+.teaching .background-image1 {
   display: none;
 }
 
-
-.teaching .container .text-overlay{
+.teaching .container .text-overlay {
   color: var(--color2);
   max-width: 430px;
 }
 
-.teaching .reasons{
+.teaching .reasons {
   display: flex;
   align-items: center;
 }
 
-
 @media screen and (min-width: 900px) {
-  .teaching .background-image1{
+  .teaching .background-image1 {
     display: block;
   }
 
-  .teaching .background-image2{
+  .teaching .background-image2 {
     display: none;
   }
-
 }
-
 
 /* course deatils */
 
@@ -1014,7 +1015,6 @@ footer {
   height: auto;
 }
 
-
 /* pagination */
 .pagination {
   display: flex;
@@ -1053,8 +1053,8 @@ footer {
   opacity: 0.5;
 }
 
-
-.marginned, .all-marginned{
+.marginned,
+.all-marginned {
   margin: auto;
   width: 90%;
 }
@@ -1065,22 +1065,21 @@ footer {
 }
 
 @media screen and (min-width: 700px) {
-  .marginned{
+  .marginned {
     width: 100%;
   }
 
-  .all-marginned{
+  .all-marginned {
     width: 90%;
   }
 }
 
-
-.reasons-section{
+.reasons-section {
   margin-top: 50px;
   margin-bottom: 50px;
 }
 
-.detail-card{
+.detail-card {
   background-color: rgb(206, 205, 205);
   padding: 30px;
   border-radius: 10px;
@@ -1100,4 +1099,44 @@ footer {
   color: #1c1d1f;
   cursor: pointer;
   background-color: transparent;
+}
+
+
+
+
+
+
+.container1 {
+  position: relative;
+  width: 100%;
+  
+  margin: 0 auto;
+}
+
+.container1 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.overlay1 h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.overlay1 p {
+  font-size: 1.2rem;
+  line-height: 1.6;
 }

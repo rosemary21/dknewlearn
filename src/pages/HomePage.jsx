@@ -20,56 +20,12 @@ import courseImg10 from "../assets/course-img10.png";
 import instructorImg from "../assets/images/img (8).jpg"
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Slider } from "../components/home/Slider";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
 
 
 const HomePage = () => {
 
-  const NextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: 'block', background: 'black' }}
-        onClick={onClick}
-      />
-    );
-  };
-
-  const PrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: 'block', background: 'black' }}
-        onClick={onClick}
-      />
-    );
-  };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,  // Enable autoplay
-    autoplaySpeed: 3000,
-    nextArrow: <NextArrow />,  // Use custom NextArrow component
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
 
   return (
     <div>
@@ -86,7 +42,7 @@ const HomePage = () => {
           </div>
         </div> */}
 
-        <section className="hero">
+        {/* <section className="hero">
           <Slider {...settings} className='carousel'>
             <div className='carousel-item carousel-item1'>
               <div className='carousel-text slide1'>
@@ -107,6 +63,10 @@ const HomePage = () => {
               </div>
             </div>
           </Slider>
+        </section> */}
+
+        <section>
+          <Slider/>
         </section>
 
         {/*  Courses Section */}

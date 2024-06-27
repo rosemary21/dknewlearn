@@ -10,23 +10,23 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
 
   const [cart, setCart] = useState(null);
   function displayCart() {
-     // Get the cart data from localStorage
-     let cartItems = localStorage.getItem("cart");
- 
-     // If cart data exists, parse it from JSON
-     if (cartItems) {
-       cartItems = JSON.parse(cartItems);
- 
-       setCart(cartItems);
-     } else {
-       // If cart data doesn't exist, display a message indicating an empty cart
-       console.log("Cart is empty");
-     }
-   }
- 
-   useEffect(() => {
-     displayCart();
-   }, []);
+    // Get the cart data from localStorage
+    let cartItems = localStorage.getItem("cart");
+
+    // If cart data exists, parse it from JSON
+    if (cartItems) {
+      cartItems = JSON.parse(cartItems);
+
+      setCart(cartItems);
+    } else {
+      // If cart data doesn't exist, display a message indicating an empty cart
+      console.log("Cart is empty");
+    }
+  }
+
+  useEffect(() => {
+    displayCart();
+  }, []);
 
   return (
     <div>
@@ -36,7 +36,7 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
           <span>| Start learning toward your next big milestone today.</span>
         </p>
       </section> */}
-    <header>
+      <header>
         <div className='toogle-nav'>
           <FaBars className='header-icons' onClick={onToggleAside} />
         </div>
@@ -45,32 +45,32 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
 
 
         <div className="search-bar">
-      <FiSearch className="search-icon" />
-      <input
-        type="text"
-        placeholder="Search courses here..."
-        className="search-input"
-      />
-    
-    </div>
+          <FiSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search courses here..."
+            className="search-input"
+          />
 
-    <div className='header-links'>
-      <Link to={'/categories'}><span>Categories</span></Link>
-      <Link to={'/teaching'}><span>Become a Instructor</span></Link>
-      {/* <span>My learning</span> */}
-    </div>
+        </div>
+
+        <div className='header-links'>
+          <Link to={'/categories'}><span>Categories</span></Link>
+          <Link to={'/teaching'}><span>Become a Instructor</span></Link>
+          {/* <span>My learning</span> */}
+        </div>
         <div className='header-aside'>
- 
 
-<FiSearch className='header-icons search-icon2' />
-          <FaCartShopping className='header-icons' onClick={toggleCart}  /> <span className="red">{ cart ? cart.length : '0'}</span>
+
+          <FiSearch className='header-icons search-icon2' />
+          <FaCartShopping className='header-icons' onClick={toggleCart} /> <span className="red">{cart ? cart.length : '0'}</span>
           <span className='header-btn'>
-          <Link to={'/login'} ><button>Login</button></Link>&emsp;
-          <Link to={'/signup'} ><button className='btn2'>Signup</button></Link>
+            <Link to={'/login'} ><button>Login</button></Link>&emsp;
+            <Link to={'/signup'} ><button className='btn2'>Signup</button></Link>
           </span>
 
 
-                     {/* <span className='header-icons2'><Link to={"/home/notifications"}><FaBell className='header-icons' /></Link>
+          {/* <span className='header-icons2'><Link to={"/home/notifications"}><FaBell className='header-icons' /></Link>
                        </span>
             <img
             src={profile}
@@ -79,9 +79,9 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
 
             onClick={onToggleProfileNav}
           /> */}
-    
+
         </div>
-    </header>
+      </header>
     </div>
   )
 }

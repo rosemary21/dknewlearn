@@ -4,6 +4,9 @@ import CourseDetails from "./CourseDetails";
 import SectionForm from "./SectionForm";
 import SeriesForm from "./SeriesForm";
 import SectionsTable from "./SectionsTable";
+import { api_url, token } from "../../config/config";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 function Courses() {
   const [course, setCourse] = useState(null);
@@ -34,7 +37,7 @@ function Courses() {
     setSections((prevSections) => {
       const updatedSections = prevSections.map((section) => {
         if (section.id === currentSection.id) {
-          return { ...section, series: [...section.series, seriesData] };
+          return { ...section, seriesList: [...section.series, seriesData] };
         }
         return section;
       });
@@ -50,11 +53,35 @@ function Courses() {
     });
   };
 
-  const handleSaveCourse = () => {
-    const courseData = { ...course, sections };
+  const handleSaveCourse = async () => {
+    const courseData = { ...course, sectionDto: sections };
     localStorage.setItem("courseData", JSON.stringify(courseData));
-    alert("Course saved successfully!");
-    location.href="/tutor/courses"
+
+    try {
+
+      const response = await axios.post(`${api_url}/course/add`, courseData, {
+        headers: {
+          'apiKey': `${token}`,
+        }
+      });
+
+
+      console.log(response)
+
+      toast.success("Course created successfully")
+
+      localStorage.removeItem("courseData")
+
+
+      // location.href="/tutor/courses"
+
+    } catch (error) {
+
+      console.log(error)
+      toast.error("An error occurred while creating the course");
+    }
+
+
   };
 
   return (
@@ -84,14 +111,13 @@ function Courses() {
                 </tr>
               </thead>
               <tbody>
-                {currentSection?.series?.map((series, index) => (
+                {currentSection?.seriesList?.map((series, index) => (
                   <tr key={index}>
                     <td>{series.title}</td>
                     <td>{series.video}</td>
                     <td>{series.resource}</td>
                   </tr>
-                ))}
-              </tbody>
+                ))}   </tbody>
             </table>
           </div>
         )}

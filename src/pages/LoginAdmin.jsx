@@ -3,22 +3,19 @@ import Layout from "../components/home/Layout";
 import profileImage from "../assets/img/default-profile.png";
 import sideImage from "../assets/images/img (6).jpg";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { FaSpinner } from "react-icons/fa";
 import "../styles/auth.css";
 import { api_url } from "../config/config";
 
-const LoginPage = () => {
-  // State variables for form inputs
+const LoginAdmin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // State variable for handling the form submission status
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,22 +27,23 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${api_url}/login/customer`, {
+      const response = await axios.post(`${api_url}/login/admin`, {
         userName: email,
         password,
       });
 
       toast.success("Login successful! Redirecting...");
 
-      localStorage.setItem("token", response.data.token)
-      localStorage.setItem("email", response.data.emailAddress)
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("email", response.data.emailAddress);
 
-      setTimeout(()=>{
-        window.location.href = "/home/my-courses"
-      }, 2000)
-  
+      setTimeout(() => {
+        window.location.href = "/tutor"
+      }, 2000);
+
     } catch (error) {
-      
+
+
       console.log(error)
 
       if(error.response.status == 400){
@@ -65,7 +63,7 @@ const LoginPage = () => {
           <img src={sideImage} alt="Side" />
         </div>
         <div className="div2">
-          <h3>Log in to your DK Learning account</h3>
+          <h3>Log in as a DK Learning Tutor</h3>
           <div className="img">
             <img src={profileImage} alt="Profile" />
           </div>
@@ -91,11 +89,11 @@ const LoginPage = () => {
           </form>
           <p>or <Link to={'/forgot-password'} className="link">Forgot Password</Link></p><br />
           <hr /><br />
-          <p>Don't have an account?<Link to={'/signup'} className="link"> Sign up</Link></p>
+          <p>Don't have an account?<Link to={'/tutor-signup'} className="link"> Sign up</Link></p>
         </div>
       </div> 
     </Layout>
   );
 };
 
-export default LoginPage;
+export default LoginAdmin;

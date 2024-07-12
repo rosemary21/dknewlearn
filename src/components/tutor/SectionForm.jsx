@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 
 const SectionForm = ({ onAddSection }) => {
-  const [sectionTitle, setSectionTitle] = useState('');
+  const [title, setTitle] = useState('');
 
   const handleChange = (e) => {
-    setSectionTitle(e.target.value);
+    setTitle(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddSection(sectionTitle);
-    setSectionTitle('');
+    onAddSection(title);
+    setTitle('');
   };
 
   return (
@@ -20,7 +20,7 @@ const SectionForm = ({ onAddSection }) => {
       <form onSubmit={handleSubmit}>
         <label>
           Section Title:
-          <input type="text" value={sectionTitle} onChange={handleChange} />
+          <input type="text" value={title} onChange={handleChange} />
         </label>
         <button type="submit">Add Section</button>
       </form>

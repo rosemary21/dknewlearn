@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/home/Layout";
 import background from "../assets/background1.jpg";
 // import background from "../assets/hero-bg.png";
@@ -21,10 +21,30 @@ import instructorImg from "../assets/images/img (8).jpg"
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Slider } from "../components/home/Slider";
+import { getCourses } from "../services/user";
 
 
 
 const HomePage = () => {
+
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await getCourses();
+        setCourses(userData);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
 
   return (

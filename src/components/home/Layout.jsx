@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
-  
+
 
   const [cart, setCart] = useState(null);
 
@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
   };
 
 
-  
+
 
   function displayCart() {
     // Get the cart data from localStorage
@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
   }
 
   // Call the displayCart function to initially display the cart data
- 
+
 
   useEffect(() => {
     displayCart();
@@ -62,7 +62,7 @@ const Layout = ({ children }) => {
         <div className="mobile-nav">
           <div className="sub-mobile-nav">
             <Link to={"/categories"}>
-            <p className="nav-link">Categories</p>
+              <p className="nav-link">Categories</p>
             </Link>
             <p className="nav-link">Become a teacher</p>
             <br />
@@ -82,23 +82,23 @@ const Layout = ({ children }) => {
       )}
 
 
-{isProfileNavVisible && (
+      {isProfileNavVisible && (
         <div className="profile-nav">
           <div className="">
             <Link to={"/home/my-courses"}>
-            <p className="nav-link">My Learning</p>
+              <p className="nav-link">My Learning</p>
             </Link>
             <Link to={"/home/cart"}>
-            <p className="nav-link">Cart</p>
+              <p className="nav-link">Cart</p>
             </Link>
             <Link to={"/home/notifications"}>
-            <p className="nav-link">Notifications</p>
+              <p className="nav-link">Notifications</p>
             </Link>
             <Link to={"/subscriptions"}>
-            <p className="nav-link">My Subscriptions</p>
+              <p className="nav-link">My Subscriptions</p>
             </Link>
             <Link to={"/edit-profile"}>
-            <p className="nav-link">Profile</p>
+              <p className="nav-link">Profile</p>
             </Link>
 
             <p>
@@ -116,7 +116,7 @@ const Layout = ({ children }) => {
             <div>
               {cart.map((item, index) => (
                 <div key={index}>
-                  {index +1 }{')'} {item.name} - {item.price} 
+                  {index + 1}{')'} {item.name} - {item.price}
 
 
                   <br /><br />
@@ -125,7 +125,7 @@ const Layout = ({ children }) => {
 
 
               <br />
-              
+
               <div>
                 <button className="btn3">Check out</button>
               </div>

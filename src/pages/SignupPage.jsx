@@ -48,7 +48,14 @@ const SignupPage = () => {
 
       toast.success("Signup successful! Please check your email to verify your account.");
     } catch (error) {
-      toast.error("An error occurred. Please try again.");
+      
+      console.log(error)
+
+      if(error.response.status == 400){
+        toast.error(error.response.data.responseDto.message)
+      } else{
+        toast.error("An error occurred. Please check your credentials and try again.");
+      }
     } finally {
       setLoading(false);
     }

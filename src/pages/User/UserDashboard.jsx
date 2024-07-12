@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/home/Layout";
 
 import '../../styles/dashboard.css'
@@ -10,9 +10,35 @@ import courseImg4 from "../../assets/course-img4.png";
 import courseImg5 from "../../assets/course-img5.png";
 
 import profileImg from "../../assets/profile1.webp";
+import { getUser } from "../../services/user";
 
 
 const UserDashboard = () => {
+
+
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await getUser();
+        setCourses(userData);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  
   return (
     <Layout>
       <div className="dashboard">

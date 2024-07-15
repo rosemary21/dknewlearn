@@ -30,6 +30,8 @@ import EditCourse from "./components/tutor/EditCourse.jsx";
 import TutorEditCourse from "./pages/Tutor/TutorEditCourse.jsx";
 import TutorCourseReview from "./pages/Tutor/TutorCourseReview.jsx";
 import TutorEarnings from "./pages/Tutor/TutorEarnings.jsx";
+import LoginAdmin from "./pages/LoginAdmin.jsx";
+import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 
 function App() {
 
@@ -53,6 +55,8 @@ function App() {
           <Route path="/tutor-login" element={<LoginTutor />} />
           <Route path="/tutor-signup" element={<SignupTutor />} />
 
+          <Route path="/admin-login" element={<LoginAdmin />} />
+
           {/* authenticated user */}
           <Route path="/home/my-courses" element={<UserDashboard />} />
           <Route path="/home/cart" element={<CartPage />} />
@@ -71,6 +75,10 @@ function App() {
            <Route path="/tutor/earnings" element={<TutorEarnings />} />
            <Route path="/tutor/settings" element={<TutorSettings />} />
            <Route path="/tutor/change-password" element={<TutorChangePassword />} />
+
+
+             {/* admin  */}
+             <Route path="/admin" element={<AdminDashboard />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

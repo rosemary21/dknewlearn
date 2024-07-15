@@ -19,7 +19,7 @@ import courseImg10 from "../assets/course-img10.png";
 
 import instructorImg from "../assets/images/img (8).jpg"
 import { FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Slider } from "../components/home/Slider";
 import { getCourses } from "../services/user";
 
@@ -30,11 +30,16 @@ const HomePage = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const userData = await getCourses();
-        setCourses(userData);
+        setCourses(userData.coursesDtos);
+
+
+        console.log(userData.coursesDtos)
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {
@@ -45,6 +50,12 @@ const HomePage = () => {
     fetchData();
   }, []);
 
+
+
+  const handleCourseClick = (course) => {
+    localStorage.setItem('selectedCourse', JSON.stringify(course));
+    navigate(`/course/${course.title}`);
+  };
 
 
   return (
@@ -86,14 +97,14 @@ const HomePage = () => {
         </section> */}
 
         <section>
-          <Slider/>
+          <Slider />
         </section>
 
         {/*  Courses Section */}
         <section class="courses-sec">
           <h1>A broad selection of courses</h1>
           <p>
-            Choose from 213,000 online video courses with new additions published
+            Choose from 100 online video courses with new additions published
             every month
           </p>
           <div class="course-links">
@@ -107,85 +118,23 @@ const HomePage = () => {
           </div>
 
           <div class="career-opportunities">
-            <div>
-              <h2>Expand your career opportunities with Python</h2>
-              <p>
-                Take one of DK Learning’s range of Python courses and learn how to code
-                using this incredibly useful language. Its simple syntax and
-                readability makes Python perfect for Flask, Django, data science,
-                and machine learning. You’ll learn how to build everything from
-                games to sites to apps. Choose from a range of courses that will
-                appeal to both beginners and advanced developers alike.
-              </p>
-              <button class="career-btn">Explore Python</button>
-            </div>
 
             <div class="explore-python">
+              {courses?.map((course, index) => (
+                <div key={index} onClick={() => handleCourseClick(course)} >
+                    <img src={course?.courseImageUrl || courseImg1} alt="" />
+                    <h3>{course.title}</h3>
+                    <h4>{course.author}</h4>
+                    <p>
+                      4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
+                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                      ><i class="fa fa-star-half-o"></i> <span>(4,253)</span>
+                    </p>
+                    <h3>₦{course.nairaPrice.toLocaleString()}
+                    </h3>
+                </div>
+              ))}
 
-              <div>
-                <Link to={'/course/python-course'}>
-                  <img src={courseImg1} alt="" />
-                  <h3>Learn Python: The Complete Python Programming Course</h3>
-                  <h4>Avinash Jain, The Codex</h4>
-                  <p>
-                    4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                    ><i class="fa fa-star-half-o"></i> <span>(4,253)</span>
-                  </p>
-                  <h3>$94.99</h3>
-                </Link>
-              </div>
-
-
-              <div>
-                <img src={courseImg2} alt="" />
-                <h3>Learning Python for Data Analysis and Visualization Ver 1</h3>
-                <h4>Jose Portilla</h4>
-                <p>
-                  4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star-half-o"></i> <span>(18,586)</span>
-                </p>
-                <h3>$119.99</h3>
-                <button>Bestseller</button>
-              </div>
-
-              <div>
-                <img src={courseImg3} alt="" />
-                <h3>Python for Beginners - Learn Programming from scratch</h3>
-                <h4>Edwin Diaz, Coding Faculty Solutions</h4>
-                <p>
-                  4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star-half-o"></i> <span>(2,350)</span>
-                </p>
-                <h3>$84.99</h3>
-              </div>
-
-              <div>
-                <img src={courseImg4} alt="" />
-                <h3>Learn Python: Python for Beginners</h3>
-                <h4>Abrar Hussain</h4>
-                <p>
-                  4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star-half-o"></i> <span>(2,822)</span>
-                </p>
-                <h3>$29.99</h3>
-              </div>
-
-              <div>
-                <img src={courseImg5} alt="" />
-                <h3>Python From Scratch & Selenium WebDriver QA</h3>
-                <h4>Admas Kinfu</h4>
-                <p>
-                  4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star-half-o"></i> <span>(2,323)</span>
-                </p>
-                <h3>$109.99</h3>
-                <button>Bestseller</button>
-              </div>
             </div>
           </div>
         </section>

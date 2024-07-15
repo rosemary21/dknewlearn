@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TutorLayout from "../../components/tutor/TutorLayout";
 import Courses from "../../components/tutor/Courses";
 import profileImg from "../../assets/profile1.webp";
 import { Link } from "react-router-dom";
+import AdminLayout from "../../components/admin/AdminLayout";
+import { getAdmin } from "../../services/admin";
+import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
+
+
+  const [admin, setAdmin] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await getAdmin();
+        setAdmin(userData);
+      } catch (error) {
+        console.error('Error fetching admin data:', error);
+
+        toast.error("Admin data not fetched")
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   return (
-    <TutorLayout>
+    <AdminLayout>
       <div className="tutor-courses">
         <div className="dashboard">
           <div className="top-banner">
@@ -20,7 +46,7 @@ const AdminDashboard = () => {
                   borderRadius: "100%",
                 }}
               />
-              <p>Welcome, David Mark</p>
+              <p>Welcome, Admin</p>
             </div>
           </div>
         </div>
@@ -29,7 +55,7 @@ const AdminDashboard = () => {
             <Link to={'/tutor/create-courses'}><button className='primary-btn'>Create Your course</button></Link> 
         </div>
       </div>
-    </TutorLayout>
+    </AdminLayout>
   );
 };
 

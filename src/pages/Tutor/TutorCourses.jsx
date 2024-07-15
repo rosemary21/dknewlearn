@@ -9,7 +9,7 @@ import courseImg4 from "../../assets/course-img4.png";
 import courseImg5 from "../../assets/course-img5.png";
 import { Link } from 'react-router-dom';
 import Course from '../../components/tutor/Course';
-import { getTutor } from '../../services/tutor';
+import { getTutor, getTutorCourses } from '../../services/tutor';
 
 const TutorCourses = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -20,8 +20,8 @@ const TutorCourses = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userData = await getTutor();
-        setCourses(userData);
+        const userData = await getTutorCourses();
+        setCourses(userData.coursesDtos);
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {
@@ -148,57 +148,57 @@ const TutorCourses = () => {
 
 
 
-  
-  
+
+
   return (
     <TutorLayout>
-    <div className='tutor-courses'>
+      <div className='tutor-courses'>
         <div className='top-banner panel'>
-            <span>Jump Into Course Creation</span>
-            <Link to={'/tutor/create-courses'}><button className='primary-btn'>Create Your course</button></Link> 
+          <span>Jump Into Course Creation</span>
+          <Link to={'/tutor/create-courses'}><button className='primary-btn'>Create Your course</button></Link>
         </div>
 
         <section class="courses-sec">
-      <h1>My courses</h1>
- 
-      <input type="text" className="search-input" placeholder="Search your courses..." />
-  
-      <div class="course-links">
-        <a href="#">Python</a>
-        <a href="#">Excel</a>
-        <a href="#">Web Development</a>
-        <a href="#">JavaScript</a>
-        <a href="#">Data Science</a>
-        <a href="#">AWS Certification</a>
-        <a href="#">Drawing</a>
+          <h1>My courses</h1>
+
+          <input type="text" className="search-input" placeholder="Search your courses..." />
+
+          <div class="course-links">
+            <a href="#">Python</a>
+            <a href="#">Excel</a>
+            <a href="#">Web Development</a>
+            <a href="#">JavaScript</a>
+            <a href="#">Data Science</a>
+            <a href="#">AWS Certification</a>
+            <a href="#">Drawing</a>
+          </div>
+
+          <div class="career-opportunities">
+            <div class="explore-python">
+
+
+              {paginatedCourses?.map(course => (
+                <Course key={course.id} course={course} />
+              ))}
+
+
+
+            </div>
+            <ReactPaginate
+              previousLabel={'← Previous'}
+              nextLabel={'Next →'}
+              breakLabel={'...'}
+              pageCount={Math.ceil(courses?.length / coursesPerPage)}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={handlePageChange}
+              containerClassName={'pagination'}
+              activeClassName={'active'}
+            />
+          </div>
+        </section>
+
       </div>
-
-      <div class="career-opportunities">
-        <div class="explore-python">
-        
-
-          {paginatedCourses?.map(course => (
-        <Course key={course.id} course={course} />
-      ))}
-
-
-       
-        </div>
-        <ReactPaginate
-        previousLabel={'← Previous'}
-        nextLabel={'Next →'}
-        breakLabel={'...'}
-        pageCount={Math.ceil(courses?.length / coursesPerPage)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageChange}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
-      />
-      </div>
-    </section>
-
-    </div>
     </TutorLayout>
   )
 }

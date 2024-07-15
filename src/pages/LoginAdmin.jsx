@@ -38,7 +38,7 @@ const LoginAdmin = () => {
       localStorage.setItem("email", response.data.emailAddress);
 
       setTimeout(() => {
-        window.location.href = "/tutor"
+        window.location.href = "/admin"
       }, 2000);
 
     } catch (error) {
@@ -63,7 +63,7 @@ const LoginAdmin = () => {
           <img src={sideImage} alt="Side" />
         </div>
         <div className="div2">
-          <h3>Log in as a DK Learning Tutor</h3>
+          <h3>Log in as a Admin</h3>
           <div className="img">
             <img src={profileImage} alt="Profile" />
           </div>

@@ -32,6 +32,7 @@ import TutorCourseReview from "./pages/Tutor/TutorCourseReview.jsx";
 import TutorEarnings from "./pages/Tutor/TutorEarnings.jsx";
 import LoginAdmin from "./pages/LoginAdmin.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 function App() {
 
@@ -45,6 +46,11 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/teaching" element={<Teaching />} />
           <Route path="/terms-and-policy" element={<TermsAndPolicy />} />
+
+
+          <Route path="/checkout" element={<Checkout />} />
+          
+          
 
           {/* auth pages */}
           <Route path="/login" element={<LoginPage />} />

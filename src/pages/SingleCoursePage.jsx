@@ -1,12 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Layout from '../components/home/Layout'
 import courseImage from "../assets/course-img1.png";
 import { FaStar } from 'react-icons/fa';
+import { getCourses, getSingleCourse } from '../services/user';
 
 
 const SingleCoursePage = () => {
-
   const [course, setCourse] = useState(null)
+  const { id } = useParams();
+  const [courseId, setCourseId] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (id) {
+      setCourseId(id);
+      console.log(id)
+
+      const fetchData = async () => {
+        setLoading(true);
+        try {
+          const courseData = await getSingleCourse(id);
+
+          setCourse(courseData.coursesDto);
+
+          // console.log(courseData)
+
+        } catch (error) {
+          console.error('Error fetching course data:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchData();
+    }
+
+
+  }, [id]);
 
 
   function addToCart(item) {
@@ -29,30 +60,20 @@ const SingleCoursePage = () => {
   }
 
   const addCart = () => {
-    addToCart({ id: 1, name: 'python course', price: '7000 naira' })
+    addToCart({ id: course.id, name: course.title, price: course.nairaPrice })
+
     location.reload()
   }
 
-
-  useEffect(() => {
-    const selectedCourseData = localStorage.getItem("selectedCourse")
-
-    // const courseData = JSON.parse(selectedCourseData)
-
-
-    setCourse(JSON.parse(selectedCourseData))
-
-    console.log(selectedCourseData)
-  }, [])
 
   return (
     <Layout>
       <div className='course-page'>
         <div className='course-banner'>
           <div className="breadcrumb">
-            Development {'>'}
-            Programming Languages {'>'}
-            Python
+            {course?.courseCategory} {'> '}
+            {course?.courseGroup} {'> '}
+            {course?.title}
           </div><br />
           <div className='top-section'>
             <div>
@@ -60,13 +81,13 @@ const SingleCoursePage = () => {
                 {course?.title}
               </h1> <br />
 
-              <p>Master Python by building 100 projects in 100 days. Learn data science, automation, build websites, games and apps!</p><br />
+              <p>{course?.description}</p><br />
 
               <p>
                 5.0 <span style={{ color: 'gold' }}><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /> </span> 1,891,815 students
               </p><br />
 
-              <p>Created by <b>Daniel Brills</b></p>
+              <p>Created by <b>{course?.author}</b></p>
 
               <br /><br />
             </div>
@@ -82,22 +103,27 @@ const SingleCoursePage = () => {
             <div className='sub-section1'>
               <h1>What you'll learn</h1><br />
               <div className="sub-points">
-                <p>You will master the Python programming language by building 100 unique projects over 100 days.</p>
-                <p>You will master the Python programming language by building 100 unique projects over 100 days.</p>
-                <p>You will master the Python programming language by building 100 unique projects over 100 days.</p>
-                <p>You will master the Python programming language by building 100 unique projects over 100 days.</p>
-                <p>You will master the Python programming language by building 100 unique projects over 100 days.</p>
-                <p>You will master the Python programming language by building 100 unique projects over 100 days.</p>
-                <p>You will master the Python programming language by building 100 unique projects over 100 days.</p>
+                {
+                  course?.sectionDto?.map((section, index) => (
+                    <div key={index}>
+                      {section?.seriesList?.map((series, i) => (
+                        <p key={i}>
+                          {series.title}
+                        </p>
+                      ))
+                      }
+                    </div>
+                  ))
+                }
               </div>
             </div>
 
             <div className='sub-section2'>
-              <p><h1>₦7,400</h1></p>
+              <h1>₦{course?.nairaPrice.toLocaleString()}</h1>
 
               <br /><br />
               <button className='btn1' onClick={addCart} >Add to cart</button>
-              <button className='btn2'>Buy Now</button>
+              {/* <button className='btn2'>Buy Now</button> */}
 
               <p>30-Day Money-Back Guarantee</p>
             </div>

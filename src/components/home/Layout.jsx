@@ -7,13 +7,15 @@ import { Link } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { checkout } from "../../services/cart";
+import useAuth from "../../services/auth";
 
 
 const Layout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
-
+  const token = useAuth()
 
   const [cart, setCart] = useState(null);
 
@@ -51,7 +53,7 @@ const Layout = ({ children }) => {
 
 
   useEffect(() => {
-    displayCart();
+    displayCart() 
   }, []);
 
   return (
@@ -116,7 +118,7 @@ const Layout = ({ children }) => {
             <div>
               {cart.map((item, index) => (
                 <div key={index}>
-                  {index + 1}{')'} {item.name} - {item.price}
+                  {index + 1}{')'} {item.name} - ₦{item.price}
 
 
                   <br /><br />
@@ -127,7 +129,7 @@ const Layout = ({ children }) => {
               <br />
 
               <div>
-                <button className="btn3">Check out</button>
+                <button className="btn3" onClick={checkout}>Check out</button>
               </div>
             </div>
           ) : (

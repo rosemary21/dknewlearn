@@ -53,8 +53,8 @@ const HomePage = () => {
 
 
   const handleCourseClick = (course) => {
-    localStorage.setItem('selectedCourse', JSON.stringify(course));
-    navigate(`/course/${course.title}`);
+    // localStorage.setItem('selectedCourse', JSON.stringify(course));
+    navigate(`/course/${course.id}`);
   };
 
 

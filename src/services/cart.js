@@ -63,7 +63,10 @@ export const extractIds = () => {
     // If cart data exists, parse it from JSON
     if (cartItems) {
         cartItems = JSON.parse(cartItems);
-        return cartItems.map(item => item.id);
+        // return cartItems.map(item => item.id);
+
+        return cartItems.map(item => ({ courseId: item.id }));
+
     }
 
 }

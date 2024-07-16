@@ -49,9 +49,24 @@ export const getCourses = async () => {
   }
   if (token) {
     try {
-      const response = await axios.post(`${api_url}/course/all/student/courses`, data, {
+      const response = await axios.post(`${api_url}/course/all/view/student/courses`, data, {
         headers: {
           'apiKey': `${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+
+      return response.data
+
+    } catch (error) {
+      console.log("An error occurred. Please try again.");
+    }
+  } else{
+    try {
+      const response = await axios.post(`${api_url}/course/all/view/student/courses`, data, {
+        headers: {
+          // 'apiKey': `${token}`,
           'Content-Type': 'application/json'
         }
       }
@@ -80,6 +95,21 @@ export const getSingleCourse = async (id) => {
 
       return response.data
 
+    } else {
+
+      const data = {
+        "courseId":id
+    }
+
+      const response = await axios.post(`${api_url}/course/view/singlecourse`, data, {
+        headers: {
+          // 'apiKey': `${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+
+      return response.data
     }
 
   } catch (error) {

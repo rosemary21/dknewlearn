@@ -26,6 +26,9 @@ const UserDashboard = () => {
     const fetchData = async () => {
       try {
         const userData = await getUser();
+
+
+        console.log(userData.courses)
         
         setCourses(userData.courses);
 

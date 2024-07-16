@@ -36,10 +36,10 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const userData = await getCourses();
-        setCourses(userData.coursesDtos);
+        setCourses(userData?.coursesDtos);
 
 
-        console.log(userData.coursesDtos)
+        console.log(userData?.coursesDtos)
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {
@@ -120,7 +120,7 @@ const HomePage = () => {
           <div class="career-opportunities">
 
             <div class="explore-python">
-              {courses?.map((course, index) => (
+              {courses && courses?.map((course, index) => (
                 <div key={index} onClick={() => handleCourseClick(course)} >
                     <img src={course?.courseImageUrl || courseImg1} alt="" />
                     <h3>{course.title}</h3>

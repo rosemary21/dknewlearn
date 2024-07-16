@@ -29,6 +29,14 @@ const Checkout = () => {
             );
       
             console.log(response.data)
+
+
+
+            if(response.data.responseDto.message == "Transaction Process Successfully"){
+              console.log("success")
+
+              setStatus("success")
+            }
       
           } catch (error) {
             console.log("An error occurred. Please try again.");

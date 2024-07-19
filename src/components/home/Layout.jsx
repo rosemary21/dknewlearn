@@ -3,21 +3,22 @@ import Header from "./Header";
 import Footer from "./Footer";
 import "./layout.css";
 import { Link } from "react-router-dom";
-
-
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { checkout } from "../../services/cart";
 import useAuth from "../../services/auth";
-
 
 const Layout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
-  const token = useAuth()
+ 
 
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useState([]);
+
+  const auth = useAuth()
+
+  console.log(auth)
 
   const toggleAside = () => {
     setIsAsideVisible(!isAsideVisible);
@@ -31,29 +32,40 @@ const Layout = ({ children }) => {
     setIsProfileNavVisible(!isProfileNavVisible);
   };
 
-
-
-
-  function displayCart() {
-    // Get the cart data from localStorage
+  const displayCart = () => {
     let cartItems = localStorage.getItem("cart");
-
-    // If cart data exists, parse it from JSON
     if (cartItems) {
-      cartItems = JSON.parse(cartItems);
-
-      setCart(cartItems);
+      setCart(JSON.parse(cartItems));
     } else {
-      // If cart data doesn't exist, display a message indicating an empty cart
-      console.log("Cart is empty");
+      setCart([]);
     }
-  }
+  };
 
-  // Call the displayCart function to initially display the cart data
+  const addItemToCart = (item) => {
+    const updatedCart = [...cart, item];
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    toast.success("Item added to cart!");
+  };
+
+  const removeItemFromCart = (index) => {
+    const updatedCart = cart.filter((_, i) => i !== index);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    toast.info("Item removed from cart.");
+  };
+
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+    toast.warn("Cart cleared.");
+  };
+
 
 
   useEffect(() => {
-    displayCart() 
+    displayCart();
+  
   }, []);
 
   return (
@@ -74,7 +86,6 @@ const Layout = ({ children }) => {
               </Link>
             </p>
             <p>
-              {" "}
               <Link to={"/signup"}>
                 <button className="btn2">Signup</button>
               </Link>
@@ -82,7 +93,6 @@ const Layout = ({ children }) => {
           </div>
         </div>
       )}
-
 
       {isProfileNavVisible && (
         <div className="profile-nav">
@@ -102,7 +112,6 @@ const Layout = ({ children }) => {
             <Link to={"/edit-profile"}>
               <p className="nav-link">Profile</p>
             </Link>
-
             <p>
               <Link to={"/login"}>
                 <button className="btn2 btn3">Logout</button>
@@ -114,28 +123,24 @@ const Layout = ({ children }) => {
 
       {isCartVisible && (
         <div className="cartPanel">
-          {cart !== null && cart.length > 0 ? (
+          {cart.length > 0 ? (
             <div>
               {cart.map((item, index) => (
                 <div key={index}>
                   {index + 1}{')'} {item.name} - ₦{item.price}
-
-
+                  <button onClick={() => removeItemFromCart(index)}>Remove</button>
                   <br /><br />
                 </div>
               ))}
-
-
               <br />
-
               <div>
-                <button className="btn3" onClick={checkout}>Check out</button>
+                <button className="btn3" onClick={() => checkout(auth)}>Check out</button>
+                <button className="btn3" onClick={clearCart}>Clear Cart</button>
               </div>
             </div>
           ) : (
             <div>
               <p>Your cart is empty</p>
-
               <p>Keep Shopping</p>
             </div>
           )}
@@ -144,9 +149,7 @@ const Layout = ({ children }) => {
 
       <main className="user-main-content">
         {children}
-
         <Footer />
-
         <ToastContainer />
       </main>
     </div>

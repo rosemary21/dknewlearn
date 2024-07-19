@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 const useAuth = () => {
-
+  const [isAuth, setIsAuth] = useState(true)
   const [token, setToken] = useState(null);
+ 
 
   useEffect(() => {
     const parseToken = () => {
@@ -24,12 +25,18 @@ const useAuth = () => {
 
 
               console.log("expired")
-
+              setIsAuth(false)
               localStorage.removeItem("token")
               location.href = "/login";
 
+              
+
+            } else{
+              setIsAuth(true)
             }
           }
+        } else{
+          setIsAuth(false)
         }
 
 
@@ -40,9 +47,9 @@ const useAuth = () => {
     };
 
     parseToken();
-  }, [token]);
+  }, [token, isAuth]);
 
-  return { token };
+  return { token, isAuth };
 }
 
 export default useAuth

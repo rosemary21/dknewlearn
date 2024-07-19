@@ -1,9 +1,20 @@
 import axios from "axios";
 import { api_url, token } from "../config/config";
+import { toast } from "react-toastify";
 
-
-export const checkout = async () => {
+export const checkout = async (auth) => {
     let cartItems = localStorage.getItem("cart");
+
+ 
+
+    if(auth.isAuth == false){
+        toast.warn("You need to login")
+
+
+        setTimeout(()=> {
+            location.href = "/login";
+        }, 2000)
+    }
 
     // If cart data exists, parse it from JSON
     if (cartItems) {

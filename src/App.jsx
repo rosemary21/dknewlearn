@@ -33,6 +33,7 @@ import TutorEarnings from "./pages/Tutor/TutorEarnings.jsx";
 import LoginAdmin from "./pages/LoginAdmin.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import Checkout from "./pages/Checkout.jsx";
+import AdminCourses from "./pages/Admin/AdminCourses.jsx";
 
 function App() {
 
@@ -85,6 +86,7 @@ function App() {
 
              {/* admin  */}
              <Route path="/admin" element={<AdminDashboard />} />
+             <Route path="/admin/courses" element={<AdminCourses />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

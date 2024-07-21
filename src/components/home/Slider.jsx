@@ -2,12 +2,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 
-import image1 from "../../assets/background1.jpg"
+import image1 from "../../assets/images/background1.jpg"
+import image2 from "../../assets/images/background2.jpg"
+import image3 from "../../assets/images/background3.jpg"
 
 const Item = ({ title, image }) => <div>
 
     <div className="container1" style={{ background: "rgba(55, 55, 55, 0.3)", }}>
-        <img src={image} alt="" style={{}} />
+        <img src={image} alt="" style={{ maxHeight: "100vh"}} />
 
 
         <div className="overlay1">
@@ -22,8 +24,9 @@ const items = [
     // { title: "afsgsgerg", text: "dfsgergergeq", image: image1 },
     // { title: "fewewf", text: "few", image: image1 },
     // { title: "afsgsgeewewrweg", text: "eewewf", image: image1 },
-    <Item title={"regreg"} image={image1} />,
-    <Item title={"r23r2"}  image={image1}/>
+    <Item title={"Welcome to DK Learning"} image={image1} />,
+    <Item title={"The best learning platform"}  image={image2}/>,
+    <Item title={"The best learning platform"}  image={image3}/>
 ]
 
 export const Slider = () => {

@@ -29,15 +29,11 @@ const AdminLayout = ({ children }) => {
       {isAsideVisible && (
         <div className="mobile-nav">
           <div className="sub-mobile-nav">
-          <Link to={"/tutor"}>
+          <Link to={"/admin"}>
             <p className="nav-link"><MdDashboard/> Dashboard</p>
             </Link>
-            <Link to={"/tutor/courses"}>
+            <Link to={"/admin/courses"}>
             <p className="nav-link"><BiBook /> Courses</p>
-            </Link>
-
-            <Link to={"/tutor/courses-review"}>
-            <p className="nav-link"><BiBook /> Courses Review</p>
             </Link>
 
             <Link to={"/tutor/settings"}>
@@ -61,22 +57,19 @@ const AdminLayout = ({ children }) => {
       <main>
         <div className="main">
         <div className="nav">
-            <Link to={"/tutor"}>
+            <Link to={"/admin"}>
             <p className="nav-link"><MdDashboard/> Dashboard</p>
             </Link>
-            <Link to={"/tutor/courses"}>
+
+            <Link to={"/admin/courses"}>
             <p className="nav-link"><BiBook /> Courses</p>
             </Link>
 
-            <Link to={"/tutor/courses-review"}>
-            <p className="nav-link"><BiBook /> Courses Review</p>
-            </Link>
-
-            <Link to={"/tutor/settings"}>
+            <Link to={"/admin/settings"}>
             <p className="nav-link"><FaCog/> Settings</p>
             </Link>
 
-            <Link to={"/tutor/earnings"}>
+            <Link to={"/admin/earnings"}>
             <p className="nav-link"><FaMoneyBill/> Earnings</p>
             </Link>
 

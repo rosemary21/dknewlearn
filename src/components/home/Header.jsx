@@ -4,8 +4,13 @@ import { FaCartShopping } from 'react-icons/fa6'
 import { FiSearch } from 'react-icons/fi'
 import profile from "../../assets/profile1.webp";
 import { Link } from 'react-router-dom';
+import useAuth from '../../services/auth';
 
 const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
+
+
+  const auth = useAuth()
+
 
 
   const [cart, setCart] = useState(null);
@@ -66,22 +71,32 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
           <FaCartShopping className='header-icons' onClick={toggleCart} /> <span className="red" onClick={toggleCart}>{cart ? cart.length : '0'}</span>
 
 
-          
-          {/* <span className='header-btn'>
+
+
+
+          {auth && auth.isAuth == true ? (
+            <>
+
+              <span className='header-icons2'><Link to={"/home/notifications"}><FaBell className='header-icons' /></Link>
+              </span>
+              <img
+                src={profile}
+                alt="profile Image"
+                className="profile-image"
+
+                onClick={onToggleProfileNav}
+              />
+            </>
+          ): (
+          <span className='header-btn'>
             <Link to={'/login'} ><button>Login</button></Link>&emsp;
             <Link to={'/signup'} ><button className='btn2'>Signup</button></Link>
-          </span> */}
+          </span>
+          )}
 
 
-          <span className='header-icons2'><Link to={"/home/notifications"}><FaBell className='header-icons' /></Link>
-                       </span>
-            <img
-            src={profile}
-            alt="profile Image"
-            className="profile-image"
 
-            onClick={onToggleProfileNav}
-          />
+
 
         </div>
       </header>

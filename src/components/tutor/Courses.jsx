@@ -115,7 +115,7 @@ function Courses() {
                   <tr key={index}>
                     <td>{series.title}</td>
                     <td>{series.video}</td>
-                    <td>{series.resource}</td>
+                    <td>{series.resourceFile}</td>
                   </tr>
                 ))}   </tbody>
             </table>

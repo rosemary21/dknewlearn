@@ -47,6 +47,11 @@ const SignupPage = () => {
       });
 
       toast.success("Signup successful! Please check your email to verify your account.");
+
+      setTimeout(()=>{
+        window.location.href = "/login"
+      }, 2000)
+
     } catch (error) {
       
       console.log(error)

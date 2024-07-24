@@ -34,6 +34,7 @@ import LoginAdmin from "./pages/LoginAdmin.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import AdminCourses from "./pages/Admin/AdminCourses.jsx";
+import ViewCourse from "./pages/User/ViewCourse.jsx";
 
 function App() {
 
@@ -42,7 +43,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<HomePage />} />
           <Route path="/course/:id" element={<SingleCoursePage />} />
-          <Route path="/view-course/:id" element={<CourseContent />} />
+          <Route path="/view-course/:id" element={<ViewCourse />} />
 
           <Route path="/categories" element={<Categories />} />
           <Route path="/teaching" element={<Teaching />} />
@@ -65,6 +66,7 @@ function App() {
           <Route path="/admin-login" element={<LoginAdmin />} />
 
           {/* authenticated user */}
+
           <Route path="/home/my-courses" element={<UserDashboard />} />
           <Route path="/home/cart" element={<CartPage />} />
           <Route path="/home/notifications" element={<NotificationsPage />} />

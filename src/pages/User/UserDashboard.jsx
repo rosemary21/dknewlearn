@@ -13,6 +13,7 @@ import profileImg from "../../assets/profile1.webp";
 import { getUser } from "../../services/user";
 import ReactPaginate from "react-paginate";
 import Course from "../../components/tutor/Course";
+import { Link } from "react-router-dom";
 
 
 const UserDashboard = () => {
@@ -99,7 +100,9 @@ const UserDashboard = () => {
 
 
               {paginatedCourses?.map(course => (
-                <Course key={course.id} course={course} />
+                <Link to={`/view-course/${course.id}`} key={course.id} >
+                <Course course={course} />
+                </Link>
               ))}
 
 

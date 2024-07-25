@@ -73,9 +73,9 @@ function Courses() {
       localStorage.removeItem("courseData")
 
 
-      // setTimeout(() => {
-      //   location.href="/tutor/courses"
-      // }, 1000)
+      setTimeout(() => {
+        location.href="/tutor/courses"
+      }, 1000)
 
     } catch (error) {
 

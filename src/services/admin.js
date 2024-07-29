@@ -18,14 +18,37 @@ export const getAdmin = async () =>{
       }
 }
 
-export const getAllCourses = async () => {
+export const getAllCourses = async (pageNo = 0) => {
 
   const data = {
     "pageSize": 10,
-    "pageNo": 0
+    "pageNo": pageNo
   }
   try {
     const response = await axios.post(`${api_url}/course/all`, data, {
+      headers: {
+        'apiKey': `${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    );
+
+    return response.data
+
+  } catch (error) {
+    console.log("An error occurred. Please try again.");
+  }
+}
+
+export const updateCourse = async (id, status) => {
+
+  const data = {
+    "status": status,
+    "id":id
+}
+
+  try {
+    const response = await axios.post(`${api_url}/course/process`, data, {
       headers: {
         'apiKey': `${token}`,
         'Content-Type': 'application/json'

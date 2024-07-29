@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaCog, FaMoneyBill, FaSignOutAlt } from "react-icons/fa";
 import { BiBook } from "react-icons/bi";
 import { MdDashboard } from "react-icons/md";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminLayout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
@@ -84,6 +86,8 @@ const AdminLayout = ({ children }) => {
         </div>
 
         <Footer />
+
+        <ToastContainer/>
       </main>
           </div>
 

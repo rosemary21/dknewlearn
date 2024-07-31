@@ -23,7 +23,7 @@ function Courses() {
     const newSection = {
       id: sections.length + 1,
       title: sectionTitle,
-      series: [],
+      seriesList: [], // Updated to match the key used in handleAddSeries
     };
     setSections([...sections, newSection]);
   };
@@ -37,7 +37,7 @@ function Courses() {
     setSections((prevSections) => {
       const updatedSections = prevSections.map((section) => {
         if (section.id === currentSection.id) {
-          return { ...section, seriesList: [...section.series, seriesData] };
+          return { ...section, seriesList: [...section.seriesList, seriesData] };
         }
         return section;
       });
@@ -58,32 +58,23 @@ function Courses() {
     localStorage.setItem("courseData", JSON.stringify(courseData));
 
     try {
-
       const response = await axios.post(`${api_url}/course/add`, courseData, {
         headers: {
           'apiKey': `${token}`,
         }
       });
 
-
-      console.log(response)
-
-      toast.success("Course created successfully")
-
-      localStorage.removeItem("courseData")
-
+      console.log(response);
+      toast.success("Course created successfully");
+      localStorage.removeItem("courseData");
 
       setTimeout(() => {
-        location.href="/tutor/courses"
-      }, 1000)
-
+        location.href = "/tutor/courses";
+      }, 1000);
     } catch (error) {
-
-      console.log(error)
+      console.log(error);
       toast.error("An error occurred while creating the course");
     }
-
-
   };
 
   return (
@@ -116,10 +107,11 @@ function Courses() {
                 {currentSection?.seriesList?.map((series, index) => (
                   <tr key={index}>
                     <td>{series.title}</td>
-                    <td>{series.video}</td>
+                    <td>{series.videoLink}</td>
                     <td>{series.resourceFile}</td>
                   </tr>
-                ))}   </tbody>
+                ))}
+              </tbody>
             </table>
           </div>
         )}

@@ -42,4 +42,30 @@ export const getTutorCourses = async () => {
   }
 }
 
+export const getTutorCoursesEarnings = async (id) => {
+  const data = {
+    "pageSize": 10,
+    "pageNo": 0
+  }
+  try {
+    const response = await axios.get(`${api_url}/course/boughtcourse/${id}`, {
+      headers: {
+        'apiKey': `${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    );
+
+    return response.data
+
+  } catch (error) {
+    console.log("An error occurred. Please try again.");
+  }
+}
+
+
+
+
+
+
 

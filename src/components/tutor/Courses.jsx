@@ -58,7 +58,7 @@ function Courses() {
     localStorage.setItem("courseData", JSON.stringify(courseData));
 
     try {
-      const response = await axios.post(`${api_url}/course/add`, courseData, {
+      const response = await axios.post(`${api_url}/course/tutoraddcourses`, courseData, {
         headers: {
           'apiKey': `${token}`,
         }

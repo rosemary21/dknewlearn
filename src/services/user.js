@@ -45,7 +45,7 @@ export const getCourses = async () => {
 
   const data = {
     "pageSize": 10,
-    "pageNo": 0
+    "pageNo": 1
   }
   if (token) {
     try {

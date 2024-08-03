@@ -134,16 +134,16 @@ const ViewCourse = () => {
                         {selectedSeries && (
                             <div>
                                 <h2>{selectedSeries.title}</h2>
-                                <video src={selectedSeries.videoUrl} controls style={{ height: '400px' }} />
+                                <video src={selectedSeries.videoLink} controls style={{ height: '400px' }} />
                             </div>
                         )}
                     </div>
                     <div className="sections">
-                        {courseData.map((section, index) => (
+                        {course?.sectionDto?.map((section, index) => (
                             <div key={index} className="section">
-                                <h3 onClick={() => handleSectionClick(index)}>{section.sectionTitle}</h3>
+                                <h3 onClick={() => handleSectionClick(index)}>{section.title}</h3>
                                 <div className={`series ${selectedSection === index ? 'active' : ''}`}>
-                                    {section.series.map((series, seriesIndex) => (
+                                    {section?.seriesList?.map((series, seriesIndex) => (
                                         <div
                                             key={seriesIndex}
                                             className="series-title"

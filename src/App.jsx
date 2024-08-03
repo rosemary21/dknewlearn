@@ -35,6 +35,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import AdminCourses from "./pages/Admin/AdminCourses.jsx";
 import ViewCourse from "./pages/User/ViewCourse.jsx";
+import TutorCourseEarnings from "./pages/Tutor/TutorCourseEarnings.jsx";
 
 function App() {
 
@@ -82,6 +83,7 @@ function App() {
            <Route path="/tutor/edit-course" element={<TutorEditCourse />} />
            <Route path="/tutor/courses-review" element={<TutorCourseReview />} />
            <Route path="/tutor/earnings" element={<TutorEarnings />} />
+           <Route path="/tutor/course/earnings/:id" element={<TutorCourseEarnings />} />
            <Route path="/tutor/settings" element={<TutorSettings />} />
            <Route path="/tutor/change-password" element={<TutorChangePassword />} />
 

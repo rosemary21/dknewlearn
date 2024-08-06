@@ -31,14 +31,13 @@ const Checkout = () => {
         }
         );
 
-        console.log(response.data)
-
-
-
         if (response.data.responseDto.message == "Transaction Process Successfully") {
           console.log("success")
 
-          setStatus("success")
+          
+          setTimeout(() => {
+            setStatus("success")
+          }, 1000)
 
           setTimeout(() => {
             window.location.href = "/home/my-courses"

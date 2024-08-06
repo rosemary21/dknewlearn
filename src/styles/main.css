@@ -1184,3 +1184,21 @@ footer {
     gap: 1%;
   }
 }
+
+/* checkout page */
+
+.checkout{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 70vh;
+}
+
+.checkout>div{
+  box-shadow: 0 0 20px rgb(213, 212, 212);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  padding: 50px 20px;
+}

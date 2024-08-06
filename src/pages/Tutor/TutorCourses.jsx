@@ -165,12 +165,10 @@ const TutorCourses = () => {
 
           <div class="course-links">
             <a href="#">Python</a>
-            <a href="#">Excel</a>
+            <a href="#">Product Design</a>
             <a href="#">Web Development</a>
-            <a href="#">JavaScript</a>
+            <a href="#">Cybersecurity</a>
             <a href="#">Data Science</a>
-            <a href="#">AWS Certification</a>
-            <a href="#">Drawing</a>
           </div>
 
           <div class="career-opportunities">

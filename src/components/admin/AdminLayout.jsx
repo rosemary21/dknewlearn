@@ -19,8 +19,9 @@ const AdminLayout = ({ children }) => {
   const navigate = useNavigate()
 
   const logout = () => {
-    navigate('/')
-  }
+    localStorage.clear()
+    navigate("/")
+}
 
 
 

@@ -39,14 +39,6 @@ const TutorEarnings = () => {
     navigate(`/course/${course.id}`);
   };
 
-  const showModal = (course) => {
-    setSelectedCourse(course);
-    setStatus(course?.status);
-  };
-
-  const hideModal = () => {
-    setSelectedCourse(null);
-  };
 
   return (
     <TutorLayout>
@@ -81,7 +73,7 @@ const TutorEarnings = () => {
                     <td>{course?.nairaPrice}</td>
                     <td>{course?.status}</td>
                     <td>
-                      <Link to={`/tutor/course/earnings/${course?.id}`}><button onClick={() => showModal(course)}>View Earnings</button></Link>
+                      <Link to={`/tutor/course/earnings/${course?.id}`}><button className="btn1">View Earnings</button></Link>
                     </td>
                   </tr>
                 ))}

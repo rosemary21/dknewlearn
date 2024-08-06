@@ -21,10 +21,10 @@ export const getTutor = async () => {
 }
 
 
-export const getTutorCourses = async () => {
+export const getTutorCourses = async (pageNo = 0) => {
   const data = {
     "pageSize": 10,
-    "pageNo": 0
+    "pageNo": pageNo
   }
   try {
     const response = await axios.post(`${api_url}/course/alltutor`, data, {
@@ -42,10 +42,10 @@ export const getTutorCourses = async () => {
   }
 }
 
-export const getTutorCoursesEarnings = async (id) => {
+export const getTutorCoursesEarnings = async (pageNo = 0, id) => {
   const data = {
     "pageSize": 10,
-    "pageNo": 0
+    "pageNo": pageNo
   }
   try {
     const response = await axios.get(`${api_url}/course/boughtcourse/${id}`, {

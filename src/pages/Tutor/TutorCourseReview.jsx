@@ -1,74 +1,97 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Pagination from "../../components/ui/Pagination";
+import { getTutorCourses } from "../../services/tutor";
 import TutorLayout from "../../components/tutor/TutorLayout";
 
 const TutorCourseReview = () => {
-  const courses = [
-    {
-      name: "Introduction to python",
-      description: "Introducing python basics to beginners",
-      status: "Approved",
-      date: "10th of may",
-    },
-    {
-      name: "Introduction to python",
-      description: "Introducing python basics to beginners",
-      status: "Pending",
-      date: "10th of may",
-    },
-    {
-      name: "Introduction to python",
-      description: "Introducing python basics to beginners",
-      status: "Rejected",
-      date: "10th of may",
-    },
-    {
-      name: "Introduction to python",
-      description: "Introducing python basics to beginners",
-      status: "Approved",
-      date: "10th of may",
-    },
-    {
-      name: "Introduction to python",
-      description: "Introducing python basics to beginners",
-      status: "In review",
-      date: "10th of may",
-    },
-  ];
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const navigate = useNavigate();
+
+  const fetchData = async () => {
+    try {
+      const userData = await getTutorCourses(currentPage - 1);
+      setCourses(userData?.coursesDtos);
+      console.log(userData?.coursesDtos);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      toast.error("Unable to get all courses at the moment, please try again later")
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleCourseClick = (course) => {
+    navigate(`/course/${course.id}`);
+  };
+
+  const showModal = (course) => {
+    setSelectedCourse(course);
+    setStatus(course?.status);
+  };
+
+  const hideModal = () => {
+    setSelectedCourse(null);
+  };
+
   return (
     <TutorLayout>
       <div className="marginned">
         <br />
-        <h2>Course Review</h2>
+        <h2>All Courses</h2>
         <br />
 
         <div className="detail-card">
-          <h3>Total Courses</h3><br />
-          <p>10</p>
+          <h3>Total Courses</h3>
+          <br />
+          <p>{courses && courses.length}</p>
         </div>
+
         <div className="table-container">
           <table className="custom-table">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Course Title</th>
-                <th>Description</th>
+                <th>Price</th>
                 <th>Status</th>
-                <th>Date</th>
               </tr>
             </thead>
             <tbody>
-              {courses.map((course, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{course.name}</td>
-                  <td>{course.description}</td>
-                  <td>{course.status}</td>
-                  <td>{course.date}</td>
-                </tr>
-              ))}
+              {courses &&
+                courses.map((course, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{course?.title}</td>
+                    <td>{course?.nairaPrice}</td>
+                    <td>{course?.status}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
+
+        <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
+
+
       </div>
     </TutorLayout>
   );

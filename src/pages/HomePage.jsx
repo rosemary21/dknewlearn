@@ -22,6 +22,7 @@ import { FaStar } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { Slider } from "../components/home/Slider";
 import { getCourses } from "../services/user";
+import Pagination from "../components/ui/Pagination";
 
 
 
@@ -29,13 +30,15 @@ const HomePage = () => {
 
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userData = await getCourses();
+        const userData = await getCourses(currentPage - 1);
         setCourses(userData?.coursesDtos);
 
 
@@ -48,7 +51,7 @@ const HomePage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [currentPage]);
 
 
 
@@ -57,6 +60,10 @@ const HomePage = () => {
     navigate(`/course/${course.id}`);
   };
 
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div>
@@ -109,95 +116,38 @@ const HomePage = () => {
           </p>
           <div class="course-links">
             <a href="#">Python</a>
-            <a href="#">Excel</a>
+            <a href="#">Cybersecurity</a>
             <a href="#">Web Development</a>
-            <a href="#">JavaScript</a>
+            <a href="#">Product Design</a>
             <a href="#">Data Science</a>
-            <a href="#">AWS Certification</a>
-            <a href="#">Drawing</a>
           </div>
 
           <div class="career-opportunities">
 
-            <div class="explore-python">
-              {courses && courses?.map((course, index) => (
-                <div key={index} onClick={() => handleCourseClick(course)} >
-                    <img src={course?.courseImageUrl || courseImg1} alt="" />
+            {courses && courses.length > 0 ? (
+              <div className="explore-python">
+                {courses.map((course, index) => (
+                  <div key={index} onClick={() => handleCourseClick(course)}>
+                    <img src={course?.courseImageUrl || courseImg1} alt={course.title} />
                     <h3>{course.title}</h3>
-                    <h4>{course.author}</h4>
+                    <p>{course.author}</p>
                     <p>
-                      4.3 <i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                      ><i class="fa fa-star-half-o"></i> <span>(4,253)</span>
+                    5.0 <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
                     </p>
-                    <h3>₦{course.nairaPrice.toLocaleString()}
-                    </h3>
-                </div>
-              ))}
+                    <h3>₦{course.nairaPrice.toLocaleString()}</h3>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>No courses available at the moment.</p>
+            )}
 
-            </div>
-          </div>
-        </section>
 
-
-        {/*  Viewing Section */}
-        <section className="viewing">
-          <h2>Students are viewing</h2>
-          <div className="explore-python views">
-            <div>
-              <img src={courseImg6} alt="" />
-              <h3>The Complete 2023 Web Development Bootcamp</h3>
-              <h4>Dr. Angela Yu</h4>
-              <p>
-                4.3 <FaStar /><FaStar /><FaStar /><FaStar />  <span>(247,955)</span>
-              </p>
-              <h3>$119.99</h3>
-              <button>Bestseller</button>
-            </div>
-
-            <div>
-              <img src={courseImg7} alt="" />
-              <h3>100 Days of Code: The Complete Python Pro Bootcamp for 2023</h3>
-              <h4>Dr. Angela Yu</h4>
-              <p>
-                4.3 <FaStar /><FaStar /><FaStar /><FaStar /> <span>(162,432)</span>
-              </p>
-              <h3>$84.99</h3>
-              <button>Bestseller</button>
-            </div>
-
-            <div>
-              <img src={courseImg8} alt="" />
-              <h3>The Complete JavaScript Course 2023: From Zero to Expert!</h3>
-              <h4>Jonas Schmedtmann</h4>
-              <p>
-                4.3 <FaStar /><FaStar /><FaStar /><FaStar /> <span>(161,454)</span>
-              </p>
-              <h3>$149.99</h3>
-              <button>Bestseller</button>
-            </div>
-
-            <div>
-              <img src={courseImg9} alt="" />
-              <h3>React - The Complete Guide (incl Hooks, React Router, Redux)</h3>
-              <h4>Academind by Maximilian Schwarzmüller,</h4>
-              <p>
-                4.3 <FaStar /><FaStar /><FaStar /><FaStar /> <span>(171,292)</span>
-              </p>
-              <h3>$129.99</h3>
-              <button>Bestseller</button>
-            </div>
-
-            <div>
-              <img src={courseImg10} alt="" />
-              <h3>Ultimate AWS Certified Solutions Architect Associate</h3>
-              <h4>Stephane Maarek | AWS Certified Cloud</h4>
-              <p>
-                4.3 <FaStar /><FaStar /><FaStar /><FaStar /><span>(160,038)</span>
-              </p>
-              <h3>$84.99</h3>
-              <button>Bestseller</button>
-            </div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </div>
         </section>
 

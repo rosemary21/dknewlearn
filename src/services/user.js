@@ -41,11 +41,11 @@ export const getUser = async () => {
 //   }
 // }
 
-export const getCourses = async () => {
+export const getCourses = async (pageNo = 0) => {
 
   const data = {
     "pageSize": 10,
-    "pageNo": 1
+    "pageNo": pageNo
   }
   if (token) {
     try {

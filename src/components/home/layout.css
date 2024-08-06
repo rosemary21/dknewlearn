@@ -166,7 +166,7 @@ header h1{
 
   .cartPanel{
     position: fixed;
-    top: 65px;
+    top: 60px;
     backdrop-filter: blur(10px);
     min-height: 100px;
     padding: 20px;
@@ -174,7 +174,7 @@ header h1{
     width: 300px;
     z-index: 9;
     background-color: white;
-    right: 15px;
+    right: 20px;
     box-shadow: 0 0 10px gray;
   }
 
@@ -243,8 +243,12 @@ header h1{
     }
 
     .cartPanel{
-      right: 200px;
-      top: 75px;
+      right: 210px;
+      top: 70px;
+    }
+
+    .shift-cart{
+      right: 110px;
     }
 
     .tutor .main{

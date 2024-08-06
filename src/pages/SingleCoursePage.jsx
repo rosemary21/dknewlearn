@@ -93,7 +93,11 @@ const SingleCoursePage = () => {
             </div>
 
             <div className='course-image'>
-              <img src={courseImage} alt="" />
+
+              {course?.courseVideoUrl ? <video src={course?.courseVideoUrl} style={{ maxWidth: "100%" }}
+
+                controls></video> : <img src={course?.courseImageUrl || courseImage} alt="" style={{ height: "300px", width: "100%" }} />}
+
             </div>
           </div>
         </div><br />

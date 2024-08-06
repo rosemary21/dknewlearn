@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import "./layout.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { checkout } from "../../services/cart";
@@ -12,6 +12,8 @@ const Layout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
+
+  const navigate = useNavigate()
  
 
   const [cart, setCart] = useState([]);
@@ -68,6 +70,11 @@ const Layout = ({ children }) => {
   
   }, []);
 
+const logout = () => {
+    localStorage.clear()
+    navigate("/")
+}
+
   return (
     <div>
       <Header onToggleAside={toggleAside} toggleCart={toggleCart} onToggleProfileNav={onToggleProfileNav} />
@@ -113,16 +120,15 @@ const Layout = ({ children }) => {
               <p className="nav-link">Profile</p>
             </Link>
             <p>
-              <Link to={"/login"}>
-                <button className="btn2 btn3">Logout</button>
-              </Link>
+ 
+                <button className="btn2 btn3" onClick={logout}>Logout</button>
             </p>
           </div>
         </div>
       )}
 
       {isCartVisible && (
-        <div className="cartPanel">
+        <div className={`cartPanel  ${auth.isAuth && 'shift-cart'}`}>
           {cart.length > 0 ? (
             <div>
               {cart.map((item, index) => (

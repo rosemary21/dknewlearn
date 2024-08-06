@@ -91,9 +91,8 @@ const UserDashboard = () => {
             <a href="#">Web Development</a>
             <a href="#">JavaScript</a>
             <a href="#">Data Science</a>
-            <a href="#">AWS Certification</a>
-            <a href="#">Drawing</a>
           </div>
+          <br />
 
           <div class="career-opportunities">
             <div class="explore-python">

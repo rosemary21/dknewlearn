@@ -113,7 +113,7 @@ const ViewCourse = () => {
                             <p>{course?.description}</p><br />
 
                             <p>
-                                5.0 <span style={{ color: 'gold' }}><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /> </span> 1,891,815 students
+                                5.0 <span style={{ color: 'gold' }}><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /> </span>
                             </p><br />
 
                             <p>Created by <b>{course?.author}</b></p>

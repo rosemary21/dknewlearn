@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../../components/admin/AdminLayout";
 import { getAllCourses, updateCourse } from "../../services/admin";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../../components/ui/Modal";
 import { toast } from "react-toastify";
 import Pagination from "../../components/ui/Pagination";
@@ -14,14 +14,13 @@ const TutorCourseEarnings = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
-  const id = 188
-
   const fetchData = async () => {
     try {
-      const userData = await getTutorCoursesEarnings(id,currentPage - 1);
+      const userData = await getTutorCoursesEarnings(currentPage - 1, id);
       setCourses(userData?.coursesDtos);
       console.log(userData?.coursesDtos);
     } catch (error) {
@@ -74,13 +73,13 @@ const TutorCourseEarnings = () => {
     <AdminLayout>
       <div className="marginned">
         <br />
-        <h2>All Courses</h2>
+        <h2>Courses Earnings</h2>
         <br />
 
         <div className="detail-card">
-          <h3>Total Courses</h3>
+          <h3>Total Earnings</h3>
           <br />
-          <p>10</p>
+          <p>0</p>
         </div>
 
         <div className="table-container">

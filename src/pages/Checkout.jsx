@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { api_url, token } from '../config/config';
 import axios from 'axios';
 import { extractIds } from '../services/cart';
+import checkmark from "../assets/checkmark.gif"
 
 const Checkout = () => {
     const location = useLocation();
@@ -65,8 +66,12 @@ const Checkout = () => {
                     error....
                 </div>
             ) : status == "success" ? (
-                <div>
+                <div className='checkout'>
+                    <div>
                     success
+
+<img src={checkmark} alt="" />
+                    </div>
                 </div>
             ) : (
                 <div>

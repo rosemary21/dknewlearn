@@ -31,7 +31,7 @@ const Teaching = () => {
             <h1>Come teach with us</h1><br />
             <p>Become an instructor and change lives — including your own</p><br />
 
-            <Link to={'/tutor-signup'}><button className='primary-btn'>Get Started</button></Link> 
+            <Link to={'/tutor-signup'}><button className='primary-btn' style={{ marginRight: "15px"}}>Get Started</button></Link>  <span className="white">or</span> <Link to={'/tutor-login'}><button className='primary-btn' style={{ marginLeft: "15px"}}>Login</button></Link> 
           </div>
         </div>
 

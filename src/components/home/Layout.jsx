@@ -128,7 +128,7 @@ const logout = () => {
       )}
 
       {isCartVisible && (
-        <div className={`cartPanel  ${auth.isAuth && 'shift-cart'}`}>
+        <div className={`cartPanel  ${auth.isAuth && 'shift-cart'}`}> 
           {cart.length > 0 ? (
             <div>
               {cart.map((item, index) => (

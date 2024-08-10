@@ -45,10 +45,11 @@ export const getTutorCourses = async (pageNo = 0) => {
 export const getTutorCoursesEarnings = async (pageNo = 0, id) => {
   const data = {
     "pageSize": 10,
-    "pageNo": pageNo
+    "pageNo": pageNo,
+    id
   }
   try {
-    const response = await axios.get(`${api_url}/course/boughtcourse/${id}`, {
+    const response = await axios.post(`${api_url}/course/boughtcourse`, data, {
       headers: {
         'apiKey': `${token}`,
         'Content-Type': 'application/json'

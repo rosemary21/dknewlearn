@@ -6,16 +6,6 @@ import background from "../assets/background1.jpg";
 import '../styles/main.css'
 
 import courseImg1 from "../assets/course-img1.png";
-import courseImg2 from "../assets/course-img2.png";
-import courseImg3 from "../assets/course-img3.png";
-import courseImg4 from "../assets/course-img4.png";
-import courseImg5 from "../assets/course-img5.png";
-import courseImg6 from "../assets/course-img6.png";
-import courseImg7 from "../assets/course-img7.png";
-import courseImg8 from "../assets/course-img8.png";
-import courseImg9 from "../assets/course-img9.png";
-import courseImg10 from "../assets/course-img10.png";
-
 
 import instructorImg from "../assets/images/img (8).jpg"
 import { FaStar } from "react-icons/fa";
@@ -32,6 +22,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalData, setTotalData] = useState(0);
 
   const navigate = useNavigate()
 
@@ -43,6 +34,7 @@ const HomePage = () => {
 
 
         console.log(userData?.coursesDtos)
+        setTotalData(userData.totalData)
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {
@@ -145,7 +137,7 @@ const HomePage = () => {
 
             <Pagination
               currentPage={currentPage}
-              totalPages={totalPages}
+              totalData={totalData}
               onPageChange={handlePageChange}
             />
           </div>

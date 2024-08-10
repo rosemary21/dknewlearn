@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Pagination.css';
 
-const Pagination = ({ currentPage, onPageChange }) => {
-  const pages = [1, 2, 3, 4, 5]; // Assuming we show a fixed 5 pages for now
+const Pagination = ({ currentPage, onPageChange, totalData }) => {
+  const totalPages = Math.ceil(totalData / 10);
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <div className="pagination">
@@ -23,6 +24,7 @@ const Pagination = ({ currentPage, onPageChange }) => {
 Pagination.propTypes = {
   currentPage: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
+  totalData: PropTypes.number.isRequired,
 };
 
 export default Pagination;

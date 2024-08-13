@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { checkout } from "../../services/cart";
 import useAuth from "../../services/auth";
+import { FaTrash } from "react-icons/fa";
 
 const Layout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
@@ -132,16 +133,16 @@ const logout = () => {
           {cart.length > 0 ? (
             <div>
               {cart.map((item, index) => (
-                <div key={index}>
+                <div key={index}  className="flex-justify-sb cart-item" >
                   {index + 1}{')'} {item.name} - ₦{item.price}
-                  <button onClick={() => removeItemFromCart(index)}>Remove</button>
-                  <br /><br />
+                  <span onClick={() => removeItemFromCart(index)} style={{ color: "red"}}><FaTrash/></span>
+                  
                 </div>
               ))}
-              <br />
-              <div>
-                <button className="btn3" onClick={() => checkout(auth)}>Check out</button>
-                <button className="btn3" onClick={clearCart}>Clear Cart</button>
+              <br /><br />
+              <div className="flex-justify-sb">
+                <button className="btn2" style={{ padding: "10px"}} onClick={() => checkout(auth)}>Check out</button>
+                <button className="btn3" style={{ width: "auto", padding: "10px"}} onClick={clearCart}>Clear Cart</button>
               </div>
             </div>
           ) : (

@@ -10,7 +10,7 @@ import courseImg5 from "../../assets/course-img5.png";
 import { Link } from 'react-router-dom';
 import Course from '../../components/tutor/Course';
 import { getTutor, getTutorCourses } from '../../services/tutor';
-
+ 
 const TutorCourses = () => {
   const [currentPage, setCurrentPage] = useState(0);
 

@@ -1206,3 +1206,21 @@ footer {
 .white{
   color: white;
 }
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+
+.flex-justify-sb{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.cart-item{
+  /* box-shadow: 0 0 10px rgb(216, 215, 215); */
+  border: 1px solid rgb(181, 178, 178);
+  padding: 20px 10px;
+}

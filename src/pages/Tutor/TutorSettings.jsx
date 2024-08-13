@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TutorLayout from '../../components/tutor/TutorLayout'
 import profile from "../../assets/profile1.webp";
 import { Link } from 'react-router-dom';
@@ -6,16 +6,42 @@ import { toast } from 'react-toastify';
 import { api_url, token } from '../../config/config';
 import axios from 'axios';
 import { FaSpinner } from 'react-icons/fa';
+import { getTutor } from '../../services/tutor';
 const TutorSettings = () => {
 
 
   const [bankName, setBankName] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
   const [accountName, setAccountName] = useState("");
-  
+
 
   const [currency, setCurrency] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await getTutor();
+        setData(userData.staffDto);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,18 +52,26 @@ const TutorSettings = () => {
     }
 
     setLoading(true);
+    
+
+
+
+    const formData = {
+      fullName: data.fullName,
+      gender: data.gender,
+      age: data.age,
+      accountDetailDtoList: [
+        {}
+      ]
+    }
 
     try {
-      const response = await axios.post(`${api_url}/staff/update`, {
-        bankName,
-        accountNumber,
-        currency,
-        accountName
-      }, {
+      const response = await axios.post(`${api_url}/staff/update`, formData, {
         headers: {
           'apiKey': `${token}`,
           'Content-Type': 'application/json'
-        }});
+        }
+      });
 
       toast.success("Account details saved successfully!");
 
@@ -65,18 +99,67 @@ const TutorSettings = () => {
           <form onSubmit={handleSubmit}>
             <h3>Profile Information</h3><br />
 
-            <label htmlFor="Email">Full name</label>
-            <input type="text" placeholder="Full name" />
-            <label htmlFor="Email">Email</label>
-            <input type="email" placeholder="Email" disabled />
-            <label htmlFor="Phone">Phone</label>
-            <input type="number" placeholder="Phone Number" />
-            <label htmlFor="Email">Your Language</label>
-            <input type="text" value={"English"} disabled />
+            <label htmlFor="fullName">Full name</label>
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full name"
+              value={data.fullName}
+              onChange={handleChange}
+            />
+
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={data.email}
+              onChange={handleChange}
+              disabled
+            />
+
+            <label htmlFor="phone">Phone</label>
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone Number"
+              value={data.phoneNumber}
+              onChange={handleChange}
+            />
+
+            <label htmlFor="phone">Gender</label>
+
+
+            <select name="gender"
+              placeholder="Gender"
+              value={data.gender}
+              onChange={handleChange}>
+              <option value="">Choose</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+
+            <label htmlFor="phone">Age</label>
+            <input
+              type="number"
+              name="age"
+              placeholder="Age"
+              value={data.age}
+              onChange={handleChange}
+            />
+
+            <label htmlFor="language">Your Language</label>
+            <input
+              type="text"
+              name="language"
+              value="English"
+              onChange={handleChange}
+              disabled
+            />
             <br />
 
 
-            <h2>Account Details</h2>
+            <h2>Account Details</h2><br />
 
             <label htmlFor="bankName">Bank Name</label>
             <input

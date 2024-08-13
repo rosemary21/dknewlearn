@@ -27,7 +27,7 @@ const useAuth = () => {
               console.log("expired")
               setIsAuth(false)
               localStorage.removeItem("token")
-              location.href = "/login";
+              location.href = "/";
 
               
 

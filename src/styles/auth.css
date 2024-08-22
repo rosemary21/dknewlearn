@@ -1,9 +1,10 @@
 .auth-container {
   display: flex;
-  width: 85%;
+  width: 95%;
   justify-content: center;
   text-align: center;
   margin: auto;
+  min-height: 60vh;
 }
 
 .auth-container > .div2 {
@@ -55,6 +56,10 @@ select {
   display: none;
 }
 
+.auth-container > .single-div {
+  width: 90% !important;
+}
+
 @media screen and (min-width: 700px) {
   .auth-container {
     width: 100%;
@@ -75,5 +80,9 @@ select {
 
   .auth-container .div2 {
     padding: 5%;
+  }
+
+  .auth-container > .single-div {
+    width: 50% !important;
   }
 }

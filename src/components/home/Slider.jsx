@@ -13,8 +13,7 @@ const Item = ({ title, image }) => <div>
 
 
         <div className="overlay1">
-            {title}
-            <p>Additional text here if needed</p>
+            <h1>{title}</h1>
         </div>
     </div>
 

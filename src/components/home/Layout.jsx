@@ -134,7 +134,7 @@ const logout = () => {
             <div>
               {cart.map((item, index) => (
                 <div key={index}  className="flex-justify-sb cart-item" >
-                  {index + 1}{')'} {item.name} - ₦{item.price}
+                  {item.name} - ₦{item.price}
                   <span onClick={() => removeItemFromCart(index)} style={{ color: "red"}}><FaTrash/></span>
                   
                 </div>

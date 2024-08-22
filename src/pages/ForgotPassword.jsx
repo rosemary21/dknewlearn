@@ -67,14 +67,14 @@ const ForgotPassword = () => {
   return (
     <Layout>
       <div className="auth-container">
-        <div>
+        <div className="single-div">
           <br /><br />
           <h3>Forgot Password</h3>
           <br />
           <form onSubmit={handleSubmit}>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Type in your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -85,7 +85,7 @@ const ForgotPassword = () => {
           </form>
 
           <hr /><br />
-          <p>Or<Link to={'/login'} className="link"> Login</Link></p>
+          <p>Or<Link to={'/login'} className="link"> Login</Link></p><br /><br />
         </div>
       </div>
     </Layout>

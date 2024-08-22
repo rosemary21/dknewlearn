@@ -9,9 +9,10 @@ const Footer = () => {
           <div>
             <div>
               <h1 style={{ color: 'var(--color2)' }}>DK Learning</h1><br />
-              <p style={{ fontSize: '20px', color: "white"}}>The best online learning platform</p>
+              <p style={{ fontSize: '20px', color: "white"}}>The best online learning platform</p><br />
             </div>
           </div>
+          <div className="sub-footer-nav">
           <div>
             <p><Link to={'/teaching'}>Teach on DK Learning</Link></p>
             <p><a href="#">About us</a></p>
@@ -22,6 +23,7 @@ const Footer = () => {
             <p><a href="#">Privacy policy</a></p>
             <p><a href="#">Accessibility statement</a></p>
           </div>
+          </div>
         </div>
 
 
@@ -29,7 +31,7 @@ const Footer = () => {
 
       <div className="footer-down">
 
-        <div>
+        <div style={{ textAlign: "center"}}>
           <p>All right reserved © 2024 DK Learning.</p>
         </div>
       </div>

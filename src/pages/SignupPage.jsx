@@ -73,7 +73,7 @@ const SignupPage = () => {
           <img src={sideImage} alt="Side" />
         </div>
         <div className="div2">
-          <h3>Sign up and start learning</h3>
+          <h2>Sign up and start learning</h2><br />
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -117,7 +117,7 @@ const SignupPage = () => {
                 checked={termsAccepted}
                 onChange={(e) => setTermsAccepted(e.target.checked)}
               />
-              <span>By signing up, you agree to our Terms of Use and Privacy Policy.</span>
+              <span>&nbsp; By signing up, you agree to our Terms of Use and Privacy Policy.</span>
             </div>
             <button type="submit" className="submit-btn" disabled={loading}>
               {loading ? <FaSpinner className="spinner-icon" /> : "Sign up"}

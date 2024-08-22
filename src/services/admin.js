@@ -18,7 +18,7 @@ export const getAdmin = async () =>{
       }
 }
 
-export const getAllCourses = async (pageNo = 0) => {
+export const getAllCourses = async (pageNo = 1) => {
 
   const data = {
     "pageSize": 10,

@@ -94,7 +94,7 @@ const ResetPassword = () => {
 
 
           <hr /><br />
-          <p>Or<Link to={'/login'} className="link"> Login</Link></p>
+          <p>Or<Link to={'/login'} className="link"> Login</Link></p><br /><br />
         </div>
       </div>
     </Layout>

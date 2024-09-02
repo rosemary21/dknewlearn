@@ -21,7 +21,7 @@ const TutorCourses = () => {
     const fetchData = async () => {
       try {
         const userData = await getTutorCourses();
-        setCourses(userData.coursesDtos);
+        setCourses(userData?.coursesDtos);
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {

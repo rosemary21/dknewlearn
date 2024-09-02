@@ -950,9 +950,9 @@ footer .sub-footer-nav{
   max-width: 430px;
 }
 
-.teaching .reasons {
-  display: flex;
-  align-items: center;
+.teaching .reasons div{
+ margin-bottom: 20px;
+ text-align: center ;
 }
 
 @media screen and (min-width: 900px) {
@@ -1080,6 +1080,11 @@ footer .sub-footer-nav{
 
   .all-marginned {
     width: 90%;
+  }
+
+  .teaching .reasons {
+    display: flex;
+    align-items: center;
   }
 }
 

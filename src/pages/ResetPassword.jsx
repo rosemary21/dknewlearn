@@ -56,7 +56,8 @@ const ResetPassword = () => {
   return (
     <Layout>
       <div className="auth-container">
-        <div>
+        <div className="single-div">
+          <br /><br />
           <h3>Reset Password</h3>
           <br />
          
@@ -71,7 +72,7 @@ const ResetPassword = () => {
           />
 
 <input
-            type="password"
+            type="text"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

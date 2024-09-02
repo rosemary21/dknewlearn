@@ -46,6 +46,20 @@ select {
   margin-bottom: 20px;
 }
 
+.password-input-container{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.password-input-container input{
+  margin: 0;
+  border-right: 0;
+}
+
+.password-input-container button{
+  padding: 15px;
+}
 .link {
   text-decoration: none;
   color: rgb(232 14 15);

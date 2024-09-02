@@ -86,7 +86,9 @@ const logout = () => {
             <Link to={"/categories"}>
               <p className="nav-link">Categories</p>
             </Link>
-            <p className="nav-link">Become a teacher</p>
+            <Link to={"/teaching"}>
+            <p className="nav-link">Signup as teacher</p>
+            </Link>
             <br />
             <p>
               <Link to={"/login"}>

@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url, token } from "../../config/config";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa6";
 
 const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -49,8 +51,8 @@ const ChangePassword = () => {
   return (
     <Layout>
       <div className="auth-container">
-        <div>
-          <h3>Change Password</h3><br />
+        <div><br /><br />
+          <h2>Change Password</h2><br /><br />
           <div className="password-input-container">
             <input 
               type={showOldPassword ? "text" : "password"}
@@ -63,7 +65,7 @@ const ChangePassword = () => {
               className="password-toggle-btn"
               onClick={() => setShowOldPassword(!showOldPassword)}
             >
-              {showOldPassword ? "Hide" : "View"}
+              {showOldPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           <div className="password-input-container">
@@ -78,7 +80,7 @@ const ChangePassword = () => {
               className="password-toggle-btn"
               onClick={() => setShowNewPassword(!showNewPassword)}
             >
-              {showNewPassword ? "Hide" : "View"}
+              {showNewPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           <div className="password-input-container">
@@ -93,7 +95,7 @@ const ChangePassword = () => {
               className="password-toggle-btn"
               onClick={() => setShowConfirmNewPassword(!showConfirmNewPassword)}
             >
-              {showConfirmNewPassword ? "Hide" : "View"}
+              {showConfirmNewPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           <button 

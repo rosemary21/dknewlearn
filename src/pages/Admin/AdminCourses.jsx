@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Modal from "../../components/ui/Modal";
 import { toast } from "react-toastify";
 import Pagination from "../../components/ui/Pagination";
+import { api_url } from "../../config/config";
+import { FiSearch } from "react-icons/fi";
 
 const AdminCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -67,6 +69,42 @@ const AdminCourses = () => {
     }
   };
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState([]);
+  const handleSearchChange = async (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+  
+    if (value.length >= 3) {
+      setLoading(true);
+      try {
+
+        const response = await fetch(`${api_url}/course/search`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            search: value,
+            "pageSize":10,
+            "pageNo":0
+          }),
+        });
+        const data = await response.json();
+        setCourses(data.coursesDtos); // Adjust according to your API response structure
+    
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setCourses([]);
+
+    }
+  };
+  
+
   return (
     <AdminLayout>
       <div className="marginned">
@@ -77,8 +115,21 @@ const AdminCourses = () => {
         <div className="detail-card">
           <h3>Total Courses</h3>
           <br />
-          <p>10</p>
+          <p>0</p>
         </div>
+
+        <div className="search-bar">
+            <FiSearch className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search by course or author name here..."
+              className="search-input"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+      
+          </div>
+          <br />
 
         <div className="table-container">
           <table className="custom-table">
@@ -115,6 +166,8 @@ const AdminCourses = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+
+      <div>ewq</div>
 
         {selectedCourse && (
           <Modal show={true} handleClose={hideModal}>

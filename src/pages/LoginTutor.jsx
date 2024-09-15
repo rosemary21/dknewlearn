@@ -36,6 +36,7 @@ const LoginTutor = () => {
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("email", response.data.emailAddress);
+      localStorage.setItem("user", response.data?.fullName);
 
       setTimeout(() => {
         window.location.href = "/tutor"

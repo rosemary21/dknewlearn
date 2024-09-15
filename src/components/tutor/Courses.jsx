@@ -117,9 +117,11 @@ function Courses() {
         )}
       </div><br />
       <div>
-        {activeSlide === 3 ? (
+        {activeSlide === 3 && (
           <button onClick={() => setActiveSlide(2)}>Back to Sections</button>
-        ) : (
+        )} 
+        
+        {activeSlide === 2 && (
           <>
             <button
               style={{ marginTop: "40px", background: "green" }}

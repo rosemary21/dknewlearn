@@ -11,6 +11,8 @@ const TutorEarnings = () => {
   const [status, setStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalData, setTotalData] = useState('');
+  
 
   const navigate = useNavigate();
 
@@ -18,9 +20,10 @@ const TutorEarnings = () => {
     try {
       const userData = await getTutorCourses(currentPage - 1);
       setCourses(userData?.coursesDtos);
-      console.log(userData?.coursesDtos);
+      setTotalData(userData?.totalData)
+  
     } catch (error) {
-      console.error("Error fetching user data:", error);
+      console.error("Error fetching courses:", error);
       toast.error("Unable to get all courses at the moment, please try again later")
     } finally {
       setLoading(false);
@@ -83,7 +86,7 @@ const TutorEarnings = () => {
 
         <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalData={totalData}
         onPageChange={handlePageChange}
       />
 

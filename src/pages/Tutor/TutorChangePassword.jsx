@@ -101,11 +101,11 @@ const TutorChangePassword = () => {
             onClick={handlePasswordChange}
             disabled={loading}
           >
-            {loading ? 'Changing...' : 'Change Password'}
+            {loading ? 'Updating...' : 'Change Password'}
           </button>
 
           <hr /><br />
-          <p><Link to={'/tutor/settings'} className="link">Go back to profile</Link></p>
+          <p><Link to={'/tutor/settings'} className="link">Go back to settings</Link></p>
         </div> 
       </div>
     </TutorLayout>

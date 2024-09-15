@@ -136,7 +136,7 @@
 }
 .explore-python div {
   margin-right: 1.25rem;
-  max-width: 300px;
+  max-width: 250px;
   cursor: pointer;
   margin-bottom: 20px;
 }
@@ -166,7 +166,7 @@
   color: #6a6f73;
   margin-left: 1.25rem;
 }
-.explore-python button {
+/* .explore-python button {
   width: 4.5rem;
   height: 1.375rem;
   background: #eceb98;
@@ -178,7 +178,7 @@
   border: 0.0625rem solid #eceb98;
   margin-top: 0.625rem;
   cursor: pointer;
-}
+} */
 
 /* goal section styling */
 .goals {
@@ -1185,7 +1185,14 @@ footer .sub-footer-nav{
     grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
     gap: 2%;
   }
+
+  .explore-python2{
+    grid-template-columns:  32% 32% 32% !important;
+    gap: 2%;
+  }
 }
+
+
 
 @media screen and (min-width: 1500px) {
   .explore-python{
@@ -1237,4 +1244,12 @@ footer .sub-footer-nav{
 
 button{
   cursor: pointer;
+}
+
+
+/* search page */
+
+.search-page{
+  margin-top: 30px;
+  padding: 5%;
 }

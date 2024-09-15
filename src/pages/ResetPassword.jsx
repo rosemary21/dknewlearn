@@ -60,35 +60,35 @@ const ResetPassword = () => {
           <br /><br />
           <h3>Reset Password</h3>
           <br />
-         
+
 
           <form onSubmit={handleSubmit}>
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            disabled
-          />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              disabled
+            />
 
-<input
-            type="text"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+            <input
+              type="text"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
 
-          <input
-            type="number"
-            placeholder="Otp"
-            value={otp}
-            onChange={(e) => setOtp(e.target.value)}
-            required
-          />
+            <input
+              type="number"
+              placeholder="Otp"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              required
+            />
 
 
-          <button className="submit-btn">Reset Password</button>
+            <button className="submit-btn">Reset Password</button>
           </form>
 
 

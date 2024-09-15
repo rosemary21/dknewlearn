@@ -77,7 +77,7 @@ const logout = () => {
 }
 
   return (
-    <div>
+    <div className="home">
       <Header onToggleAside={toggleAside} toggleCart={toggleCart} onToggleProfileNav={onToggleProfileNav} />
 
       {isAsideVisible && (
@@ -157,7 +157,9 @@ const logout = () => {
       )}
 
       <main className="user-main-content">
+        <div className="main-container">
         {children}
+        </div>
         <Footer />
         <ToastContainer />
       </main>

@@ -108,7 +108,9 @@ const ChangePassword = () => {
 
           <hr /><br />
           <p><Link to={'/edit-profile'} className="link">Go back to profile</Link></p>
+          <br /><br /><br /> 
         </div> 
+    
       </div>
     </Layout>
   );

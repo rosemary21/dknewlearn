@@ -11,6 +11,8 @@ const TutorCourseReview = () => {
   const [status, setStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalData, setTotalData] = useState('');
+
 
   const navigate = useNavigate();
 
@@ -18,6 +20,7 @@ const TutorCourseReview = () => {
     try {
       const userData = await getTutorCourses(currentPage - 1);
       setCourses(userData?.coursesDtos);
+      setTotalData(userData?.totalData)
       console.log(userData?.coursesDtos);
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -58,7 +61,7 @@ const TutorCourseReview = () => {
         <div className="detail-card">
           <h3>Total Courses</h3>
           <br />
-          <p>{courses && courses.length}</p>
+          <p>{courses ? courses.length: 0}</p>
         </div>
 
         <div className="table-container">
@@ -87,7 +90,7 @@ const TutorCourseReview = () => {
 
         <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalData={totalData}
         onPageChange={handlePageChange}
       />
 

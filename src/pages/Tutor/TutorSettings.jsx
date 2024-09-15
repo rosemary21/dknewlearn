@@ -25,6 +25,14 @@ const TutorSettings = () => {
       try {
         const userData = await getTutor();
         setData(userData.staffDto);
+        setAccountNumber(userData.staffDto?.accountDetailDtoList[0]?.accountNumber)
+        setAccountName(userData.staffDto?.accountDetailDtoList[0]?.accountName)
+        setBankName(userData.staffDto?.accountDetailDtoList[0]?.bankName)
+        setCurrency(userData.staffDto?.accountDetailDtoList[0]?.currency)
+
+        
+
+
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {
@@ -61,7 +69,12 @@ const TutorSettings = () => {
       gender: data.gender,
       age: data.age,
       accountDetailDtoList: [
-        {}
+        {
+          accountName:accountName,
+            accountNumber:accountNumber,
+            bankName:bankName,
+            currency:currency
+        }
       ]
     }
 
@@ -89,7 +102,7 @@ const TutorSettings = () => {
         <div className='panel1'>
           <img src={profile} alt="" className='profile-picture' /><br /><br />
 
-          <h3>David Mark</h3>
+          <h3>{data?.fullName}</h3>
 
           <div>
             <Link to={'/tutor/change-password'} className='link-btn'><p>Change Password</p></Link>

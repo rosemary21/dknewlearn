@@ -33,7 +33,11 @@ select {
 }
 
 .auth-container input::placeholder {
-  color: black;
+  color: rgb(77, 75, 75);
+}
+
+.auth-container select {
+  color: rgb(77, 75, 75);
 }
 
 .submit-btn {

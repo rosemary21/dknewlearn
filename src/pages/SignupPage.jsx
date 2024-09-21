@@ -46,7 +46,7 @@ const SignupPage = () => {
         confirmPassword
       });
 
-      toast.success("Signup successful! Please check your email to verify your account.");
+      toast.success("Signup successful!");
 
       setTimeout(()=>{
         window.location.href = "/login"

@@ -10,7 +10,6 @@ const TutorEarnings = () => {
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
   const [totalData, setTotalData] = useState('');
   
 

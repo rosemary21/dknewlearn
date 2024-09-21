@@ -14,7 +14,6 @@ const LoginAdmin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,6 +35,7 @@ const LoginAdmin = () => {
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("email", response.data.emailAddress);
+      localStorage.setItem("role", "admin");
 
       setTimeout(() => {
         window.location.href = "/admin"

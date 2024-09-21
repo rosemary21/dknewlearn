@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { FaSpinner } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaSpinner } from "react-icons/fa";
 import "../styles/auth.css";
 import { api_url } from "../config/config";
 
@@ -21,6 +21,9 @@ const SignupTutor = () => {
   const [age, setAge] = useState("");
   const [certificate, setCertificate] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // State variable for handling the form submission status
   const [loading, setLoading] = useState(false);
@@ -54,7 +57,11 @@ const SignupTutor = () => {
         certificateUrl: certificate,
       });
 
-      toast.success("Signup successful! Please check your email to verify your account.");
+      toast.success("Signup successful!");
+
+      setTimeout(()=>{
+        window.location.href = "/tutor-login"
+      }, 2000)
     } catch (error) {
       
       console.log(error)
@@ -72,9 +79,6 @@ const SignupTutor = () => {
   return (
     <Layout>
       <div className="auth-container">
-        {/* <div className="div1">
-          <img src={profileImage} alt="Profile" />
-        </div> */}
         <div className="div2">
           <h2>Sign up and start teaching</h2><br />
           <form onSubmit={handleSubmit}>
@@ -99,20 +103,40 @@ const SignupTutor = () => {
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
             />
-            <input
-              type="text"
-              placeholder="Password"
+
+<div className="password-input-container">
+            <input 
+              type={showPassword ? "text" : "password"}
+              placeholder="Password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
-            <input
-              type="text"
-              placeholder="Confirm Password"
+            <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+
+          <div className="password-input-container">
+            <input 
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Confirm Password" 
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              required
             />
+            <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+
+
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -138,9 +162,6 @@ const SignupTutor = () => {
               onChange={(e) => setAge(e.target.value)}
               required
             />
-            <label htmlFor="certificate" style={{ textAlign: 'center', display: 'block' }}>
-              Certificate (URL)
-            </label>
             <input
               type="text"
               id="certificate"
@@ -156,7 +177,7 @@ const SignupTutor = () => {
                 checked={termsAccepted}
                 onChange={(e) => setTermsAccepted(e.target.checked)}
               />
-              <span>By signing up, you agree to our <Link to={'/terms-and-policy'}>Terms of Use and Privacy Policy</Link>.</span>
+              <span>&nbsp; By signing up, you agree to our <Link to={'/terms-and-policy'}>Terms of Use and Privacy Policy</Link>.</span>
             </div>
             <button type="submit" className="submit-btn" disabled={loading}>
               {loading ? <FaSpinner className="spinner-icon" /> : "Sign up"}

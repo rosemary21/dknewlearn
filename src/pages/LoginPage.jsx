@@ -40,6 +40,8 @@ const LoginPage = () => {
       localStorage.setItem("token", response.data.token)
       localStorage.setItem("email", response.data.emailAddress)
 
+      localStorage.setItem("role", "user");
+
       setTimeout(()=>{
         window.location.href = "/home/my-courses"
       }, 2000)

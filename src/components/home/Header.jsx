@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FaBars, FaBell, FaHeart, FaHome } from 'react-icons/fa'
 import { FaCartShopping } from 'react-icons/fa6'
 import { FiSearch } from 'react-icons/fi'
-import profile from "../../assets/profile1.webp";
+import profile from "../../assets/profile1.png";
 import { Link } from 'react-router-dom';
 import useAuth from '../../services/auth';
 import { api_url } from '../../config/config';
@@ -19,6 +19,10 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
   
 
   const [cart, setCart] = useState(null);
+
+  const role = localStorage.getItem("role");
+
+
   function displayCart() {
     // Get the cart data from localStorage
     let cartItems = localStorage.getItem("cart");
@@ -88,12 +92,7 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
 
   return (
     <div>
-      {/* <section class="upper-nav">
-        <p>
-          Streamline your career success
-          <span>| Start learning toward your next big milestone today.</span>
-        </p>
-      </section> */}
+
       <header>
         <div className='toogle-nav'>
           <FaBars className='header-icons' onClick={onToggleAside} />
@@ -133,7 +132,6 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
         <div className='header-links'>
           <Link to={'/categories'}><span>Categories</span></Link>
           <Link to={'/teaching'}><span>Become a Instructor</span></Link>
-          {/* <span>My learning</span> */}
         </div>
         <div className='header-aside'>
 
@@ -150,13 +148,15 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
 
               <span className='header-icons2'><Link to={"/home/notifications"}><FaBell className='header-icons' /></Link>
               </span>
+
               <img
                 src={profile}
                 alt="profile Image"
                 className="profile-image"
 
-                onClick={onToggleProfileNav}
+                onClick={role == "user" && onToggleProfileNav}
               />
+              
             </>
           ) : (
             <span className='header-btn'>

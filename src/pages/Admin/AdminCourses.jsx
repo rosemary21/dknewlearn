@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../../components/admin/AdminLayout";
 import { getAllCourses, updateCourse } from "../../services/admin";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "../../components/ui/Modal";
 import { toast } from "react-toastify";
 import Pagination from "../../components/ui/Pagination";
@@ -72,7 +72,7 @@ const AdminCourses = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   const handleSearchChange = async (e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setSearchTerm(value);
   
     if (value.length >= 3) {
@@ -98,11 +98,40 @@ const AdminCourses = () => {
       } finally {
         setLoading(false);
       }
-    } else {
+    } else if (value.length == 0) {
+      fetchData();
+    }
+    else {
       setCourses([]);
 
     }
   };
+
+
+  const getDate = (dateArray) => {
+    const date = new Date(Date.UTC(
+      dateArray[0],   // Year
+      dateArray[1] - 1, // Month (JS months are 0-indexed, so subtract 1)
+      dateArray[2],   // Day
+      dateArray[3],   // Hour
+      dateArray[4],   // Minute
+      dateArray[5]    // Second
+    ));
+    
+    // Format the date in a human-readable form
+    const formattedDate = date.toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: true
+    });
+
+    return formattedDate
+
+  }
   
 
   return (
@@ -115,7 +144,7 @@ const AdminCourses = () => {
         <div className="detail-card">
           <h3>Total Courses</h3>
           <br />
-          <p>0</p>
+          <p>{courses ? courses.length : 0}</p>
         </div>
 
         <div className="search-bar">
@@ -140,18 +169,20 @@ const AdminCourses = () => {
                 <th>Amount</th>
                 <th>Author</th>
                 <th>Status</th>
+                <th>Date Created</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {courses &&
-                courses.map((course, index) => (
+                courses.map((course, index) =>(
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{course?.title}</td>
+                    <td><Link to={`/course/${course?.id}`}>{course?.title}</Link> </td>
                     <td>{course?.nairaPrice}</td>
                     <td>{course?.author}</td>
                     <td>{course?.status}</td>
+                    <td>{course?.timeCreated ? getDate(course?.timeCreated): "null"}</td>
                     <td>
                       <button onClick={() => showModal(course)}>Update</button>
                     </td>
@@ -166,8 +197,6 @@ const AdminCourses = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
-
-      <div>ewq</div>
 
         {selectedCourse && (
           <Modal show={true} handleClose={hideModal}>

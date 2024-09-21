@@ -317,7 +317,7 @@ header h1{
   @media screen and (max-width: 1100px) {
 
 
-    .search-bar {
+    header .search-bar {
       display: none;
     }
   }

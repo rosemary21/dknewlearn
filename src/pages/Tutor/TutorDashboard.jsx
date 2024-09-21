@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TutorLayout from "../../components/tutor/TutorLayout";
 import Courses from "../../components/tutor/Courses";
-import profileImg from "../../assets/profile1.webp";
+import profileImg from "../../assets/profile1.png";
 import { Link } from "react-router-dom";
 
 const TutorDashboard = () => {
+
+  const [user, setUser] = useState(localStorage.getItem("user") || "Tutor")
+
   return (
     <TutorLayout>
       <div className="tutor-courses">
@@ -20,7 +23,7 @@ const TutorDashboard = () => {
                   borderRadius: "100%",
                 }}
               />
-              <p>Welcome, David Mark</p>
+              <p>Welcome, {user}</p>
             </div>
           </div>
         </div>

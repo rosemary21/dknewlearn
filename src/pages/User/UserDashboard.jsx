@@ -74,16 +74,17 @@ const UserDashboard = () => {
         </div>
         <div className="main-section">
           <div className="section1">
-            <h4>Schedule learning time</h4>
+            <h4>Checkout other courses</h4>
+            <br />
             <p>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals. Set time aside to learn and get reminders using your learning scheduler.</p>
             <br />
-            <button className="primary-btn">Get Started</button><span>&emsp; Dismiss</span>
+            <Link to="/"><button className="primary-btn">View</button></Link>
           </div>
 
           <section class="courses-sec">
           <h1>My courses</h1>
 
-          <input type="text" className="search-input" placeholder="Search your courses..." />
+          {/* <input type="text" className="search-input" placeholder="Search your courses..." /> */}
 
           <div class="course-links">
             <a href="#">Python</a>

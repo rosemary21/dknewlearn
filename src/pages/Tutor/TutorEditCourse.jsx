@@ -81,6 +81,9 @@ const TutorEditCourse = () => {
   };
 
   const handleSaveSeries = () => {
+    if(selectedSeries.title == ""){
+      return
+    }
     const updatedSeriesList = selectedSection.seriesList.map((series) =>
       series.title === selectedSeries.title ? selectedSeries : series
     );
@@ -95,6 +98,9 @@ const TutorEditCourse = () => {
   };
 
   const handleSectionTitleChange = (sectionId, title) => {
+    if(title == ""){
+      return
+    }
     const updatedSections = course.sectionDto.map((section) =>
       section.id === sectionId ? { ...section, title } : section
     );
@@ -136,8 +142,8 @@ const TutorEditCourse = () => {
 
           {/* Sections Slide */}
           {activeSlide === 'sections' && (
-            <div className="slide active">
-              <h3>Sections</h3>
+            <div className="slide active"><br /><br />
+              <h3>Sections</h3><br />
               <div className="table-container">
                 <table className="table">
                   <thead>
@@ -158,7 +164,7 @@ const TutorEditCourse = () => {
                           />
                         </td>
                         <td>
-                          <button onClick={() => handleSectionClick(section)}>
+                          <button onClick={() => handleSectionClick(section)} style={{ height: "50px"}}>
                             Edit Series
                           </button>
                         </td>
@@ -174,21 +180,25 @@ const TutorEditCourse = () => {
 
           {/* Series Slide */}
           {activeSlide === 'series' && selectedSection && (
-            <div className="slide active">
-              <h3>Series in {selectedSection.title}</h3>
+            <div className="slide active"><br />
+              <h3>Series in {selectedSection.title}</h3><br />
               <div className="table-container">
                 <table className="table">
                   <thead>
                     <tr>
                       <th>Title</th>
-                      <th>Video</th>
+                      <th>Videof</th>
+                      <th>Edit</th>
                     </tr>
                   </thead>
                   <tbody>
                     {selectedSection?.seriesList?.map((series) => (
                       <tr key={series?.title} onClick={() => handleSeriesClick(series)}>
                         <td>{series?.title}</td>
-                        <td>{series?.videoLink}</td>
+                        <td style={{ maxWidth: "100px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+  {series?.videoLink}
+</td>
+                        <td><button>Edit</button></td>
                       </tr>
                     ))}
                   </tbody>
@@ -201,8 +211,10 @@ const TutorEditCourse = () => {
 
           {/* Edit Series Slide */}
           {activeSlide === 'editSeries' && selectedSeries && (
-            <div className="slide active">
-              <h3>Edit Series</h3>
+            <div className="slide active"><br /><br />
+              <h3>Edit Series</h3><br />
+
+              <label htmlFor="">Series title</label>
               <input
                 type="text"
                 value={selectedSeries.title}
@@ -210,6 +222,16 @@ const TutorEditCourse = () => {
                   setSelectedSeries({ ...selectedSeries, title: e.target.value })
                 }
               />
+
+<label htmlFor="">Series resource link</label>
+              <input
+                type="text"
+                value={selectedSeries.resourceFile}
+                onChange={(e) =>
+                  setSelectedSeries({ ...selectedSeries, resourceFile: e.target.value })
+                }
+              />
+              <br /><br />
               <button onClick={handleBackToSeries}>Back</button>
               <button onClick={handleSaveSeries}>Save Series</button>
             </div>

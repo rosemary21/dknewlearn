@@ -9,7 +9,8 @@ const CourseDetails = ({ onNext }) => {
     courseCategory: '',
     title: '',
     description: '',
-    nairaPrice: ''
+    nairaPrice: '',
+    author: localStorage.getItem("user") || "Tutor"
   });
 
   const [image, setImage] = useState(null);

@@ -32,15 +32,18 @@ const LoginTutor = () => {
         password,
       });
 
-      toast.success("Login successful! Redirecting...");
+      toast.success("Login successful!");
+
+      console.log(response.data)
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("email", response.data.emailAddress);
-      localStorage.setItem("user", response.data?.fullName);
+      localStorage.setItem("user", response.data?.userName);
+      localStorage.setItem("role", "tutor");
 
       setTimeout(() => {
         window.location.href = "/tutor"
-      }, 2000);
+      }, 1000);
 
     } catch (error) {
 

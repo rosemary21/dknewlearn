@@ -14,14 +14,9 @@ const Layout = ({ children }) => {
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
 
-  const navigate = useNavigate()
- 
-
   const [cart, setCart] = useState([]);
 
   const auth = useAuth()
-
-  console.log(auth)
 
   const toggleAside = () => {
     setIsAsideVisible(!isAsideVisible);
@@ -34,6 +29,8 @@ const Layout = ({ children }) => {
   const onToggleProfileNav = () => {
     setIsProfileNavVisible(!isProfileNavVisible);
   };
+
+
 
   const displayCart = () => {
     let cartItems = localStorage.getItem("cart");
@@ -73,7 +70,7 @@ const Layout = ({ children }) => {
 
 const logout = () => {
     localStorage.clear()
-    navigate("/")
+    window.location.href = "/"
 }
 
   return (
@@ -113,14 +110,11 @@ const logout = () => {
             <Link to={"/home/cart"}>
               <p className="nav-link">Cart</p>
             </Link>
-            <Link to={"/home/notifications"}>
-              <p className="nav-link">Notifications</p>
-            </Link>
-            <Link to={"/subscriptions"}>
-              <p className="nav-link">My Subscriptions</p>
-            </Link>
             <Link to={"/edit-profile"}>
               <p className="nav-link">Profile</p>
+            </Link>
+            <Link to={"/change-password"}>
+              <p className="nav-link">Change Password</p>
             </Link>
             <p>
  

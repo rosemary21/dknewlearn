@@ -106,13 +106,7 @@ const HomePage = () => {
             Choose from 100 online video courses with new additions published
             every month
           </p>
-          <div class="course-links">
-            <a href="#">Python</a>
-            <a href="#">Cybersecurity</a>
-            <a href="#">Web Development</a>
-            <a href="#">Product Design</a>
-            <a href="#">Data Science</a>
-          </div>
+
 
           <div class="career-opportunities">
 
@@ -120,7 +114,7 @@ const HomePage = () => {
               <div className="explore-python">
                 {courses.map((course, index) => (
                   <div key={index} onClick={() => handleCourseClick(course)}>
-                    <img src={course?.courseImageUrl || courseImg1} alt={course.title} />
+                    <img src={course?.courseImageUrl || courseImg1} alt={course.title} style={{ height: "200px"}} />
                     <h3>{course.title}</h3>
                     <p>{course.author}</p>
                     <p>

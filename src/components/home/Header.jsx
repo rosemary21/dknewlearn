@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { FaBars, FaBell, FaHeart, FaHome } from 'react-icons/fa'
 import { FaCartShopping } from 'react-icons/fa6'
 import { FiSearch } from 'react-icons/fi'
@@ -6,6 +6,7 @@ import profile from "../../assets/profile1.png";
 import { Link } from 'react-router-dom';
 import useAuth from '../../services/auth';
 import { api_url } from '../../config/config';
+import { CartContext } from '../../context/CartContext';
 
 const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
 
@@ -16,31 +17,12 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
   const [results, setResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [loading, setLoading] = useState(false);
-  
-
-  const [cart, setCart] = useState(null);
 
   const role = localStorage.getItem("role");
 
 
-  function displayCart() {
-    // Get the cart data from localStorage
-    let cartItems = localStorage.getItem("cart");
+  const { cart } = useContext(CartContext);
 
-    // If cart data exists, parse it from JSON
-    if (cartItems) {
-      cartItems = JSON.parse(cartItems);
-
-      setCart(cartItems);
-    } else {
-      // If cart data doesn't exist, display a message indicating an empty cart
-      console.log("Cart is empty");
-    }
-  }
-
-  useEffect(() => {
-    displayCart();
-  }, []);
   const dropdownRef = useRef();
 
   const handleSearchChange = async (e) => {

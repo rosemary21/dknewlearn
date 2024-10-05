@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../components/home/Layout'
 import courseImage from "../assets/course-img1.png";
 import { FaStar } from 'react-icons/fa';
 import { getCourses, getSingleCourse } from '../services/user';
+import { toast } from 'react-toastify';
+import { CartContext } from '../context/CartContext';
 
 
 const SingleCoursePage = () => {
@@ -11,6 +13,7 @@ const SingleCoursePage = () => {
   const { id } = useParams();
   const [courseId, setCourseId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     if (id) {
@@ -40,29 +43,43 @@ const SingleCoursePage = () => {
   }, [id]);
 
 
-  function addToCart(item) {
-    // Check if cart already exists in localStorage
-    let cart = localStorage.getItem('cart');
+  // function addToCart(item) {
+  //   // Check if cart already exists in localStorage
+  //   let cart = localStorage.getItem('cart');
+  
+  //   // If cart doesn't exist, create an empty array
+  //   if (!cart) {
+  //     cart = [];
+  //   } else {
+  //     // Parse existing cart from JSON
+  //     cart = JSON.parse(cart);
+  //   }
+  
+  //   // Check if item already exists in the cart
+  //   const itemExists = cart.some(cartItem => cartItem.id === item.id); // Assuming items have a unique 'id'
+  
+  //   if (itemExists) {
+  //     // Show a toast notification for existing item
+  //     toast.warning("This item is already in your cart!")
+  //   } else {
+  //     // Add item to cart
+  //     cart.push(item);
+  
+  //     // Store updated cart back to localStorage
+  //     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // If cart doesn't exist, create an empty array
-    if (!cart) {
-      cart = [];
-    } else {
-      // Parse existing cart from JSON
-      cart = JSON.parse(cart);
-    }
 
-    // Add item to cart
-    cart.push(item);
+  //     toast.success("Item added to cart successfully!")
 
-    // Store updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
+
+  //     localStorage.setItem("refresh", true)
+
+  //   // location.reload()
+  //   }
+  // }
 
   const addCart = () => {
     addToCart({ id: course.id, name: course.title, price: course.nairaPrice })
-
-    location.reload()
   }
 
 
@@ -127,9 +144,7 @@ const SingleCoursePage = () => {
 
               <br /><br />
               <button className='btn1' onClick={addCart} >Add to cart</button>
-              {/* <button className='btn2'>Buy Now</button> */}
 
-              <p>30-Day Money-Back Guarantee</p>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import "./layout.css";
@@ -8,13 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { checkout } from "../../services/cart";
 import useAuth from "../../services/auth";
 import { FaTrash } from "react-icons/fa";
+import { CartContext } from "../../context/CartContext";
 
 const Layout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
 
-  const [cart, setCart] = useState([]);
+  const { cart, removeItemFromCart, clearCart } = useContext(CartContext);
   const [loading, setLoading] = useState(null);
 
   const auth = useAuth()
@@ -33,49 +34,10 @@ const Layout = ({ children }) => {
 
   const role = localStorage.getItem("role") || null
 
-
-
-  const displayCart = () => {
-    let cartItems = localStorage.getItem("cart");
-    if (cartItems) {
-      setCart(JSON.parse(cartItems));
-    } else {
-      setCart([]);
-    }
-  };
-
-  const addItemToCart = (item) => {
-    const updatedCart = [...cart, item];
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    toast.success("Item added to cart!");
-  };
-
-  const removeItemFromCart = (index) => {
-    const updatedCart = cart.filter((_, i) => i !== index);
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    toast.info("Item removed from cart.");
-  };
-
-  const clearCart = () => {
-    setCart([]);
-    localStorage.removeItem("cart");
-    toast.warn("Cart cleared.");
-  };
-
   const checkoutOne = () => {
     setLoading(true)
     checkout(auth)
   }
-
-
-
-
-  useEffect(() => {
-    displayCart();
-  
-  }, []);
 
 const logout = () => {
     localStorage.clear()
@@ -179,7 +141,7 @@ const logout = () => {
               {cart.map((item, index) => (
                 <div key={index}  className="flex-justify-sb cart-item" >
                   {item.name} - ₦{item.price}
-                  <span onClick={() => removeItemFromCart(index)} style={{ color: "red"}}><FaTrash/></span>
+                  <span onClick={() => removeItemFromCart(index)} style={{ color: "red", cursor: "pointer"}}><FaTrash/></span>
                   
                 </div>
               ))}

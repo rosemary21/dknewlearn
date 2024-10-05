@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TutorLayout from '../../components/tutor/TutorLayout'
-import profile from "../../assets/profile1.webp";
+import profile from "../../assets/profile1.png";
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { api_url, token } from '../../config/config';

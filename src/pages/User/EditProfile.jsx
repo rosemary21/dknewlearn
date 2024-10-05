@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../components/home/Layout'
-import profile from "../../assets/profile1.webp";
+import profile from "../../assets/profile1.png";
 import { Link } from 'react-router-dom';
 import { getUser } from '../../services/user';
 import { FaSpinner } from 'react-icons/fa';

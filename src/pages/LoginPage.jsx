@@ -6,7 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { FaSpinner } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaSpinner } from "react-icons/fa";
 import "../styles/auth.css";
 import { api_url } from "../config/config";
 
@@ -14,6 +14,7 @@ const LoginPage = () => {
   // State variables for form inputs
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   // State variable for handling the form submission status
   const [loading, setLoading] = useState(false);
@@ -35,7 +36,7 @@ const LoginPage = () => {
         password,
       });
 
-      toast.success("Login successful! Redirecting...");
+      toast.success("Login successful!");
 
       localStorage.setItem("token", response.data.token)
       localStorage.setItem("email", response.data.emailAddress)
@@ -80,13 +81,25 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+
+<div className="password-input-container">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+                 <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+            </div>
+
+
             <button type="submit" className="submit-btn" disabled={loading}>
               {loading ? <FaSpinner className="spinner-icon" /> : "Login"}
             </button>

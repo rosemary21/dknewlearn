@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { FaSpinner } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaSpinner } from "react-icons/fa";
 import "../styles/auth.css";
 import { api_url } from "../config/config";
 
@@ -17,6 +17,9 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // State variable for handling the form submission status
   const [loading, setLoading] = useState(false);
@@ -96,20 +99,37 @@ const SignupPage = () => {
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
             />
-            <input
-              type="password"
-              placeholder="Password"
+<div className="password-input-container">
+            <input 
+              type={showPassword ? "text" : "password"}
+              placeholder="Password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
-            <input
-              type="password"
-              placeholder="Confirm Password"
+            <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+
+          <div className="password-input-container">
+            <input 
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Confirm Password" 
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              required
             />
+            <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
             <div>
               <input
                 type="checkbox"

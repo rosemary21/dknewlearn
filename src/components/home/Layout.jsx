@@ -15,6 +15,7 @@ const Layout = ({ children }) => {
   const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
 
   const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(null);
 
   const auth = useAuth()
 
@@ -29,6 +30,8 @@ const Layout = ({ children }) => {
   const onToggleProfileNav = () => {
     setIsProfileNavVisible(!isProfileNavVisible);
   };
+
+  const role = localStorage.getItem("role") || null
 
 
 
@@ -60,6 +63,12 @@ const Layout = ({ children }) => {
     localStorage.removeItem("cart");
     toast.warn("Cart cleared.");
   };
+
+  const checkoutOne = () => {
+    setLoading(true)
+    checkout(auth)
+  }
+
 
 
 
@@ -102,18 +111,42 @@ const logout = () => {
       )}
 
       {isProfileNavVisible && (
+
+
         <div className="profile-nav">
-          <div className="">
-            <Link to={"/home/my-courses"}>
-              <p className="nav-link">My Learning</p>
+
+          {role == "user" ? (
+              <div className="">
+
+
+
+              <Link to={"/home/my-courses"}>
+                <p className="nav-link">My Learning</p>
+              </Link>
+              <Link to={"/home/cart"}>
+                <p className="nav-link">Cart</p>
+              </Link>
+              <Link to={"/edit-profile"}>
+                <p className="nav-link">Profile</p>
+              </Link>
+              <Link to={"/change-password"}>
+                <p className="nav-link">Change Password</p>
+              </Link>
+              <p>
+   
+                  <button className="btn2 btn3" onClick={logout}>Logout</button>
+              </p>
+            </div>
+
+          ) : role == "tutor" ? (
+            <div className="">
+            <Link to={"/tutor"}>
+              <p className="nav-link">Dashboard</p>
             </Link>
-            <Link to={"/home/cart"}>
-              <p className="nav-link">Cart</p>
+            <Link to={"/tutor/settings"}>
+              <p className="nav-link">Settings</p>
             </Link>
-            <Link to={"/edit-profile"}>
-              <p className="nav-link">Profile</p>
-            </Link>
-            <Link to={"/change-password"}>
+            <Link to={"/tutor/change-password"}>
               <p className="nav-link">Change Password</p>
             </Link>
             <p>
@@ -121,6 +154,21 @@ const logout = () => {
                 <button className="btn2 btn3" onClick={logout}>Logout</button>
             </p>
           </div>
+          ) : role == "admin" ? (
+            <div className="">
+            <Link to={"/admin"}>
+              <p className="nav-link">Dashboard</p>
+            </Link>
+            <p>
+ 
+                <button className="btn2 btn3" onClick={logout}>Logout</button>
+            </p>
+          </div>
+          ) : (
+            <>
+            </>
+          ) }
+        
         </div>
       )}
 
@@ -137,7 +185,7 @@ const logout = () => {
               ))}
               <br /><br />
               <div className="flex-justify-sb">
-                <button className="btn2" style={{ padding: "10px"}} onClick={() => checkout(auth)}>Check out</button>
+                <button className="btn2" style={{ padding: "10px"}} onClick={checkoutOne} disabled={loading}>{loading ? 'Loading...' : 'Check out'}</button>
                 <button className="btn3" style={{ width: "auto", padding: "10px"}} onClick={clearCart}>Clear Cart</button>
               </div>
             </div>

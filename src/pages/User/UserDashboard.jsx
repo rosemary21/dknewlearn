@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/home/Layout";
-
 import '../../styles/dashboard.css'
-
-import courseImg1 from "../../assets/course-img1.png";
-import courseImg2 from "../../assets/course-img2.png";
-import courseImg3 from "../../assets/course-img3.png";
-import courseImg4 from "../../assets/course-img4.png";
-import courseImg5 from "../../assets/course-img5.png";
-
-import profileImg from "../../assets/profile1.webp";
+import profileImg from "../../assets/profile1.png";
 import { getUser } from "../../services/user";
 import ReactPaginate from "react-paginate";
 import Course from "../../components/tutor/Course";
@@ -83,16 +75,6 @@ const UserDashboard = () => {
 
           <section class="courses-sec">
           <h1>My courses</h1>
-
-          {/* <input type="text" className="search-input" placeholder="Search your courses..." /> */}
-
-          <div class="course-links">
-            <a href="#">Python</a>
-            <a href="#">Excel</a>
-            <a href="#">Web Development</a>
-            <a href="#">JavaScript</a>
-            <a href="#">Data Science</a>
-          </div>
           <br />
 
           <div class="career-opportunities">

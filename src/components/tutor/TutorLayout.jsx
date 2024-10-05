@@ -12,8 +12,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const TutorLayout = ({ children }) => {
   const [isAsideVisible, setIsAsideVisible] = useState(false);
+  const [isProfileNavVisible, setIsProfileNavVisible] = useState(false);
+
   const toggleAside = () => {
     setIsAsideVisible(!isAsideVisible);
+  };
+
+
+  const onToggleProfileNav = () => {
+    setIsProfileNavVisible(!isProfileNavVisible);
   };
 
   const navigate = useNavigate()
@@ -27,7 +34,27 @@ const TutorLayout = ({ children }) => {
 
   return (
     <div className="tutor">
-      <Header onToggleAside={toggleAside} />
+      <Header onToggleAside={toggleAside} onToggleProfileNav={onToggleProfileNav} />
+
+      {isProfileNavVisible && (
+        <div className="profile-nav">
+          <div className="">
+          <Link to={"/tutor"}>
+              <p className="nav-link">Dashboard</p>
+            </Link>
+            <Link to={"/tutor/settings"}>
+              <p className="nav-link">Settings</p>
+            </Link>
+            <Link to={"/tutor/change-password"}>
+              <p className="nav-link">Change Password</p>
+            </Link>
+            <p>
+ 
+                <button className="btn2 btn3" onClick={logout}>Logout</button>
+            </p>
+          </div>
+        </div>
+      )}
 
       {isAsideVisible && (
         <div className="mobile-nav">

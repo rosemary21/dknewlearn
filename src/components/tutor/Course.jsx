@@ -5,6 +5,8 @@ import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Course = ({ course, action }) => {
+
+  const role = localStorage.getItem("role")
   return (
     <div>
       <img src={course?.courseImageUrl || courseImg1} alt="" />
@@ -26,12 +28,12 @@ const Course = ({ course, action }) => {
         5.0 <FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></p>
       <h3>₦{course?.nairaPrice?.toLocaleString()}</h3>
 
-
-      <div style={{ marginTop: "20px" }}>
+      {role == "tutor" && <div style={{ marginTop: "20px" }}>
         <Link to={`/tutor/edit-course/${course?.id}`}><button className='btn1'>edit</button></Link>
 
         <button className='btn2' style={{ padding: "9px 10px", marginLeft: "20px" }} onClick={() => action(course?.id)}>Delete</button>
-      </div>
+      </div> }
+      
     </div>
   );
 };

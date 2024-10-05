@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TutorLayout from "../../components/tutor/TutorLayout";
 import Courses from "../../components/tutor/Courses";
-import profileImg from "../../assets/profile1.webp";
+import profileImg from "../../assets/profile1.png";
 import { Link } from "react-router-dom";
 import AdminLayout from "../../components/admin/AdminLayout";
 import { getAdmin } from "../../services/admin";
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
         </div>
         <div className='top-banner panel'>
             <span>Jump Into Course Creation</span>
-            <Link to={'/tutor/create-courses'}><button className='primary-btn'>Create Your course</button></Link> 
+            <Link to={'/admin/create-courses'}><button className='primary-btn'>Create Your course</button></Link> 
         </div>
       </div>
     </AdminLayout>

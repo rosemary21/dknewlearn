@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api_url, token } from "../../config/config";
 import TutorLayout from "../../components/tutor/TutorLayout";
+import { FaEyeSlash } from "react-icons/fa6";
+import { FaEye } from "react-icons/fa";
 
 const TutorChangePassword = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -63,7 +65,7 @@ const TutorChangePassword = () => {
               className="password-toggle-btn"
               onClick={() => setShowOldPassword(!showOldPassword)}
             >
-              {showOldPassword ? "Hide" : "View"}
+              {showOldPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           <div className="password-input-container">
@@ -78,7 +80,7 @@ const TutorChangePassword = () => {
               className="password-toggle-btn"
               onClick={() => setShowNewPassword(!showNewPassword)}
             >
-              {showNewPassword ? "Hide" : "View"}
+              {showNewPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           <div className="password-input-container">
@@ -93,7 +95,7 @@ const TutorChangePassword = () => {
               className="password-toggle-btn"
               onClick={() => setShowConfirmNewPassword(!showConfirmNewPassword)}
             >
-              {showConfirmNewPassword ? "Hide" : "View"}
+              {showConfirmNewPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           <button 

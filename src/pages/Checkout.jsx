@@ -34,6 +34,8 @@ const Checkout = () => {
         if (response.data.responseDto.message == "Transaction Process Successfully") {
           console.log("success")
 
+          localStorage.removeItem("cart")
+
           
           setTimeout(() => {
             setStatus("success")

@@ -6,7 +6,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { FaSpinner } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaSpinner } from "react-icons/fa";
 import "../styles/auth.css";
 import { api_url } from "../config/config";
 
@@ -14,6 +14,8 @@ const LoginAdmin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ const LoginAdmin = () => {
         password,
       });
 
-      toast.success("Login successful! Redirecting...");
+      toast.success("Login successful!");
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("email", response.data.emailAddress);
@@ -76,18 +78,26 @@ const LoginAdmin = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <input
-              type="password"
-              placeholder="Password"
+              <div className="password-input-container">
+            <input 
+              type={showPassword ? "text" : "password"}
+              placeholder="Password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
+            <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
             <button type="submit" className="submit-btn" disabled={loading}>
               {loading ? <FaSpinner className="spinner-icon" /> : "Login"}
             </button>
           </form>
-          <p>or <Link to={'/forgot-password'} className="link">Forgot Password</Link></p><br />
+          <p>or <Link to={'/admin/forgot-password'} className="link">Forgot Password</Link></p><br />
           <hr /><br />
           <p>Don't have an account?<Link to={'/tutor-signup'} className="link"> Sign up</Link></p>
         </div>

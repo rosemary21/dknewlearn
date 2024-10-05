@@ -178,7 +178,7 @@ const AdminCourses = () => {
                 courses.map((course, index) =>(
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td><Link to={`/course/${course?.id}`}>{course?.title}</Link> </td>
+                    <td><Link to={`/view-course/${course?.id}`}>{course?.title}</Link> </td>
                     <td>{course?.nairaPrice}</td>
                     <td>{course?.author}</td>
                     <td>{course?.status}</td>

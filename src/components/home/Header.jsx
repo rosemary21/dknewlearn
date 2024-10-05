@@ -154,7 +154,7 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
                 alt="profile Image"
                 className="profile-image"
 
-                onClick={role == "user" && onToggleProfileNav}
+                onClick={onToggleProfileNav}
               />
               
             </>

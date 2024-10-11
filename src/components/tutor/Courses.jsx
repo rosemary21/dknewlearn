@@ -8,6 +8,7 @@ import { api_url, token } from "../../config/config";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { getCourseGroups } from "../../services/tutor";
+import { FaTrash } from "react-icons/fa";
 
 function Courses() {
   const [course, setCourse] = useState(null);
@@ -35,10 +36,16 @@ function Courses() {
   };
 
   const handleAddSeries = (seriesData) => {
+
+    const newSeries = {
+      ...seriesData,
+      id: currentSection.seriesList.length + 1, // Assign a unique ID
+    };
+
     setSections((prevSections) => {
       const updatedSections = prevSections.map((section) => {
         if (section.id === currentSection.id) {
-          return { ...section, seriesList: [...section.seriesList, seriesData] };
+          return { ...section, seriesList: [...section.seriesList, newSeries] };
         }
         return section;
       });
@@ -78,6 +85,34 @@ function Courses() {
     }
   };
 
+  const handleDeleteSection = (sectionId) => {
+    // Filter out the section with the provided id
+    setSections(sections.filter((section) => section.id !== sectionId));
+  };
+
+
+  const handleDeleteSeries = (seriesId) => {
+
+    // Update the current section's seriesList by filtering out the deleted series
+    setSections((prevSections) => {
+      return prevSections.map((section) => {
+        if (section.id === currentSection.id) {
+          return {
+            ...section,
+            seriesList: section.seriesList.filter(series => series.id !== seriesId),
+          };
+        }
+        return section;
+      });
+    });
+
+     // Update currentSection's seriesList to reflect the deletion
+     setCurrentSection((prev) => ({
+      ...prev,
+      seriesList: prev.seriesList.filter((series) => series.id !== seriesId),
+    }));
+  };
+
 
   return (
     <div className="container">
@@ -89,6 +124,7 @@ function Courses() {
         <SectionsTable
           sections={sections}
           onSelectSection={handleSelectSection}
+          onDeleteSection={handleDeleteSection}
         />
       </div>
       <div className={activeSlide === 3 ? "slide active" : "slide"}>
@@ -103,14 +139,30 @@ function Courses() {
                   <th>Title</th>
                   <th>Video</th>
                   <th>Resource</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {currentSection?.seriesList?.map((series, index) => (
                   <tr key={index}>
                     <td>{series.title}</td>
-                    <td>{series.videoLink}</td>
+                    <td  style={{
+  maxWidth: '150px',      // Set maximum width
+  overflow: 'hidden',      // Hide overflow
+  textOverflow: 'ellipsis', // Add ellipsis for overflow text
+  whiteSpace: 'nowrap'     // Prevent line wrapping
+}}>{series.videoLink}</td>
                     <td>{series.resourceFile}</td>
+                    <td>     <button
+                      className="delete-btn"
+                      onClick={() => handleDeleteSeries(series.id)}
+                      style={{
+                        margin: 0,
+                        width: "40px"
+                      }}
+                    >
+                      <FaTrash/>
+                    </button></td>
                   </tr>
                 ))}
               </tbody>
@@ -118,6 +170,8 @@ function Courses() {
           </div>
         )}
       </div><br />
+
+
       <div>
         {activeSlide === 3 && (
           <button onClick={() => setActiveSlide(2)}>Back to Sections</button>

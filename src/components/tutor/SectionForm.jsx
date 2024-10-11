@@ -10,8 +10,10 @@ const SectionForm = ({ onAddSection }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddSection(title);
-    setTitle('');
+    if (title.trim()) {
+      onAddSection(title);
+      setTitle(''); // Clear the input after submission
+    }
   };
 
   return (
@@ -19,10 +21,10 @@ const SectionForm = ({ onAddSection }) => {
       <h2>Add Section</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Section Title:
+          Section Title: <br /><br />
           <input type="text" value={title} onChange={handleChange} />
         </label>
-        <button type="submit">Add Section</button>
+        <button type="submit" disabled={!title.trim()}>Add Section</button>
       </form>
     </div>
   );

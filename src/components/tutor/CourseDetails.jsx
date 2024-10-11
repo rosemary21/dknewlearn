@@ -142,7 +142,7 @@ const CourseDetails = ({ onNext }) => {
           <input type="text" name="courseCategory" value={course.courseCategory} onChange={handleChange} />
         </label> */}
 
-        <label htmlFor="categorySelect">Group:</label>
+        <label htmlFor="categorySelect">Course Group:</label>
       <select id="categorySelect" value={course.courseGroup} onChange={handleCourseGroupChange}>
         <option value="">Select a category</option>
         {courseGroups?.map((group) => (
@@ -154,7 +154,7 @@ const CourseDetails = ({ onNext }) => {
 
       <br />
 
-      <label htmlFor="subcategorySelect">Category:</label>
+      <label htmlFor="subcategorySelect">Course Category:</label>
       <select id="subcategorySelect" onChange={handleCourseCategoryChange} disabled={!course.courseGroup}>
         <option value="">Select a subcategory</option>
         {courseCategories?.map((category) => (

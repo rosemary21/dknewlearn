@@ -6,6 +6,7 @@ import { getSingleCourse } from '../../services/user';
 import { api_url, token } from '../../config/config';
 import axios from 'axios';
 import { toast } from "react-toastify";
+import { getCoursecategories, getCourseGroups } from '../../services/tutor';
 
 const TutorEditCourse = () => {
   const [activeSlide, setActiveSlide] = useState('course');
@@ -14,6 +15,11 @@ const TutorEditCourse = () => {
 
   const [course, setCourse] = useState(null);
   const { id } = useParams();
+
+  const [courseGroups, setCourseGroups] = useState([]);
+  const [courseCategories, setCourseCategories] = useState([]);
+
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -23,6 +29,21 @@ const TutorEditCourse = () => {
         try {
           const courseData = await getSingleCourse(id);
           setCourse(courseData.coursesDto);
+
+
+        const fetchCourseCategories = async () => {
+
+          
+          if (courseData.coursesDto?.courseGroup) {
+        
+            const data = await getCoursecategories(courseData.coursesDto?.courseGroup)
+            setCourseCategories(data?.courseCategories);
+          } else {
+            setCourseCategories([]); // Reset subcategories if no category is selected
+          }
+        }
+
+        fetchCourseCategories()
         } catch (error) {
           console.error('Error fetching course data:', error);
         } finally {
@@ -107,6 +128,41 @@ const TutorEditCourse = () => {
     setCourse({ ...course, sectionDto: updatedSections });
   };
 
+  useEffect(() => {
+
+    const fetchCourseGroups = async () => {
+      const data = await getCourseGroups()
+
+      setCourseGroups(data.courseGroups)
+    }
+
+    fetchCourseGroups()
+
+ 
+
+  }, [])
+
+  const handleCourseCategoryChange  = async (e) => {
+    course.courseCategory = e.target.value
+  }
+
+  const handleCourseGroupChange = async (e) => {
+    const selectedValue = e.target.value;
+
+
+   
+    course.courseGroup = selectedValue
+
+
+    if (course.courseGroup) {
+     
+      const data = await getCoursecategories(course.courseGroup)
+      setCourseCategories(data.courseCategories);
+    } else {
+      setCourseCategories([]); // Reset subcategories if no category is selected
+    }
+  }
+
   return (
     <TutorLayout>
       <div className="form_container auth-container">
@@ -123,11 +179,35 @@ const TutorEditCourse = () => {
                   onChange={(e) => handleCourseFieldChange('title', e.target.value)}
                 />
                 <label>Course Category</label>
-                <input
+                <input 
                   type="text"
                   value={course?.courseCategory || ''}
                   onChange={(e) => handleCourseFieldChange('courseCategory', e.target.value)}
                 />
+
+<label htmlFor="categorySelect">Course Group:</label>
+      <select id="categorySelect" value={course?.courseGroup} onChange={handleCourseGroupChange}>
+        <option value="">Select a category</option>
+        {courseGroups?.map((group) => (
+          <option key={group.id} value={group?.code}>
+            {group.description}
+          </option>
+        ))}
+      </select>
+
+      <br />
+
+      <label htmlFor="subcategorySelect">Course Category:</label>
+      <select id="subcategorySelect" value={course?.courseCategory} onChange={handleCourseCategoryChange} disabled={!course?.courseGroup}>
+        <option value="">Select a subcategory</option>
+        {courseCategories?.map((category) => (
+          <option key={category.id} value={category.code}>
+            {category.description}
+          </option>
+        ))}
+      </select>
+
+
                 <label>Price</label>
                 <input
                   type="text"

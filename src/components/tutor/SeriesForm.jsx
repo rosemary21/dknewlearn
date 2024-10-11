@@ -8,7 +8,7 @@ const SeriesForm = ({ onAddSeries }) => {
   const [series, setSeries] = useState({ title: '', videoLink: '', resourceFile: '' });
   const [video, setVideo] = useState(null);
   const [videoUploadProgress, setVideoUploadProgress] = useState(0);
-  const [isVideoUploading, setIsVideoUploading] = useState(false);
+  const [isVideoUploading, setIsVideoUploading] = useState(true);
 
   const handleChange = (e) => {
     setSeries({ ...series, [e.target.name]: e.target.value });

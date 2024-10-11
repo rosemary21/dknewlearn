@@ -9,7 +9,7 @@ import axios from "axios";
 
 const AdminForgotPassword = () => {
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(""); 
   const [loading, setLoading] = useState(false);
 
   // Function to handle form submission

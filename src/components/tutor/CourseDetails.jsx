@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { api_url, token } from '../../config/config';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { getCoursecategories, getCourseGroups } from '../../services/tutor';
 
 const CourseDetails = ({ onNext }) => {
   const [course, setCourse] = useState({
@@ -19,6 +20,9 @@ const CourseDetails = ({ onNext }) => {
   const [videoUploadProgress, setVideoUploadProgress] = useState(0);
   const [isImageUploading, setIsImageUploading] = useState(false);
   const [isVideoUploading, setIsVideoUploading] = useState(false);
+
+  const [courseGroups, setCourseGroups] = useState([]);
+  const [courseCategories, setCourseCategories] = useState([]);
 
   const handleChange = (e) => {
     setCourse({ ...course, [e.target.name]: e.target.value });
@@ -91,18 +95,75 @@ const CourseDetails = ({ onNext }) => {
     onNext(course);
   };
 
+  useEffect(() => {
+
+    const fetchCourseGroups = async () => {
+      const data = await getCourseGroups()
+      console.log(data)
+
+      setCourseGroups(data.courseGroups)
+    }
+
+    fetchCourseGroups()
+
+  }, [])
+
+
+  const handleCourseGroupChange = async (e) => {
+    const selectedValue = e.target.value;
+
+
+   
+    course.courseGroup = selectedValue
+
+
+    if (course.courseGroup) {
+     
+      const data = await getCoursecategories(course.courseGroup)
+      setCourseCategories(data.courseCategories);
+    } else {
+      setCourseCategories([]); // Reset subcategories if no category is selected
+    }
+  };
+
   return (
     <div>
       <h2>Course Details</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        {/* <label>
           Course Group:
           <input type="text" name="courseGroup" value={course.courseGroup} onChange={handleChange} />
         </label>
         <label>
           Course Category:
           <input type="text" name="courseCategory" value={course.courseCategory} onChange={handleChange} />
-        </label>
+        </label> */}
+
+        <label htmlFor="categorySelect">Group:</label>
+      <select id="categorySelect" value={course.courseGroup} onChange={handleCourseGroupChange}>
+        <option value="">Select a category</option>
+        {courseGroups?.map((group) => (
+          <option key={group.id} value={group?.code}>
+            {group.description}
+          </option>
+        ))}
+      </select>
+
+      <br />
+
+      <label htmlFor="subcategorySelect">Category:</label>
+      <select id="subcategorySelect" disabled={!course.courseGroup}>
+        <option value="">Select a subcategory</option>
+        {courseCategories?.map((category) => (
+          <option key={category.id} value={category.code}>
+            {category.description}
+          </option>
+        ))}
+      </select>
+
+      
+
+
         <label>
           Course Title:
           <input type="text" name="title" value={course.title} onChange={handleChange} />

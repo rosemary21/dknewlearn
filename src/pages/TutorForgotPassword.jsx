@@ -43,7 +43,7 @@ const TutorForgotPassword = () => {
         toast.success("Reset password successful, please check your email");
 
         setTimeout(()=>{
-          window.location.href = "/reset-password"
+          window.location.href = "/tutor/reset-password"
         }, 2000)
 
 
@@ -52,7 +52,7 @@ const TutorForgotPassword = () => {
       }
 
   
-
+      setLoading(false);
 
     } catch (error) {
       toast.error("An error occurred. Please check your credentials and try again.");
@@ -81,7 +81,7 @@ const TutorForgotPassword = () => {
             /><br />
 
 
-            <button className="submit-btn" type="submit">Reset Password</button>
+            <button className="submit-btn" type="submit" disabled={loading} >{loading ? "Loading..." : "Reset Password"}</button>
           </form>
 
           <hr /><br />

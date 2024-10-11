@@ -65,8 +65,45 @@ export const getTutorCoursesEarnings = async (pageNo = 0, id) => {
 }
 
 
+export const getCourseGroups = async (pageNo = 0) => {
+
+  try {
+    const response = await axios.get(`${api_url}/course/allcoursegroups`, {
+      headers: {
+        'apiKey': `${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    );
+
+    return response.data
+
+  } catch (error) {
+    console.log("An error occurred. Please try again.");
+  }
+}
 
 
+export const getCoursecategories = async (name) => {
+
+  try {
+    const response = await axios.get(`${api_url}/course/allcourseCategory/${name}`, {
+      headers: {
+        'apiKey': `${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    );
+
+    return response.data
+
+  } catch (error) {
+    console.log("An error occurred. Please try again.");
+  }
+}
+
+
+// course/allcourseCategory/Software Development
 
 
 

@@ -37,6 +37,10 @@ import AdminCourses from "./pages/Admin/AdminCourses.jsx";
 import ViewCourse from "./pages/User/ViewCourse.jsx";
 import TutorCourseEarnings from "./pages/Tutor/TutorCourseEarnings.jsx";
 import SearchCourses from "./pages/SearchCourses.jsx";
+import TutorForgotPassword from "./pages/TutorForgotPassword.jsx";
+import TutorResetPassword from "./pages/TutorResetPassword.jsx";
+import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
+import AdminResetPassword from "./pages/AdminResetPassword.jsx";
 
 function App() {
 
@@ -88,11 +92,15 @@ function App() {
            <Route path="/tutor/course/earnings/:id" element={<TutorCourseEarnings />} />
            <Route path="/tutor/settings" element={<TutorSettings />} />
            <Route path="/tutor/change-password" element={<TutorChangePassword />} />
+           <Route path="/tutor/forgot-password" element={<TutorForgotPassword />} />
+           <Route path="/tutor/reset-password" element={<TutorResetPassword />} />
 
 
              {/* admin  */}
              <Route path="/admin" element={<AdminDashboard />} />
              <Route path="/admin/courses" element={<AdminCourses />} />
+             <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
+             <Route path="/admin/reset-password" element={<AdminResetPassword />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

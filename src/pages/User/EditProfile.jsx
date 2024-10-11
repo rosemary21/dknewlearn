@@ -52,6 +52,8 @@ const EditProfile = () => {
     const formData = {
       fullName: user.fullName,
       phoneNumber: user.phoneNumber,
+      email: user.email,
+      userName: user.email
 
     }
 
@@ -93,7 +95,7 @@ const EditProfile = () => {
           <input type="text" value={user?.fullName || ''} name='fullName' onChange={handleChange} placeholder="Full name" />
           
           <label htmlFor="Email">Email</label>
-          <input type="email" value={user?.email || ''} placeholder="Email" disabled />
+          <input type="email" value={user?.email || ''} placeholder="Email" />
 
           <label htmlFor="Phone">Phone</label>
           <input type="number" value={user?.phoneNumber || ''} name='phoneNumber' onChange={handleChange} placeholder="Phone Number" />

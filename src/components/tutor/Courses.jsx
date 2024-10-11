@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import CourseDetails from "./CourseDetails";
 import SectionForm from "./SectionForm";
@@ -7,6 +7,7 @@ import SectionsTable from "./SectionsTable";
 import { api_url, token } from "../../config/config";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { getCourseGroups } from "../../services/tutor";
 
 function Courses() {
   const [course, setCourse] = useState(null);
@@ -76,6 +77,7 @@ function Courses() {
       toast.error("An error occurred while creating the course");
     }
   };
+
 
   return (
     <div className="container">

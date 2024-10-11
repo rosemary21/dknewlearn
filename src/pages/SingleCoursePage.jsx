@@ -6,6 +6,7 @@ import { FaStar } from 'react-icons/fa';
 import { getCourses, getSingleCourse } from '../services/user';
 import { toast } from 'react-toastify';
 import { CartContext } from '../context/CartContext';
+import useAuth from '../services/auth';
 
 
 const SingleCoursePage = () => {
@@ -78,8 +79,22 @@ const SingleCoursePage = () => {
   //   }
   // }
 
+  const auth = useAuth()
+
   const addCart = () => {
+
+    if(auth.isAuth == false){
+      toast.warn("You need to login")
+
+
+      setTimeout(()=> {
+          location.href = "/login";
+      }, 2000)
+  } else {
     addToCart({ id: course.id, name: course.title, price: course.nairaPrice })
+  }
+
+
   }
 
 

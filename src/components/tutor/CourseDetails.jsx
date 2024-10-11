@@ -108,6 +108,9 @@ const CourseDetails = ({ onNext }) => {
 
   }, [])
 
+  const handleCourseCategoryChange  = async (e) => {
+    course.courseCategory = e.target.value
+  }
 
   const handleCourseGroupChange = async (e) => {
     const selectedValue = e.target.value;
@@ -152,7 +155,7 @@ const CourseDetails = ({ onNext }) => {
       <br />
 
       <label htmlFor="subcategorySelect">Category:</label>
-      <select id="subcategorySelect" disabled={!course.courseGroup}>
+      <select id="subcategorySelect" onChange={handleCourseCategoryChange} disabled={!course.courseGroup}>
         <option value="">Select a subcategory</option>
         {courseCategories?.map((category) => (
           <option key={category.id} value={category.code}>

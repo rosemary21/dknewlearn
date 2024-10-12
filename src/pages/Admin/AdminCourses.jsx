@@ -14,7 +14,9 @@ const AdminCourses = () => {
   const [status, setStatus] = useState("");
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalData, setTotalData] = useState(0);
+
+
 
   const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ const AdminCourses = () => {
     try {
       const userData = await getAllCourses(currentPage - 1);
       setCourses(userData?.coursesDtos);
-      console.log(userData?.coursesDtos);
+      setTotalData(userData?.totalData)
     } catch (error) {
       console.error("Error fetching user data:", error);
     } finally {
@@ -194,9 +196,11 @@ const AdminCourses = () => {
 
         <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalData={totalData}
         onPageChange={handlePageChange}
       />
+
+      <p>ewrwe</p>
 
         {selectedCourse && (
           <Modal show={true} handleClose={hideModal}>

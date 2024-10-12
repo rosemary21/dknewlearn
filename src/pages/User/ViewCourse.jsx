@@ -148,7 +148,7 @@ const ViewCourse = () => {
                         </div>
 
                             <br />
-                        <div className="sections">
+                        {/* <div className="sections">
                             <div className="section1">
                                 <div className='sub-section1'>
                                     <h1>What you'll learn</h1><br />
@@ -169,12 +169,12 @@ const ViewCourse = () => {
                                 </div>
 
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div>
                         {course?.sectionDto?.map((section, index) => (
                             <div key={index} className="section">
-                                <h3 onClick={() => handleSectionClick(index)}>{section.title}</h3>
+                                <h3 onClick={() => handleSectionClick(index)}>{index +1}{")"} {section.title}</h3>
                                 <div className={`series active`}>
                                     {section?.seriesList?.map((series, seriesIndex) => (
                                         <div
@@ -182,7 +182,7 @@ const ViewCourse = () => {
                                             className="series-title"
                                             onClick={() => handleSeriesClick(series)}
                                         >
-                                            {series.title}
+                                            {index +1}{"."}{seriesIndex +1}{") "}{series.title}
                                         </div>
                                     ))}
                                 </div>

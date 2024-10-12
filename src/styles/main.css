@@ -1053,6 +1053,13 @@ footer .sub-footer-nav{
   border-radius: 5px; /* Add border radius for rounded corners */
 }
 
+
+/* for user view bought course page */
+.view-course-content{
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
 .sections {
   flex: 1;
 }

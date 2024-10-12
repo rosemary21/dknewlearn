@@ -4,7 +4,7 @@ import Layout from '../../components/home/Layout'
 import courseImage from "../../assets/course-img1.png";
 import { FaStar } from 'react-icons/fa';
 import { getCourses, getSingleCourse } from '../../services/user';
-
+import video from "../../assets/video.gif"
 
 const ViewCourse = () => {
     const [course, setCourse] = useState(null)
@@ -127,22 +127,55 @@ const ViewCourse = () => {
                     </div>
                 </div><br /><br /><br />
 
-              
 
-                <div className="course-content">
-                    <div className="video-display">
-                        {selectedSeries && (
-                            <div>
-                                <h2>{selectedSeries.title}</h2>
-                                <video src={selectedSeries.videoLink} controls style={{ height: '400px' }} />
+
+                <div className="view-course-content">
+                    <div>
+                        <div className="video-display">
+                            {selectedSeries ? (
+                                <div>
+                                    <h2>{selectedSeries.title}</h2>
+                                    <video src={selectedSeries.videoLink} controls style={{ height: '400px' }} />
+                                </div>
+                            ) : (
+                                <div>
+                                    <center><img src={video} alt="" /></center>
+                                </div>
+                            )}
+
+
+
+                        </div>
+
+
+                        <div className="sections">
+                            <div className="section1">
+                                <div className='sub-section1'>
+                                    <h1>What you'll learn</h1><br />
+                                    <div className="sub-points">
+                                        {
+                                            course?.sectionDto?.map((section, index) => (
+                                                <div key={index}>
+                                                    {section?.seriesList?.map((series, i) => (
+                                                        <p key={i}>
+                                                            {series.title}
+                                                        </p>
+                                                    ))
+                                                    }
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+
                             </div>
-                        )}
+                        </div>
                     </div>
-                    <div className="sections">
+                    <div>
                         {course?.sectionDto?.map((section, index) => (
                             <div key={index} className="section">
                                 <h3 onClick={() => handleSectionClick(index)}>{section.title}</h3>
-                                <div className={`series ${selectedSection === index ? 'active' : ''}`}>
+                                <div className={`series active`}>
                                     {section?.seriesList?.map((series, seriesIndex) => (
                                         <div
                                             key={seriesIndex}
@@ -158,30 +191,8 @@ const ViewCourse = () => {
                     </div>
 
                 </div>
-            <br />
+                <br />
 
-                <div className="sections">
-                    <div className="section1">
-                        <div className='sub-section1'>
-                            <h1>What you'll learn</h1><br />
-                            <div className="sub-points">
-                                {
-                                    course?.sectionDto?.map((section, index) => (
-                                        <div key={index}>
-                                            {section?.seriesList?.map((series, i) => (
-                                                <p key={i}>
-                                                    {series.title}
-                                                </p>
-                                            ))
-                                            }
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
 
 
 

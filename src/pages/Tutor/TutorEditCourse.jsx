@@ -109,8 +109,10 @@ const TutorEditCourse = () => {
       series.title === selectedSeries.title ? selectedSeries : series
     );
     const updatedSection = { ...selectedSection, seriesList: updatedSeriesList };
+    console.log(updatedSection)
     handleSaveSection(updatedSection); // Save the updated section with the edited series
-    alert(`Series updated: ${selectedSeries.title}`);
+    setSelectedSection(updatedSection); 
+    toast.success(`Series updated`);
     handleBackToSeries();
   };
 
@@ -162,6 +164,23 @@ const TutorEditCourse = () => {
       setCourseCategories([]); // Reset subcategories if no category is selected
     }
   }
+
+
+  const handleDeleteSection = async (sectionId) => {
+    const updatedSections = course.sectionDto.filter(section => section.id !== sectionId);
+    setCourse({ ...course, sectionDto: updatedSections });
+    toast.success("Section deleted successfully");
+  };
+
+    // Function to delete a series from a section
+    const handleDeleteSeries = (seriesTitle) => {
+      const updatedSeriesList = selectedSection.seriesList.filter(series => series.title !== seriesTitle);
+      const updatedSection = { ...selectedSection, seriesList: updatedSeriesList };
+      handleSaveSection(updatedSection);
+      setSelectedSection(updatedSection); 
+
+      console.log(updatedSection)
+    };
 
   return (
     <TutorLayout>
@@ -229,6 +248,7 @@ const TutorEditCourse = () => {
                   <thead>
                     <tr>
                       <th>Title</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -246,6 +266,9 @@ const TutorEditCourse = () => {
                         <td>
                           <button onClick={() => handleSectionClick(section)} style={{ height: "50px"}}>
                             Edit Series
+                          </button>
+                          <button onClick={() => handleDeleteSection(section.id)} style={{ height: "50px", marginLeft: '5px' }}>
+                            Delete
                           </button>
                         </td>
                       </tr>
@@ -267,18 +290,19 @@ const TutorEditCourse = () => {
                   <thead>
                     <tr>
                       <th>Title</th>
-                      <th>Videof</th>
+                      <th>Video</th>
                       <th>Edit</th>
                     </tr>
                   </thead>
                   <tbody>
                     {selectedSection?.seriesList?.map((series) => (
-                      <tr key={series?.title} onClick={() => handleSeriesClick(series)}>
+                      <tr key={series?.title}>
                         <td>{series?.title}</td>
                         <td style={{ maxWidth: "100px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
   {series?.videoLink}
 </td>
-                        <td><button>Edit</button></td>
+                        <td> <button style={{ margin: "0px", marginRight: "10px"}} onClick={() => handleSeriesClick(series)}>Edit</button>
+                        <button style={{ margin: "0px"}} onClick={() => handleDeleteSeries(series.title)}>Delete</button></td>
                       </tr>
                     ))}
                   </tbody>
@@ -294,7 +318,7 @@ const TutorEditCourse = () => {
             <div className="slide active"><br /><br />
               <h3>Edit Series</h3><br />
 
-              <label htmlFor="">Series title</label>
+              <label htmlFor="">Series Title</label>
               <input
                 type="text"
                 value={selectedSeries.title}
@@ -303,13 +327,20 @@ const TutorEditCourse = () => {
                 }
               />
 
-<label htmlFor="">Series resource link</label>
+              <label htmlFor="">Series Resource Link</label>
               <input
                 type="text"
                 value={selectedSeries.resourceFile}
                 onChange={(e) =>
                   setSelectedSeries({ ...selectedSeries, resourceFile: e.target.value })
                 }
+              />
+
+              <label htmlFor="">Upload Video</label>
+              <input
+                type="file"
+                accept="video/*"
+                onChange={(e) => setVideoFile(e.target.files[0])}
               />
               <br /><br />
               <button onClick={handleBackToSeries}>Back</button>

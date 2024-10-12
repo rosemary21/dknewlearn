@@ -200,7 +200,6 @@ const AdminCourses = () => {
         onPageChange={handlePageChange}
       />
 
-      <p>ewrwe</p>
 
         {selectedCourse && (
           <Modal show={true} handleClose={hideModal}>

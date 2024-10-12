@@ -344,7 +344,7 @@ const TutorEditCourse = () => {
               />
               <br /><br />
               <button onClick={handleBackToSeries}>Back</button>
-              <button onClick={handleSaveSeries}>Save Series</button>
+              <button onClick={handleSaveSeries} disabled={!selectedSeries.title}>Save Series</button>
             </div>
           )}
         </div>

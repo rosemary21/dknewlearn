@@ -6,6 +6,7 @@ import { getUser } from "../../services/user";
 import ReactPaginate from "react-paginate";
 import Course from "../../components/tutor/Course";
 import { Link } from "react-router-dom";
+import loadingImage from "../../assets/loading.gif"
 
 
 const UserDashboard = () => {
@@ -39,7 +40,9 @@ const UserDashboard = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loading-screen"><div>
+      <img src={loadingImage} alt="Loading..." />
+      </div></div>;
   }
 
 
@@ -66,16 +69,15 @@ const UserDashboard = () => {
         </div>
         <div className="main-section">
           <div className="section1">
-            <h4>Checkout other courses</h4>
+            <h4>Check out other courses</h4>
             <br />
-            <p>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals. Set time aside to learn and get reminders using your learning scheduler.</p>
+            <p>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals.</p>
             <br />
             <Link to="/"><button className="primary-btn">View</button></Link>
           </div>
 
           <section class="courses-sec">
           <h1>My courses</h1>
-          <br />
 
           <div class="career-opportunities">
             <div class="explore-python">

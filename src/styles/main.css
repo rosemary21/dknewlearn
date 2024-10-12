@@ -1345,3 +1345,12 @@ button{
   margin-top: 30px;
   padding: 5%;
 }
+
+/* loading screen */
+
+.loading-screen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

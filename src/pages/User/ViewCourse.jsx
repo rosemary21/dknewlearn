@@ -147,7 +147,7 @@ const ViewCourse = () => {
 
                         </div>
 
-
+                            <br />
                         <div className="sections">
                             <div className="section1">
                                 <div className='sub-section1'>

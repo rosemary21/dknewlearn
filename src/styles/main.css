@@ -965,11 +965,6 @@ footer .sub-footer-nav{
     grid-template-columns: 48% 48%;
   }
 
-  .course-page .section1 {
-    display: grid;
-    grid-template-columns: 70% 27%;
-    gap: 3%;
-  }
 
   .course-page .sub-section2 {
     margin: 0;

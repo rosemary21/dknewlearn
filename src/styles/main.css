@@ -952,6 +952,12 @@ footer .sub-footer-nav{
     grid-template-columns: 50% 47%;
     gap: 3%;
   }
+
+  .course-page .section1 {
+    display: grid;
+    grid-template-columns: 70% 28%;
+    gap: 2%;
+  }
 }
 
 @media screen and (min-width: 900px) {

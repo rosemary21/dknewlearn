@@ -39,13 +39,13 @@ const AdminLayout = ({ children }) => {
             <p className="nav-link"><BiBook /> Courses</p>
             </Link>
 
-            <Link to={"/tutor/settings"}>
+            {/* <Link to={"/tutor/settings"}>
             <p className="nav-link"><FaCog/> Settings</p>
             </Link>
 
             <Link to={"/tutor/earnings"}>
             <p className="nav-link"><FaMoneyBill/> Earnings</p>
-            </Link>
+            </Link> */}
 
             <p className="nav-link" onClick={logout}>
                 <FaSignOutAlt /> Logout
@@ -68,13 +68,13 @@ const AdminLayout = ({ children }) => {
             <p className="nav-link"><BiBook /> Courses</p>
             </Link>
 
-            <Link to={"/admin/settings"}>
+            {/* <Link to={"/admin/settings"}>
             <p className="nav-link"><FaCog/> Settings</p>
             </Link>
 
             <Link to={"/admin/earnings"}>
             <p className="nav-link"><FaMoneyBill/> Earnings</p>
-            </Link>
+            </Link> */}
 
             <p className="nav-link" onClick={logout}>
                 <FaSignOutAlt /> Logout

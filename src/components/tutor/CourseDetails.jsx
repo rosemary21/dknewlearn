@@ -11,7 +11,8 @@ const CourseDetails = ({ onNext }) => {
     title: '',
     description: '',
     nairaPrice: '',
-    author: localStorage.getItem("user") || "Tutor"
+    author: localStorage.getItem("user") || "Tutor",
+    courseImageUrl: ""
   });
 
   const [image, setImage] = useState(null);
@@ -20,6 +21,9 @@ const CourseDetails = ({ onNext }) => {
   const [videoUploadProgress, setVideoUploadProgress] = useState(0);
   const [isImageUploading, setIsImageUploading] = useState(false);
   const [isVideoUploading, setIsVideoUploading] = useState(false);
+  const [isIncomplete, setIsIncomplete] = useState(false);
+
+  
 
   const [courseGroups, setCourseGroups] = useState([]);
   const [courseCategories, setCourseCategories] = useState([]);
@@ -27,6 +31,8 @@ const CourseDetails = ({ onNext }) => {
   const handleChange = (e) => {
     setCourse({ ...course, [e.target.name]: e.target.value });
   };
+
+
 
   const handleUploadImage = async (event) => {
     const uploadedImage = event.target.files[0];
@@ -106,7 +112,17 @@ const CourseDetails = ({ onNext }) => {
 
     fetchCourseGroups()
 
-  }, [])
+    const checkCourseDetails = () => {
+      if(!course.courseGroup || !course.courseCategory ||!course.description ||!course.nairaPrice || !course.title || !course.courseImageUrl){
+        setIsIncomplete(true)
+      } else{
+        setIsIncomplete(false)
+      }
+    }
+
+    checkCourseDetails()
+
+  }, [course])
 
   const handleCourseCategoryChange  = async (e) => {
     course.courseCategory = e.target.value
@@ -144,7 +160,7 @@ const CourseDetails = ({ onNext }) => {
 
         <label htmlFor="categorySelect">Course Group:</label>
       <select id="categorySelect" value={course.courseGroup} onChange={handleCourseGroupChange}>
-        <option value="">Select a category</option>
+        <option value="">Select a course group</option>
         {courseGroups?.map((group) => (
           <option key={group.id} value={group?.code}>
             {group.description}
@@ -156,7 +172,7 @@ const CourseDetails = ({ onNext }) => {
 
       <label htmlFor="subcategorySelect">Course Category:</label>
       <select id="subcategorySelect" onChange={handleCourseCategoryChange} disabled={!course.courseGroup}>
-        <option value="">Select a subcategory</option>
+        <option value="">Select a Category</option>
         {courseCategories?.map((category) => (
           <option key={category.id} value={category.code}>
             {category.description}
@@ -213,7 +229,7 @@ const CourseDetails = ({ onNext }) => {
 
         <br /><br />
 
-        <button type="submit" disabled={isImageUploading || isVideoUploading}>Next</button>
+        <button type="submit" disabled={isImageUploading || isVideoUploading || isIncomplete}>Next</button>
       </form>
     </div>
   );

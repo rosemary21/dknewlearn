@@ -74,7 +74,7 @@ const SeriesForm = ({ onAddSeries }) => {
           <input type="url" name="resourceFile" value={series.resourceFile} onChange={handleChange} />
           
         </label>
-        <button type="submit" disabled={isVideoUploading}>Add Series</button>
+        <button type="submit" disabled={isVideoUploading || !series.title}>Add Series</button>
       </form>
     </div>
   );

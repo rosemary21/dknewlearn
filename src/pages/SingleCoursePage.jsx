@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Layout from '../components/home/Layout'
 import courseImage from "../assets/course-img1.png";
 import { FaStar } from 'react-icons/fa';
-import { getCourses, getSingleCourse } from '../services/user';
+import { getCourses, getSingleCourse, getUser } from '../services/user';
 import { toast } from 'react-toastify';
 import { CartContext } from '../context/CartContext';
 import useAuth from '../services/auth';
@@ -14,6 +14,8 @@ const SingleCoursePage = () => {
   const { id } = useParams();
   const [courseId, setCourseId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [courses, setCourses] = useState([]);
+
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
@@ -42,6 +44,29 @@ const SingleCoursePage = () => {
 
 
   }, [id]);
+
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await getUser();
+
+
+        console.log(userData.courses)
+        
+        setCourses(userData.courses);
+
+
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
 
   // function addToCart(item) {
@@ -91,7 +116,21 @@ const SingleCoursePage = () => {
           location.href = "/login";
       }, 2000)
   } else {
-    addToCart({ id: course.id, name: course.title, price: course.nairaPrice })
+
+
+    console.log(courses)
+
+
+    const existsInCourses = courses.some(item => item.id === course.id,);
+
+if (existsInCourses) {
+    toast.warn("You have already purchased this course, you can't add it to cart again")
+} else {
+    
+  addToCart({ id: course.id, name: course.title, price: course.nairaPrice })
+}
+
+
   }
 
 

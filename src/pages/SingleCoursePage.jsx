@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../components/home/Layout'
 import courseImage from "../assets/course-img1.png";
 import { FaStar } from 'react-icons/fa';
@@ -15,6 +15,8 @@ const SingleCoursePage = () => {
   const [courseId, setCourseId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState([]);
+
+  const navigate = useNavigate()
 
   const { addToCart } = useContext(CartContext);
 
@@ -45,7 +47,7 @@ const SingleCoursePage = () => {
 
   }, [id]);
 
- 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,7 +55,7 @@ const SingleCoursePage = () => {
 
 
         console.log(userData.courses)
-        
+
         setCourses(userData.courses);
 
 
@@ -72,7 +74,7 @@ const SingleCoursePage = () => {
   // function addToCart(item) {
   //   // Check if cart already exists in localStorage
   //   let cart = localStorage.getItem('cart');
-  
+
   //   // If cart doesn't exist, create an empty array
   //   if (!cart) {
   //     cart = [];
@@ -80,17 +82,17 @@ const SingleCoursePage = () => {
   //     // Parse existing cart from JSON
   //     cart = JSON.parse(cart);
   //   }
-  
+
   //   // Check if item already exists in the cart
   //   const itemExists = cart.some(cartItem => cartItem.id === item.id); // Assuming items have a unique 'id'
-  
+
   //   if (itemExists) {
   //     // Show a toast notification for existing item
   //     toast.warning("This item is already in your cart!")
   //   } else {
   //     // Add item to cart
   //     cart.push(item);
-  
+
   //     // Store updated cart back to localStorage
   //     localStorage.setItem('cart', JSON.stringify(cart));
 
@@ -108,30 +110,32 @@ const SingleCoursePage = () => {
 
   const addCart = () => {
 
-    if(auth.isAuth == false){
+    if (auth.isAuth == false) {
       toast.warn("You need to login")
 
 
-      setTimeout(()=> {
-          location.href = "/login";
+      setTimeout(() => {
+        location.href = "/login";
       }, 2000)
-  } else {
+    } else {
 
 
-    console.log(courses)
+      console.log(courses)
 
 
-    const existsInCourses = courses.some(item => item.id === course.id,);
+      const existsInCourses = courses.some(item => item.id === course.id,);
 
-if (existsInCourses) {
-    toast.warn("You have already purchased this course, you can't add it to cart again")
-} else {
-    
-  addToCart({ id: course.id, name: course.title, price: course.nairaPrice })
-}
+      if (existsInCourses) {
+        toast.warn("You have already purchased this course, you can't add it to cart again")
+
+        navigate(`/view-course/${id}`)
+      } else {
+
+        addToCart({ id: course.id, name: course.title, price: course.nairaPrice })
+      }
 
 
-  }
+    }
 
 
   }

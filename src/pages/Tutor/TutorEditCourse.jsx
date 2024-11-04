@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './styles.css'; 
+import './styles.css';
 import TutorLayout from '../../components/tutor/TutorLayout';
 import { useParams } from 'react-router-dom';
 import { getSingleCourse } from '../../services/user';
@@ -31,19 +31,19 @@ const TutorEditCourse = () => {
           setCourse(courseData.coursesDto);
 
 
-        const fetchCourseCategories = async () => {
+          const fetchCourseCategories = async () => {
 
-          
-          if (courseData.coursesDto?.courseGroup) {
-        
-            const data = await getCoursecategories(courseData.coursesDto?.courseGroup)
-            setCourseCategories(data?.courseCategories);
-          } else {
-            setCourseCategories([]); // Reset subcategories if no category is selected
+
+            if (courseData.coursesDto?.courseGroup) {
+
+              const data = await getCoursecategories(courseData.coursesDto?.courseGroup)
+              setCourseCategories(data?.courseCategories);
+            } else {
+              setCourseCategories([]); // Reset subcategories if no category is selected
+            }
           }
-        }
 
-        fetchCourseCategories()
+          fetchCourseCategories()
         } catch (error) {
           console.error('Error fetching course data:', error);
         } finally {
@@ -71,7 +71,7 @@ const TutorEditCourse = () => {
   const handleBackToCourse = () => setActiveSlide('course');
 
   const handleSaveCourse = async () => {
-    
+
 
     try {
       const response = await axios.post(`${api_url}/course/update`, course, {
@@ -82,13 +82,13 @@ const TutorEditCourse = () => {
       }
       );
 
-    toast.success("Course updated successfully")
+      toast.success("Course updated successfully")
 
 
-    setTimeout(() => {
-      window.location.href = "/tutor/courses"
-    }, 2000);
-  
+      setTimeout(() => {
+        window.location.href = "/tutor/courses"
+      }, 2000);
+
     } catch (error) {
       console.log("An error occurred. Please try again.");
     }
@@ -102,7 +102,7 @@ const TutorEditCourse = () => {
   };
 
   const handleSaveSeries = () => {
-    if(selectedSeries.title == ""){
+    if (selectedSeries.title == "") {
       return
     }
     const updatedSeriesList = selectedSection.seriesList.map((series) =>
@@ -111,7 +111,7 @@ const TutorEditCourse = () => {
     const updatedSection = { ...selectedSection, seriesList: updatedSeriesList };
     console.log(updatedSection)
     handleSaveSection(updatedSection); // Save the updated section with the edited series
-    setSelectedSection(updatedSection); 
+    setSelectedSection(updatedSection);
     toast.success(`Series updated`);
     handleBackToSeries();
   };
@@ -121,7 +121,7 @@ const TutorEditCourse = () => {
   };
 
   const handleSectionTitleChange = (sectionId, title) => {
-    if(title == ""){
+    if (title == "") {
       return
     }
     const updatedSections = course.sectionDto.map((section) =>
@@ -140,11 +140,11 @@ const TutorEditCourse = () => {
 
     fetchCourseGroups()
 
- 
+
 
   }, [])
 
-  const handleCourseCategoryChange  = async (e) => {
+  const handleCourseCategoryChange = async (e) => {
     course.courseCategory = e.target.value
   }
 
@@ -152,12 +152,12 @@ const TutorEditCourse = () => {
     const selectedValue = e.target.value;
 
 
-   
+
     course.courseGroup = selectedValue
 
 
     if (course.courseGroup) {
-     
+
       const data = await getCoursecategories(course.courseGroup)
       setCourseCategories(data.courseCategories);
     } else {
@@ -166,21 +166,22 @@ const TutorEditCourse = () => {
   }
 
 
-  const handleDeleteSection = async (sectionId) => {
-    const updatedSections = course.sectionDto.filter(section => section.id !== sectionId);
+  const handleDeleteSection = async (sectionIndex) => {
+    const updatedSections = course.sectionDto.filter((_, index) => index !== sectionIndex);
     setCourse({ ...course, sectionDto: updatedSections });
     toast.success("Section deleted successfully");
   };
+  
 
-    // Function to delete a series from a section
-    const handleDeleteSeries = (seriesTitle) => {
-      const updatedSeriesList = selectedSection.seriesList.filter(series => series.title !== seriesTitle);
-      const updatedSection = { ...selectedSection, seriesList: updatedSeriesList };
-      handleSaveSection(updatedSection);
-      setSelectedSection(updatedSection); 
+  // Function to delete a series from a section
+  const handleDeleteSeries = (seriesTitle) => {
+    const updatedSeriesList = selectedSection.seriesList.filter(series => series.title !== seriesTitle);
+    const updatedSection = { ...selectedSection, seriesList: updatedSeriesList };
+    handleSaveSection(updatedSection);
+    setSelectedSection(updatedSection);
 
-      console.log(updatedSection)
-    };
+    console.log(updatedSection)
+  };
 
   return (
     <TutorLayout>
@@ -198,33 +199,33 @@ const TutorEditCourse = () => {
                   onChange={(e) => handleCourseFieldChange('title', e.target.value)}
                 />
                 <label>Course Category</label>
-                <input 
+                <input
                   type="text"
                   value={course?.courseCategory || ''}
                   onChange={(e) => handleCourseFieldChange('courseCategory', e.target.value)}
                 />
 
-<label htmlFor="categorySelect">Course Group:</label>
-      <select id="categorySelect" value={course?.courseGroup} onChange={handleCourseGroupChange}>
-        <option value="">Select a category</option>
-        {courseGroups?.map((group) => (
-          <option key={group.id} value={group?.code}>
-            {group.description}
-          </option>
-        ))}
-      </select>
+                <label htmlFor="categorySelect">Course Group:</label>
+                <select id="categorySelect" value={course?.courseGroup} onChange={handleCourseGroupChange}>
+                  <option value="">Select a category</option>
+                  {courseGroups?.map((group) => (
+                    <option key={group.id} value={group?.code}>
+                      {group.description}
+                    </option>
+                  ))}
+                </select>
 
-      <br />
+                <br />
 
-      <label htmlFor="subcategorySelect">Course Category:</label>
-      <select id="subcategorySelect" value={course?.courseCategory} onChange={handleCourseCategoryChange} disabled={!course?.courseGroup}>
-        <option value="">Select a subcategory</option>
-        {courseCategories?.map((category) => (
-          <option key={category.id} value={category.code}>
-            {category.description}
-          </option>
-        ))}
-      </select>
+                <label htmlFor="subcategorySelect">Course Category:</label>
+                <select id="subcategorySelect" value={course?.courseCategory} onChange={handleCourseCategoryChange} disabled={!course?.courseGroup}>
+                  <option value="">Select a subcategory</option>
+                  {courseCategories?.map((category) => (
+                    <option key={category.id} value={category.code}>
+                      {category.description}
+                    </option>
+                  ))}
+                </select>
 
 
                 <label>Price</label>
@@ -252,7 +253,7 @@ const TutorEditCourse = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {course?.sectionDto?.map((section) => (
+                    {course?.sectionDto?.map((section, index) => (
                       <tr key={section.id}>
                         <td>
                           <input
@@ -264,10 +265,10 @@ const TutorEditCourse = () => {
                           />
                         </td>
                         <td>
-                          <button onClick={() => handleSectionClick(section)} style={{ height: "50px"}}>
+                          <button onClick={() => handleSectionClick(section)} style={{ height: "50px" }}>
                             Edit Series
                           </button>
-                          <button onClick={() => handleDeleteSection(section.id)} style={{ height: "50px", marginLeft: '5px' }}>
+                          <button onClick={() => handleDeleteSection(index)} style={{ height: "50px", marginLeft: '5px' }}>
                             Delete
                           </button>
                         </td>
@@ -299,10 +300,10 @@ const TutorEditCourse = () => {
                       <tr key={series?.title}>
                         <td>{series?.title}</td>
                         <td style={{ maxWidth: "100px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-  {series?.videoLink}
-</td>
-                        <td> <button style={{ margin: "0px", marginRight: "10px"}} onClick={() => handleSeriesClick(series)}>Edit</button>
-                        <button style={{ margin: "0px"}} onClick={() => handleDeleteSeries(series.title)}>Delete</button></td>
+                          {series?.videoLink}
+                        </td>
+                        <td> <button style={{ margin: "0px", marginRight: "10px" }} onClick={() => handleSeriesClick(series)}>Edit</button>
+                          <button style={{ margin: "0px" }} onClick={() => handleDeleteSeries(series.title)}>Delete</button></td>
                       </tr>
                     ))}
                   </tbody>

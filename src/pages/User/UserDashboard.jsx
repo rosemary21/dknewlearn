@@ -7,6 +7,7 @@ import ReactPaginate from "react-paginate";
 import Course from "../../components/tutor/Course";
 import { Link } from "react-router-dom";
 import loadingImage from "../../assets/loading.gif"
+import { isTokenExpired } from "../../utils/auth";
 
 
 const UserDashboard = () => {
@@ -23,7 +24,7 @@ const UserDashboard = () => {
 
 
         console.log(userData.courses)
-        
+
         setCourses(userData.courses);
 
         localStorage.setItem("user", JSON.stringify(userData.userDto))
@@ -39,10 +40,24 @@ const UserDashboard = () => {
     fetchData();
   }, []);
 
+
+  const expired = isTokenExpired();
+
+  // Check if token is expired and if the user is not already on the login page
+  if (expired && window.location.pathname !== "/login") {
+    console.log("Token has expired.");
+
+    localStorage.clear();
+    window.location.href = "/login";
+  } else {
+    console.log("Token is still valid.");
+    // Proceed with authenticated actions
+  }
+
   if (loading) {
     return <div className="loading-screen"><div>
       <img src={loadingImage} alt="Loading..." />
-      </div></div>;
+    </div></div>;
   }
 
 
@@ -53,19 +68,19 @@ const UserDashboard = () => {
   const offset = currentPage * coursesPerPage;
   const paginatedCourses = courses?.slice(offset, offset + coursesPerPage);
 
-  
+
   return (
     <Layout>
       <div className="dashboard">
         <div className="top-banner">
 
-         <div className="profile">
-         <img src={profileImg} alt="" style={{ width: '100px', height: '100px', borderRadius: '100%'}} />
-         <p>Welcome, {user && user?.fullName}</p>
+          <div className="profile">
+            <img src={profileImg} alt="" style={{ width: '100px', height: '100px', borderRadius: '100%' }} />
+            <p>Welcome, {user && user?.fullName}</p>
 
 
-         </div>
-        {/* My learning */}
+          </div>
+          {/* My learning */}
         </div>
         <div className="main-section">
           <div className="section1">
@@ -77,36 +92,36 @@ const UserDashboard = () => {
           </div>
 
           <section class="courses-sec">
-          <h1>My courses</h1>
+            <h1>My courses</h1>
 
-          <div class="career-opportunities">
-            <div class="explore-python">
-
-
-              {paginatedCourses?.map(course => (
-                <Link to={`/view-course/${course.id}`} key={course.id} >
-                <Course course={course} />
-                </Link>
-              ))}
+            <div class="career-opportunities">
+              <div class="explore-python">
 
 
+                {paginatedCourses?.map(course => (
+                  <Link to={`/view-course/${course.id}`} key={course.id} >
+                    <Course course={course} />
+                  </Link>
+                ))}
 
+
+
+              </div>
+              <ReactPaginate
+                previousLabel={'← Previous'}
+                nextLabel={'Next →'}
+                breakLabel={'...'}
+                pageCount={Math.ceil(courses?.length / coursesPerPage)}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageChange}
+                containerClassName={'pagination'}
+                activeClassName={'active'}
+              />
             </div>
-            <ReactPaginate
-              previousLabel={'← Previous'}
-              nextLabel={'Next →'}
-              breakLabel={'...'}
-              pageCount={Math.ceil(courses?.length / coursesPerPage)}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              onPageChange={handlePageChange}
-              containerClassName={'pagination'}
-              activeClassName={'active'}
-            />
-          </div>
-        </section>
+          </section>
         </div>
-        </div>
+      </div>
     </Layout>
   );
 };

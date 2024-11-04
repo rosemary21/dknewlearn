@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import AdminLayout from "../../components/admin/AdminLayout";
 import { getAdmin } from "../../services/admin";
 import { toast } from "react-toastify";
+import { isTokenExpired } from "../../utils/auth";
 
 const AdminDashboard = () => {
 
@@ -29,6 +30,20 @@ const AdminDashboard = () => {
 
     fetchData();
   }, []);
+
+
+  const expired = isTokenExpired();
+
+// Check if token is expired and if the user is not already on the login page
+if (expired && window.location.pathname !== "/login") {
+  console.log("Token has expired.");
+  
+  localStorage.clear();
+  window.location.href = "/login";
+} else {
+  console.log("Token is still valid.");
+  // Proceed with authenticated actions
+}
 
 
   return (

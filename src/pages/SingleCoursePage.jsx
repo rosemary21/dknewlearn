@@ -20,6 +20,20 @@ const SingleCoursePage = () => {
 
   const { addToCart } = useContext(CartContext);
 
+
+  const expired = isTokenExpired();
+
+// Check if token is expired and if the user is not already on the login page
+if (expired && window.location.pathname !== "/login") {
+  console.log("Token has expired.");
+  
+  localStorage.clear();
+  window.location.href = "/login";
+} else {
+  console.log("Token is still valid.");
+  // Proceed with authenticated actions
+}
+
   useEffect(() => {
     if (id) {
       setCourseId(id);

@@ -41,70 +41,73 @@ import TutorForgotPassword from "./pages/TutorForgotPassword.jsx";
 import TutorResetPassword from "./pages/TutorResetPassword.jsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
 import AdminResetPassword from "./pages/AdminResetPassword.jsx";
+import { isTokenExpired } from "./utils/auth.js";
 
 function App() {
 
-  return (   
-      <Router>
-        <Routes>
-          <Route path="/" exact element={<HomePage />} />
-          <Route path="/course/:id" element={<SingleCoursePage />} />
-          <Route path="/view-course/:id" element={<ViewCourse />} />
-
-          <Route path="/search" element={<SearchCourses />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/teaching" element={<Teaching />} />
-          <Route path="/terms-and-policy" element={<TermsAndPolicy />} />
 
 
-          <Route path="/checkout" element={<Checkout />} />
-          
-          
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" exact element={<HomePage />} />
+        <Route path="/course/:id" element={<SingleCoursePage />} />
+        <Route path="/view-course/:id" element={<ViewCourse />} />
 
-          {/* auth pages */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          
-          <Route path="/tutor-login" element={<LoginTutor />} />
-          <Route path="/tutor-signup" element={<SignupTutor />} />
-
-          <Route path="/admin-login" element={<LoginAdmin />} />
-
-          {/* authenticated user */}
-
-          <Route path="/home/my-courses" element={<UserDashboard />} />
-          <Route path="/home/cart" element={<CartPage />} />
-          <Route path="/home/notifications" element={<NotificationsPage />} />
-          <Route path="/change-password" element={<ChangePassword />} />
-          <Route path="/edit-profile" element={<EditProfile />} />
-          <Route path="/wishlist" element={<WishListPage />} />
-          <Route path="/subscriptions" element={<Subscriptions />} />
-
-           {/* tutor  */}
-           <Route path="/tutor" element={<TutorDashboard />} />
-           <Route path="/tutor/courses" element={<TutorCourses />} />
-           <Route path="/tutor/create-courses" element={<TutorCreateCourses />} />
-           <Route path="/tutor/edit-course/:id" element={<TutorEditCourse />} />
-           <Route path="/tutor/courses-review" element={<TutorCourseReview />} />
-           <Route path="/tutor/earnings" element={<TutorEarnings />} />
-           <Route path="/tutor/course/earnings/:id" element={<TutorCourseEarnings />} />
-           <Route path="/tutor/settings" element={<TutorSettings />} />
-           <Route path="/tutor/change-password" element={<TutorChangePassword />} />
-           <Route path="/tutor/forgot-password" element={<TutorForgotPassword />} />
-           <Route path="/tutor/reset-password" element={<TutorResetPassword />} />
+        <Route path="/search" element={<SearchCourses />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/teaching" element={<Teaching />} />
+        <Route path="/terms-and-policy" element={<TermsAndPolicy />} />
 
 
-             {/* admin  */}
-             <Route path="/admin" element={<AdminDashboard />} />
-             <Route path="/admin/courses" element={<AdminCourses />} />
-             <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
-             <Route path="/admin/reset-password" element={<AdminResetPassword />} />
+        <Route path="/checkout" element={<Checkout />} />
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+
+
+        {/* auth pages */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
+        <Route path="/tutor-login" element={<LoginTutor />} />
+        <Route path="/tutor-signup" element={<SignupTutor />} />
+
+        <Route path="/admin-login" element={<LoginAdmin />} />
+
+        {/* authenticated user */}
+
+        <Route path="/home/my-courses" element={<UserDashboard />} />
+        <Route path="/home/cart" element={<CartPage />} />
+        <Route path="/home/notifications" element={<NotificationsPage />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/wishlist" element={<WishListPage />} />
+        <Route path="/subscriptions" element={<Subscriptions />} />
+
+        {/* tutor  */}
+        <Route path="/tutor" element={<TutorDashboard />} />
+        <Route path="/tutor/courses" element={<TutorCourses />} />
+        <Route path="/tutor/create-courses" element={<TutorCreateCourses />} />
+        <Route path="/tutor/edit-course/:id" element={<TutorEditCourse />} />
+        <Route path="/tutor/courses-review" element={<TutorCourseReview />} />
+        <Route path="/tutor/earnings" element={<TutorEarnings />} />
+        <Route path="/tutor/course/earnings/:id" element={<TutorCourseEarnings />} />
+        <Route path="/tutor/settings" element={<TutorSettings />} />
+        <Route path="/tutor/change-password" element={<TutorChangePassword />} />
+        <Route path="/tutor/forgot-password" element={<TutorForgotPassword />} />
+        <Route path="/tutor/reset-password" element={<TutorResetPassword />} />
+
+
+        {/* admin  */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/courses" element={<AdminCourses />} />
+        <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
+        <Route path="/admin/reset-password" element={<AdminResetPassword />} />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 

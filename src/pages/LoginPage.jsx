@@ -43,6 +43,10 @@ const LoginPage = () => {
 
       localStorage.setItem("role", "user");
 
+      const expirationTime = Date.now() + 1 * 60 * 1000; // 1 hour in milliseconds
+localStorage.setItem("tokenExpiration", expirationTime);
+
+
       setTimeout(()=>{
         window.location.href = "/home/my-courses"
       }, 2000)

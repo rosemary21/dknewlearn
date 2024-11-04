@@ -42,6 +42,7 @@ import TutorResetPassword from "./pages/TutorResetPassword.jsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
 import AdminResetPassword from "./pages/AdminResetPassword.jsx";
 import { isTokenExpired } from "./utils/auth.js";
+import AdminViewCourse from "./pages/Admin/AdminViewCourse.jsx";
 
 function App() {
 
@@ -102,6 +103,7 @@ function App() {
         {/* admin  */}
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/courses" element={<AdminCourses />} />
+        <Route path="/admin/view-course/:id" element={<AdminViewCourse />} />
         <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
         <Route path="/admin/reset-password" element={<AdminResetPassword />} />
 

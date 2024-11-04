@@ -39,6 +39,9 @@ const LoginAdmin = () => {
       localStorage.setItem("email", response.data.emailAddress);
       localStorage.setItem("role", "admin");
 
+      const expirationTime = Date.now() + 60 * 60 * 1000; // 1 hour in milliseconds
+      localStorage.setItem("tokenExpiration", expirationTime);
+
       setTimeout(() => {
         window.location.href = "/admin"
       }, 2000);

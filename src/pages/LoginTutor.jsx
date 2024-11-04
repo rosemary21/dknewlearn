@@ -43,6 +43,9 @@ const LoginTutor = () => {
       localStorage.setItem("user", response.data?.userName);
       localStorage.setItem("role", "tutor");
 
+      const expirationTime = Date.now() + 60 * 60 * 1000; // 1 hour in milliseconds
+      localStorage.setItem("tokenExpiration", expirationTime);
+
       setTimeout(() => {
         window.location.href = "/tutor"
       }, 1000);

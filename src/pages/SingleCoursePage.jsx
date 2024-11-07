@@ -7,6 +7,7 @@ import { getCourses, getSingleCourse, getUser } from '../services/user';
 import { toast } from 'react-toastify';
 import { CartContext } from '../context/CartContext';
 import useAuth from '../services/auth';
+import { isTokenExpired } from '../utils/auth';
 
 
 const SingleCoursePage = () => {

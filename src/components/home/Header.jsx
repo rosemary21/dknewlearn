@@ -3,7 +3,7 @@ import { FaBars, FaBell, FaHeart, FaHome } from 'react-icons/fa'
 import { FaCartShopping } from 'react-icons/fa6'
 import { FiSearch } from 'react-icons/fi'
 import profile from "../../assets/profile1.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../services/auth';
 import { api_url } from '../../config/config';
 import { CartContext } from '../../context/CartContext';
@@ -18,7 +18,7 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const role = localStorage.getItem("role");
+  const navigate = useNavigate()
 
 
   const { cart } = useContext(CartContext);
@@ -72,6 +72,11 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
     };
   }, []);
 
+  const handleCourseClick = (id) => {
+   
+    navigate(`/course/${id}`);
+  };
+
   return (
     <div>
 
@@ -99,12 +104,14 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
                   <p>Loading...</p>
                 ) : results.length > 0 ? (
                   results.map((result, index) => (
-                    <div key={index} className="dropdown-item">
-                      {result.title} {/* Adjust according to your data structure */}
+                    <div key={index} className="dropdown-item" onClick={() => handleCourseClick(result.id)}>
+                      <b>{result.title}</b> <br />
+
+                      {result.author} 
                     </div>
                   ))
                 ) : (
-                  <p>No data found</p>
+                  <p style={{ padding : "20px"}} >No course found</p>
                 )}
               </div>
             )}

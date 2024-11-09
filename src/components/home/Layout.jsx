@@ -161,7 +161,7 @@ const logout = () => {
       )}
 
       <main className="user-main-content">
-        <div className="main-container">
+        <div className="main-container" style={{ maxWidth: "100vw" }}>
         {children}
         </div>
         <Footer />

@@ -91,11 +91,11 @@ const UserDashboard = () => {
             <Link to="/"><button className="primary-btn">View</button></Link>
           </div>
 
-          <section class="courses-sec">
+          <section className="courses-sec">
             <h1>My courses</h1>
 
-            <div class="career-opportunities">
-              <div class="explore-python">
+            <div className="career-opportunities">
+              <div className="explore-python">
 
 
                 {paginatedCourses?.map(course => (

@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/home/Layout";
-import background from "../assets/background1.jpg";
-// import background from "../assets/hero-bg.png";
-
 import '../styles/main.css'
 
-import courseImg1 from "../assets/course-img1.png";
+import courseImg1 from "../assets/default.png";
 
 import instructorImg from "../assets/images/img (8).jpg"
 import { FaStar } from "react-icons/fa";
@@ -100,7 +97,7 @@ const HomePage = () => {
         </section>
 
         {/*  Courses Section */}
-        <section class="courses-sec">
+        <section className="courses-sec">
           <h1>A broad selection of courses</h1>
           <p>
             Choose from 100 online video courses with new additions published
@@ -108,7 +105,7 @@ const HomePage = () => {
           </p>
 
 
-          <div class="career-opportunities">
+          <div className="career-opportunities">
 
             {courses && courses.length > 0 ? (
               <div className="explore-python">
@@ -138,7 +135,7 @@ const HomePage = () => {
         </section>
 
         {/* Featured Section */}
-        <section class="featured">
+        <section className="featured">
           <div className='categories-page'>
             <div>
               <h1>Featured Categories</h1>

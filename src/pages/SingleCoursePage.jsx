@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../components/home/Layout'
-import courseImage from "../assets/course-img1.png";
+import defaultImg from "../assets/default.png";
 import { FaStar } from 'react-icons/fa';
 import { getCourses, getSingleCourse, getUser } from '../services/user';
 import { toast } from 'react-toastify';
@@ -84,43 +84,6 @@ if (expired && window.location.pathname !== "/login") {
     fetchData();
   }, []);
 
-
-
-  // function addToCart(item) {
-  //   // Check if cart already exists in localStorage
-  //   let cart = localStorage.getItem('cart');
-
-  //   // If cart doesn't exist, create an empty array
-  //   if (!cart) {
-  //     cart = [];
-  //   } else {
-  //     // Parse existing cart from JSON
-  //     cart = JSON.parse(cart);
-  //   }
-
-  //   // Check if item already exists in the cart
-  //   const itemExists = cart.some(cartItem => cartItem.id === item.id); // Assuming items have a unique 'id'
-
-  //   if (itemExists) {
-  //     // Show a toast notification for existing item
-  //     toast.warning("This item is already in your cart!")
-  //   } else {
-  //     // Add item to cart
-  //     cart.push(item);
-
-  //     // Store updated cart back to localStorage
-  //     localStorage.setItem('cart', JSON.stringify(cart));
-
-
-  //     toast.success("Item added to cart successfully!")
-
-
-  //     localStorage.setItem("refresh", true)
-
-  //   // location.reload()
-  //   }
-  // }
-
   const auth = useAuth()
 
   const addCart = () => {
@@ -164,7 +127,7 @@ if (expired && window.location.pathname !== "/login") {
             {course?.courseCategory} {'> '}
             {course?.courseGroup} {'> '}
             {course?.title}
-          </div><br />
+          </div><br /><br />
           <div className='top-section'>
             <div>
               <h1>
@@ -184,9 +147,9 @@ if (expired && window.location.pathname !== "/login") {
 
             <div className='course-image'>
 
-              {course?.courseVideoUrl ? <video src={course?.courseVideoUrl} style={{ maxWidth: "100%" }}
+              {course?.courseVideoUrl ? <video src={course?.courseVideoUrl} style={{ maxWidth: "100%", maxHeight: "400px" }}
 
-                controls></video> : <img src={course?.courseImageUrl || courseImage} alt="" style={{ height: "300px", width: "100%" }} />}
+                controls></video> : <img src={course?.courseImageUrl || defaultImg} alt="" style={{ height: "300px", width: "100%" }} />}
 
             </div>
           </div>

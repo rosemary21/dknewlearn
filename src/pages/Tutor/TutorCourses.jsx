@@ -2,14 +2,9 @@ import React, { useEffect, useState } from 'react'
 import TutorLayout from '../../components/tutor/TutorLayout'
 import ReactPaginate from 'react-paginate';
 
-import courseImg1 from "../../assets/course-img1.png";
-import courseImg2 from "../../assets/course-img2.png";
-import courseImg3 from "../../assets/course-img3.png";
-import courseImg4 from "../../assets/course-img4.png";
-import courseImg5 from "../../assets/course-img5.png";
 import { Link } from 'react-router-dom';
 import Course from '../../components/tutor/Course';
-import { getTutor, getTutorCourses } from '../../services/tutor';
+import { getTutorCourses } from '../../services/tutor';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { api_url, token } from '../../config/config';
@@ -104,21 +99,11 @@ const TutorCourses = () => {
           <Link to={'/tutor/create-courses'}><button className='primary-btn'>Create Your course</button></Link>
         </div>
 
-        <section class="courses-sec">
+        <section className="courses-sec">
           <h1>My courses</h1>
 
-          {/* <input type="text" className="search-input" placeholder="Search your courses..." />
-
-          <div class="course-links">
-            <a href="#">Python</a>
-            <a href="#">Product Design</a>
-            <a href="#">Web Development</a>
-            <a href="#">Cybersecurity</a>
-            <a href="#">Data Science</a>
-          </div> */}
-
-          <div class="career-opportunities">
-            <div class="explore-python explore-python2">
+          <div className="career-opportunities">
+            <div className="explore-python explore-python2">
 
 
               {paginatedCourses?.map(course => (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../../components/home/Layout'
-import courseImage from "../../assets/course-img1.png";
+import courseImage from "../../assets/default.png";
 import { FaStar } from 'react-icons/fa';
 import { getCourses, getSingleCourse } from '../../services/user';
 import video from "../../assets/video.gif"

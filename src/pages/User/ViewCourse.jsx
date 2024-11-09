@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../../components/home/Layout'
-import courseImage from "../../assets/course-img1.png";
+import defaultImg from "../../assets/default.png";
 import { FaStar } from 'react-icons/fa';
 import { getCourses, getSingleCourse } from '../../services/user';
 import video from "../../assets/video.gif"
@@ -98,12 +98,12 @@ const ViewCourse = () => {
     return (
         <Layout>
             <div className='course-page'>
-                <div className='course-banner'>
+                {/* <div className='course-banner'>
                     <div className="breadcrumb">
                         {course?.courseCategory} {'> '}
                         {course?.courseGroup} {'> '}
                         {course?.title}
-                    </div><br />
+                    </div><br /><br />
                     <div className='top-section'>
                         <div>
                             <h1>
@@ -122,10 +122,12 @@ const ViewCourse = () => {
                         </div>
 
                         <div className='course-image'>
-                            <img src={courseImage} alt="" />
+                            {course?.courseVideoUrl ? <video src={course?.courseVideoUrl} style={{ maxWidth: "100%", maxHeight: "400px" }}
+
+                                controls></video> : <img src={course?.courseImageUrl || defaultImg} alt="" style={{ height: "300px", width: "100%" }} />}
                         </div>
                     </div>
-                </div><br /><br /><br />
+                </div><br /><br /><br /> */}
 
 
 
@@ -134,12 +136,12 @@ const ViewCourse = () => {
                         <div className="video-display">
                             {selectedSeries ? (
                                 <div>
-                                    <h2>{selectedSeries.title}</h2>
+                                    <h2>{selectedSeries.title}</h2><br />
                                     <video src={selectedSeries.videoLink} controls style={{ height: '400px' }} />
                                 </div>
                             ) : (
                                 <div>
-                                    <center><img src={video} alt="" /></center>
+                                    <center><img src={video} alt="" className="" /></center>
                                 </div>
                             )}
 
@@ -147,34 +149,41 @@ const ViewCourse = () => {
 
                         </div>
 
-                            <br />
-                        {/* <div className="sections">
-                            <div className="section1">
-                                <div className='sub-section1'>
-                                    <h1>What you'll learn</h1><br />
-                                    <div className="sub-points">
-                                        {
-                                            course?.sectionDto?.map((section, index) => (
-                                                <div key={index}>
-                                                    {section?.seriesList?.map((series, i) => (
-                                                        <p key={i}>
-                                                            {series.title}
-                                                        </p>
-                                                    ))
-                                                    }
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
+
+                        <div style={{ padding: "20px"}}>
+                            <div className="breadcrumb">
+                                {course?.courseCategory} {'> '}
+                                {course?.courseGroup} {'> '}
+                                {course?.title}
+                            </div><br />
+                            <div className='top-section'>
+                                <div>
+                                    <h1>
+                                        {course?.title}
+                                    </h1> <br />
+
+                                    <p>{course?.description}</p><br />
+
+                                    <p>
+                                        5.0 <span style={{ color: 'gold' }}><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /> </span>
+                                    </p><br />
+
+                                    <p>Created by <b>{course?.author}</b></p>
+
                                 </div>
 
                             </div>
-                        </div> */}
+
+                        </div>
+
+                        <br />
                     </div>
-                    <div>
+                    <div className="course-aside">
+                        <h2 style={{ padding: "10px" }}>Course content</h2>
+
                         {course?.sectionDto?.map((section, index) => (
                             <div key={index} className="section">
-                                <h3 onClick={() => handleSectionClick(index)}>{index +1}{")"} {section.title}</h3>
+                                <h3 onClick={() => handleSectionClick(index)}>{index + 1}{")"} {section.title}</h3>
                                 <div className={`series active`}>
                                     {section?.seriesList?.map((series, seriesIndex) => (
                                         <div
@@ -182,7 +191,7 @@ const ViewCourse = () => {
                                             className="series-title"
                                             onClick={() => handleSeriesClick(series)}
                                         >
-                                            {index +1}{"."}{seriesIndex +1}{") "}{series.title}
+                                            {index + 1}{"."}{seriesIndex + 1}{") "}{series.title}
                                         </div>
                                     ))}
                                 </div>

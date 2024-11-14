@@ -119,7 +119,9 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
  
 
         <div className='header-links'>
-          <Link to={'/categories'}><span>Categories</span></Link>
+          {/* <Link to={'/categories'}><span>Categories</span></Link> */}
+
+          <Link to={'/home/my-courses'}><span>My Learning</span></Link>
           <Link to={'/teaching'}><span>Become a Instructor</span></Link>
         </div>
         <div className='header-aside'>

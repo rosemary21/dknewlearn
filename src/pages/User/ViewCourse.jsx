@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../../components/home/Layout'
 import defaultImg from "../../assets/default.png";
@@ -94,10 +94,22 @@ const ViewCourse = () => {
         },
     ];
 
+    const [isPlaying, setIsPlaying] = useState(false);
+    const videoRef = useRef(null);
+
+    const handlePlayPause = () => {
+        if (isPlaying) {
+            videoRef.current.pause();
+        } else {
+            videoRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
+
 
     return (
         <Layout>
-            <div className='course-page'>
+            <div className='course-page'  >
                 {/* <div className='course-banner'>
                     <div className="breadcrumb">
                         {course?.courseCategory} {'> '}
@@ -133,14 +145,45 @@ const ViewCourse = () => {
 
                 <div className="view-course-content">
                     <div>
-                        <div className="video-display">
+                        <div className="video-display" >
                             {selectedSeries ? (
                                 <div>
-                                    <h2>{selectedSeries.title}</h2><br />
-                                    <video src={selectedSeries.videoLink} controls style={{ height: '400px' }} />
+                                    <h2 style={{ color: "white"}} >{selectedSeries.title}</h2><br />
+                                    {/* <video src={selectedSeries.videoLink} controls style={{ height: '400px' }} /> */}
+
+                                    <div style={{ position: 'relative', width: '100%', maxWidth: '640px' }}>
+                                        <video
+                                            ref={videoRef}
+                                            width="100%"
+                                            style={{ display: 'block', height: '400px' }}
+                                            onClick={handlePlayPause}
+                                            src={selectedSeries.videoLink}
+                                            controls
+                                        />
+                                        {!isPlaying && (
+                                            <button
+                                                onClick={handlePlayPause}
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: '50%',
+                                                    left: '50%',
+                                                    transform: 'translate(-50%, -50%)',
+                                                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                                    border: 'none',
+                                                    borderRadius: '50%',
+                                                    color: 'white',
+                                                    fontSize: '24px',
+                                                    padding: '20px',
+                                                    cursor: 'pointer',
+                                                }}
+                                            >
+                                                ▶️
+                                            </button>
+                                        )}
+                                    </div>
                                 </div>
                             ) : (
-                                <div>
+                                <div >
                                     <center><img src={video} alt="" className="" /></center>
                                 </div>
                             )}
@@ -150,7 +193,7 @@ const ViewCourse = () => {
                         </div>
 
 
-                        <div style={{ padding: "20px"}}>
+                        <div style={{ padding: "20px" }}>
                             <div className="breadcrumb">
                                 {course?.courseCategory} {'> '}
                                 {course?.courseGroup} {'> '}

@@ -28,7 +28,7 @@ const Course = ({ course, action }) => {
         5.0 <FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></p>
       <h3>₦{course?.nairaPrice?.toLocaleString()}</h3>
 
-      {role == "tutor" && <div style={{ marginTop: "20px" }}>
+      {role == "tutor" && course.status == "Pending" && <div style={{ marginTop: "20px" }}>
         <Link to={`/tutor/edit-course/${course?.id}`}><button className='btn1'>edit</button></Link>
 
         <button className='btn2' style={{ padding: "9px 10px", marginLeft: "20px" }} onClick={() => action(course?.id)}>Delete</button>

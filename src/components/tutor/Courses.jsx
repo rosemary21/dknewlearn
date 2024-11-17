@@ -63,7 +63,22 @@ function Courses() {
 
   const handleSaveCourse = async () => {
     const courseData = { ...course, sectionDto: sections };
+
     localStorage.setItem("courseData", JSON.stringify(courseData));
+
+if(sections.length == 0){
+  toast.error("You must add one section with series to the course");
+  return
+}
+
+for (let i = 0; i < sections.length; i++) {
+  if (!sections[i].seriesList || sections[i].seriesList.length < 1) {
+    toast.error(`Section ${i + 1} must contain at least one series`);
+    return;
+  }
+}
+
+
 
     try {
       const response = await axios.post(`${api_url}/course/tutoraddcourses`, courseData, {
@@ -76,9 +91,9 @@ function Courses() {
       toast.success("Course created successfully");
       localStorage.removeItem("courseData");
 
-      setTimeout(() => {
-        location.href = "/tutor/courses";
-      }, 1000);
+      // setTimeout(() => {
+      //   location.href = "/tutor/courses";
+      // }, 1000);
     } catch (error) {
       console.log(error);
       toast.error("An error occurred while creating the course");
@@ -106,8 +121,8 @@ function Courses() {
       });
     });
 
-     // Update currentSection's seriesList to reflect the deletion
-     setCurrentSection((prev) => ({
+    // Update currentSection's seriesList to reflect the deletion
+    setCurrentSection((prev) => ({
       ...prev,
       seriesList: prev.seriesList.filter((series) => series.id !== seriesId),
     }));
@@ -146,12 +161,12 @@ function Courses() {
                 {currentSection?.seriesList?.map((series, index) => (
                   <tr key={index}>
                     <td>{series.title}</td>
-                    <td  style={{
-  maxWidth: '150px',      // Set maximum width
-  overflow: 'hidden',      // Hide overflow
-  textOverflow: 'ellipsis', // Add ellipsis for overflow text
-  whiteSpace: 'nowrap'     // Prevent line wrapping
-}}>{series.videoLink}</td>
+                    <td style={{
+                      maxWidth: '150px',      // Set maximum width
+                      overflow: 'hidden',      // Hide overflow
+                      textOverflow: 'ellipsis', // Add ellipsis for overflow text
+                      whiteSpace: 'nowrap'     // Prevent line wrapping
+                    }}>{series.videoLink}</td>
                     <td>{series.resourceFile}</td>
                     <td>     <button
                       className="delete-btn"
@@ -161,7 +176,7 @@ function Courses() {
                         width: "40px"
                       }}
                     >
-                      <FaTrash/>
+                      <FaTrash />
                     </button></td>
                   </tr>
                 ))}
@@ -175,8 +190,8 @@ function Courses() {
       <div>
         {activeSlide === 3 && (
           <button onClick={() => setActiveSlide(2)}>Back to Sections</button>
-        )} 
-        
+        )}
+
         {activeSlide === 2 && (
           <>
             <button

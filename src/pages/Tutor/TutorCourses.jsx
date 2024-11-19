@@ -110,9 +110,10 @@ const TutorCourses = () => {
                 <Course key={course.id} course={course} action={deleteCourseConfirm} />
               ))}
 
-
+ 
 
             </div>
+            <div className='max-w-full overflow'>
             <ReactPaginate
               previousLabel={'← Previous'}
               nextLabel={'Next →'}
@@ -124,6 +125,7 @@ const TutorCourses = () => {
               containerClassName={'pagination'}
               activeClassName={'active'}
             />
+            </div>
           </div>
         </section>
 

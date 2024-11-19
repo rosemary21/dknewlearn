@@ -1375,3 +1375,33 @@ button{
   height: 100vh;
 }
 
+
+.pagination {
+  display: flex;
+  justify-content: center; /* Center align items */
+  align-items: center;     /* Vertical alignment */
+  /* Prevent wrapping */
+  gap: 8px;                /* Space between items */
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+
+  padding-left: 40%;
+  overflow-x: scroll;
+}
+
+.pagination li {
+  display: inline-flex;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 8px 16px;       /* Ensure enough space for labels */
+  white-space: nowrap;     /* Prevent text wrapping */
+}
+
+@media screen and (min-width: 700px) {
+  .pagination {
+    padding-left: 0%;
+  }
+}

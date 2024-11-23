@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Layout from "../components/home/Layout";
 import '../styles/main.css'
 
@@ -22,6 +22,8 @@ const HomePage = () => {
   const [totalData, setTotalData] = useState(0);
 
   const navigate = useNavigate()
+
+  const courseContainerRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,50 +55,22 @@ const HomePage = () => {
     setCurrentPage(page);
   };
 
+  const handleNext = () => {
+
+    // Scroll to the top of the div
+    courseContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div>
       <Layout>
-        {/* <div className="container">
-          <img
-            src={background} 
-            alt="Background Image"
-            className="background-image"
-          />
-          <div className="text-overlay">
-            <h1>Get the best Courses Here</h1><br />
-            <p>We have courses covering a whole lot of fields that you can try out</p>
-          </div>
-        </div> */}
-
-        {/* <section className="hero">
-          <Slider {...settings} className='carousel'>
-            <div className='carousel-item carousel-item1'>
-              <div className='carousel-text slide1'>
-                <h2>Text for Image 1</h2>
-                <p>Description for Image 1</p>
-              </div>
-            </div>
-            <div className='carousel-item' style={{ backgroundImage: 'url(/path/to/your/image2.jpg)' }}>
-              <div className='carousel-text'>
-                <h2>Text for Image 2</h2>
-                <p>Description for Image 2</p>
-              </div>
-            </div>
-            <div className='carousel-item' style={{ backgroundImage: 'url(/path/to/your/image3.jpg)' }}>
-              <div className='carousel-text'>
-                <h2>Text for Image 3</h2>
-                <p>Description for Image 3</p>
-              </div>
-            </div>
-          </Slider>
-        </section> */}
 
         <section>
           <Slider />
         </section>
 
         {/*  Courses Section */}
-        <section className="courses-sec">
+        <section className="courses-sec" ref={courseContainerRef} >
           <h1>A broad selection of courses</h1>
           <p>
             Choose from 100 online video courses with new additions published
@@ -129,6 +103,7 @@ const HomePage = () => {
               currentPage={currentPage}
               totalData={totalData}
               onPageChange={handlePageChange}
+              onClick={handleNext} 
             />
           </div>
         </section>

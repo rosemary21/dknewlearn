@@ -51,8 +51,8 @@ const logout = () => {
       {isAsideVisible && (
         <div className="mobile-nav">
           <div className="sub-mobile-nav">
-            <Link to={"/categories"}>
-              <p className="nav-link">Categories</p>
+            <Link to={"/home/my-courses"}>
+              <p className="nav-link">My Learning</p>
             </Link>
             <Link to={"/teaching"}>
             <p className="nav-link">Signup as teacher</p>

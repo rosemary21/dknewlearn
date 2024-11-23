@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Layout from "../../components/home/Layout";
 import '../../styles/dashboard.css'
 import profileImg from "../../assets/profile1.png";
@@ -16,6 +16,13 @@ const UserDashboard = () => {
   const [courses, setCourses] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const courseContainerRef = useRef(null);
+  const handleNext = () => {
+
+    // Scroll to the top of the div
+    courseContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,6 +95,7 @@ const UserDashboard = () => {
             <br />
             <p>Learning a little each day adds up. Research shows that students who make learning a habit are more likely to reach their goals.</p>
             <br />
+            <div   ref={courseContainerRef}></div>
             <Link to="/"><button className="primary-btn">View</button></Link>
           </div>
 
@@ -98,8 +106,8 @@ const UserDashboard = () => {
               <div className="explore-python">
 
 
-                {paginatedCourses?.map(course => (
-                  <Link to={`/view-course/${course.id}`} key={course.id} >
+                {paginatedCourses?.map((course, index) => (
+                  <Link to={`/view-course/${course.id}`} key={index} >
                     <Course course={course} />
                   </Link>
                 ))}
@@ -117,6 +125,7 @@ const UserDashboard = () => {
                 onPageChange={handlePageChange}
                 containerClassName={'pagination'}
                 activeClassName={'active'}
+                onClick={() => handleNext()}
               />
             </div>
           </section>

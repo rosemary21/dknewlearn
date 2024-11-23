@@ -127,7 +127,7 @@ const Header = ({ onToggleAside, toggleCart, onToggleProfileNav }) => {
         <div className='header-aside'>
 
 
-         <Link to="/search"> <FiSearch className='header-icons search-icon2' /></Link>
+         <Link to="/search" style={{ display: "none"}}> <FiSearch className='header-icons search-icon2' /></Link>
           <FaCartShopping className='header-icons' onClick={toggleCart} /> <span className="red" onClick={toggleCart}>{cart ? cart.length : '0'}</span>
 
 

@@ -58,7 +58,7 @@ const HomePage = () => {
   const handleNext = () => {
 
     // Scroll to the top of the div
-    courseContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    courseContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
   };
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../components/home/Layout'
 
-import background from "../assets/images/img (4).jpg";
+import background from "../assets/images/background2.jpg";
 import background2 from "../assets/images/img (4).jpg";
 
 import teaching1 from "../assets/teaching.jpg";
@@ -36,25 +36,27 @@ const Teaching = () => {
         </div>
 
         <section className='reasons-section all-marginned'>
-            <h1>So many reasons to start</h1>
+            <h1 style={{ textAlign: "center", marginBottom: "30px"}}>So many reasons to start</h1>
 
             <div className="reasons">
                 <div>
-                <img src={teaching1} alt="Teaching Image" />
-                <h3>Teach your way</h3>
+                <img src={teaching1} alt="Teaching Image" /><br /><br />
+                <h3>Teach your way</h3><br />
                 <p>Publish the course you want, in the way you want, and always have control of your own content.</p>
                 </div>
 
                 <div>
-                <img src={teaching2} alt="Teaching Image" />
-                <h3>Teach your way</h3>
-                <p>Publish the course you want, in the way you want, and always have control of your own content.</p>
+                <img src={teaching2} alt="Teaching Image" /><br /><br />
+                <h3>Inspire learners
+                </h3><br />
+                <p>Teach what you know and help learners explore their interests, gain new skills, and advance their careers.</p>
                 </div>
 
                 <div>
-                <img src={teaching3} alt="Teaching Image" />
-                <h3>Teach your way</h3>
-                <p>Publish the course you want, in the way you want, and always have control of your own content.</p>
+                <img src={teaching3} alt="Teaching Image" /><br /><br />
+                <h3>Get rewarded
+                </h3><br />
+                <p>Expand your professional network, build your expertise, and earn money on each paid enrollment.</p>
                 </div>
             </div>
         </section>

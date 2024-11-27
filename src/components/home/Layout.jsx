@@ -39,10 +39,10 @@ const Layout = ({ children }) => {
     checkout(auth)
   }
 
-const logout = () => {
+  const logout = () => {
     localStorage.clear()
     window.location.href = "/"
-}
+  }
 
   return (
     <div className="home">
@@ -55,19 +55,25 @@ const logout = () => {
               <p className="nav-link">My Learning</p>
             </Link>
             <Link to={"/teaching"}>
-            <p className="nav-link">Signup as teacher</p>
+              <p className="nav-link">Signup as teacher</p>
             </Link>
             <br />
-            <p>
-              <Link to={"/login"}>
-                <button>Login</button>
-              </Link>
-            </p>
-            <p>
-              <Link to={"/signup"}>
-                <button className="btn2">Signup</button>
-              </Link>
-            </p>
+
+            {auth && auth.isAuth != true && (
+              <>
+                <p>
+                  <Link to={"/login"}>
+                    <button>Login</button>
+                  </Link>
+                </p>
+                <p>
+                  <Link to={"/signup"}>
+                    <button className="btn2">Signup</button>
+                  </Link>
+                </p>
+              </>
+            )}
+
           </div>
         </div>
       )}
@@ -78,7 +84,7 @@ const logout = () => {
         <div className="profile-nav">
 
           {role == "user" ? (
-              <div className="">
+            <div className="">
 
 
 
@@ -95,60 +101,60 @@ const logout = () => {
                 <p className="nav-link">Change Password</p>
               </Link>
               <p>
-   
-                  <button className="btn2 btn3" onClick={logout}>Logout</button>
+
+                <button className="btn2 btn3" onClick={logout}>Logout</button>
               </p>
             </div>
 
           ) : role == "tutor" ? (
             <div className="">
-            <Link to={"/tutor"}>
-              <p className="nav-link">Dashboard</p>
-            </Link>
-            <Link to={"/tutor/settings"}>
-              <p className="nav-link">Settings</p>
-            </Link>
-            <Link to={"/tutor/change-password"}>
-              <p className="nav-link">Change Password</p>
-            </Link>
-            <p>
- 
+              <Link to={"/tutor"}>
+                <p className="nav-link">Dashboard</p>
+              </Link>
+              <Link to={"/tutor/settings"}>
+                <p className="nav-link">Settings</p>
+              </Link>
+              <Link to={"/tutor/change-password"}>
+                <p className="nav-link">Change Password</p>
+              </Link>
+              <p>
+
                 <button className="btn2 btn3" onClick={logout}>Logout</button>
-            </p>
-          </div>
+              </p>
+            </div>
           ) : role == "admin" ? (
             <div className="">
-            <Link to={"/admin"}>
-              <p className="nav-link">Dashboard</p>
-            </Link>
-            <p>
- 
+              <Link to={"/admin"}>
+                <p className="nav-link">Dashboard</p>
+              </Link>
+              <p>
+
                 <button className="btn2 btn3" onClick={logout}>Logout</button>
-            </p>
-          </div>
+              </p>
+            </div>
           ) : (
             <>
             </>
-          ) }
-        
+          )}
+
         </div>
       )}
 
       {isCartVisible && (
-        <div className={`cartPanel  ${auth.isAuth && 'shift-cart'}`}> 
+        <div className={`cartPanel  ${auth.isAuth && 'shift-cart'}`}>
           {cart.length > 0 ? (
             <div>
               {cart.map((item, index) => (
-                <div key={index}  className="flex-justify-sb cart-item" >
+                <div key={index} className="flex-justify-sb cart-item" >
                   {item.name} - ₦{item.price}
-                  <span onClick={() => removeItemFromCart(index)} style={{ color: "red", cursor: "pointer"}}><FaTrash/></span>
-                  
+                  <span onClick={() => removeItemFromCart(index)} style={{ color: "red", cursor: "pointer" }}><FaTrash /></span>
+
                 </div>
               ))}
               <br /><br />
               <div className="flex-justify-sb">
-                <button className="btn2" style={{ padding: "10px"}} onClick={checkoutOne} disabled={loading}>{loading ? 'Loading...' : 'Check out'}</button>
-                <button className="btn3" style={{ width: "auto", padding: "10px"}} onClick={clearCart}>Clear Cart</button>
+                <button className="btn2" style={{ padding: "10px" }} onClick={checkoutOne} disabled={loading}>{loading ? 'Loading...' : 'Check out'}</button>
+                <button className="btn3" style={{ width: "auto", padding: "10px" }} onClick={clearCart}>Clear Cart</button>
               </div>
             </div>
           ) : (
@@ -162,7 +168,7 @@ const logout = () => {
 
       <main className="user-main-content">
         <div className="main-container" style={{ maxWidth: "100vw" }}>
-        {children}
+          {children}
         </div>
         <Footer />
         <ToastContainer />

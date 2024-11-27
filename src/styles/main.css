@@ -1034,6 +1034,7 @@ footer .sub-footer-nav{
 .teaching .reasons div{
  margin-bottom: 20px;
  text-align: center ;
+ max-width: 300px;
 }
 
 @media screen and (min-width: 900px) {
@@ -1197,6 +1198,7 @@ footer .sub-footer-nav{
   .teaching .reasons {
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 }
 

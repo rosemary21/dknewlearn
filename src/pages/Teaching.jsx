@@ -23,7 +23,7 @@ const Teaching = () => {
           />
 
 <img
-            src={background2} 
+            src={background} 
             alt="Background Image"
             className="background-image background-image2"
           />

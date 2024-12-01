@@ -80,6 +80,47 @@ export const getCourses = async (pageNo = 0) => {
   }
 }
 
+
+export const getCoursesByCategory = async (pageNo = 0, category) => {
+
+  const data = {
+    "pageSize": 10,
+    "pageNo": pageNo,
+    category
+  }
+  if (token) {
+    try {
+      const response = await axios.post(`${api_url}/course/all/view/student/courses`, data, {
+        headers: {
+          'apiKey': `${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+
+      return response.data
+
+    } catch (error) {
+      console.log("An error occurred. Please try again.");
+    }
+  } else{
+    try {
+      const response = await axios.post(`${api_url}/course/all/view/student/courses`, data, {
+        headers: {
+          // 'apiKey': `${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+
+      return response.data
+
+    } catch (error) {
+      console.log("An error occurred. Please try again.");
+    }
+  }
+}
+
 export const getSingleCourse = async (id) => {
 
   try {

@@ -8,7 +8,7 @@ import instructorImg from "../assets/images/img (8).jpg"
 import { FaStar } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { Slider } from "../components/home/Slider";
-import { getCourses } from "../services/user";
+import { getCourses, getCoursesByCategory } from "../services/user";
 import Pagination from "../components/ui/Pagination";
 
 
@@ -44,6 +44,11 @@ const HomePage = () => {
     fetchData();
   }, [currentPage]);
 
+
+
+  const fetchCategory = async (id) => {
+    navigate(`/category/${id}`);
+  }
 
 
   const handleCourseClick = (course) => {
@@ -116,10 +121,12 @@ const HomePage = () => {
             </div><br />
 
             <div className='categories-list'>
-              <p style={{ background: "white" }}>Web Development</p>
-              <p style={{ background: "white" }}>Product Design</p>
-              <p style={{ background: "white" }}>Cybersecurity</p>
-              <p style={{ background: "white" }}>Web Development</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("SoftwareTester")}>Software Tester</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("BackendEngineer")}>Backend Engineer</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("DevopsEngineer")}>Devops Engineer</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("ProductOwner")}>Product Owner</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("FrontendEngineer")}>Frontend Engineer</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("MobileEngineer")}>Mobile Engineer</p>
 
             </div>
 

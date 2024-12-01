@@ -43,6 +43,7 @@ import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
 import AdminResetPassword from "./pages/AdminResetPassword.jsx";
 import { isTokenExpired } from "./utils/auth.js";
 import AdminViewCourse from "./pages/Admin/AdminViewCourse.jsx";
+import CategoryPage from "./pages/CategoryPage.jsx";
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
         <Route path="/search" element={<SearchCourses />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/teaching" element={<Teaching />} />
+        <Route path="/category/:id" element={<CategoryPage />} />
         <Route path="/terms-and-policy" element={<TermsAndPolicy />} />
 
 

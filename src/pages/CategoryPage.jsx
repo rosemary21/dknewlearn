@@ -16,6 +16,10 @@ const CategoryPage = () => {
     const [category, setCategory] = useState("")
   
     const navigate = useNavigate()
+
+    const fetchCategory = async (id) => {
+       navigate(`/category/${id}`);
+     }
   
     const courseContainerRef = useRef(null);
 
@@ -53,7 +57,7 @@ const CategoryPage = () => {
           }
 
           fetchCategory()
-    }, [currentPage]);
+    }, [currentPage, id]);
 
 
 
@@ -111,6 +115,28 @@ const CategoryPage = () => {
               onPageChange={handlePageChange}
               onClick={handleNext} 
             />
+          </div>
+        </section>
+
+
+           {/* Featured Section */}
+           <section className="featured">
+          <div className='categories-page'>
+            <div>
+              <h1>Other Categories</h1>
+            </div><br />
+
+            <div className='categories-list'>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("SoftwareTester")}>Software Tester</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("BackendEngineer")}>Backend Engineer</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("DevopsEngineer")}>Devops Engineer</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("ProductOwner")}>Product Owner</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("FrontendEngineer")}>Frontend Engineer</p>
+              <p style={{ background: "white" }} onClick={() => fetchCategory("MobileEngineer")}>Mobile Engineer</p>
+
+            </div>
+
+            {/* <Link to={"/categories"}><button className="btn3">Explore more categories</button></Link> */}
           </div>
         </section>
     </Layout>

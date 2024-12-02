@@ -17,13 +17,18 @@ const CategoryPage = () => {
   
     const navigate = useNavigate()
 
-    const fetchCategory = async (id) => {
-       navigate(`/category/${id}`);
-     }
+
+   
   
     const courseContainerRef = useRef(null);
 
     const { id } = useParams();
+
+
+    useEffect(() => {
+
+      window.scrollTo(0, 0);
+    }, [id]); 
 
 
     useEffect(() => {
@@ -58,6 +63,13 @@ const CategoryPage = () => {
 
           fetchCategory()
     }, [currentPage, id]);
+
+
+
+    const fetchCategory = async (id) => {
+      navigate(`/category/${id}`);
+    }
+
 
 
 
